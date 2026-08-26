@@ -4,3 +4,5 @@ __pycache__/
 *.py[cod]
 .DS_Store
 .streamlit/
+models/pricing_pipeline.joblib
+*.joblib

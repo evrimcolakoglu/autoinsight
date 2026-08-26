@@ -69,6 +69,65 @@ class VehicleRecommender:
         result_cols = ['marka', 'seri', 'model', 'yil', 'kilometre', 'yakit_tipi', 'vites_tipi', TARGET_COLUMN, 'match_score']
         return filtered[result_cols].sort_values(by='match_score', ascending=False).head(top_n)
 
+    def find_comparable_listings(
+        self,
+        marka: str,
+        model: str,
+        yil: int,
+        km: float,
+        predicted_price: float,
+        degisen: int = 0
+    ) -> dict:
+        """
+        Benzer ilanları filtreler ve piyasa karşılaştırması verisi döner.
+        Filtre: Aynı marka + model, yıl ±1, km ±%30.
+        En az 10 eşleşme gerekir.
+        """
+        filtered = self.df[
+            (self.df['marka'] == marka) &
+            (self.df['model'] == model) &
+            (self.df['yil'].between(yil - 1, yil + 1)) &
+            (self.df['kilometre'].between(km * 0.7, km * 1.3))
+        ].copy()
+
+        if len(filtered) < 10:
+            return {"sufficient": False, "count": len(filtered)}
+
+        prices = filtered[TARGET_COLUMN].values
+        avg_price = float(np.mean(prices))
+        median_price = float(np.median(prices))
+        count = len(filtered)
+
+        # Yüzdelik konum: tahmin edilen fiyatın benzer ilanlar arasındaki yeri
+        percentile = float(np.mean(prices <= predicted_price) * 100)
+
+        # Ortalamadan sapma yüzdesi
+        deviation_pct = ((predicted_price - avg_price) / avg_price) * 100
+
+        # Yorum cümlesi üret
+        if abs(deviation_pct) <= 5:
+            comment = "Benzer ilanların ortalamasına yakın."
+        elif deviation_pct > 5:
+            if km < np.mean(filtered['kilometre']):
+                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} üzerinde. Kilometresi düşük olduğu için normal."
+            else:
+                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} üzerinde."
+        else:
+            if degisen > 0:
+                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} altında. Değişen parça sayısı fiyatı düşürüyor."
+            else:
+                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} altında."
+
+        return {
+            "sufficient": True,
+            "count": count,
+            "avg_price": avg_price,
+            "median_price": median_price,
+            "percentile": percentile,
+            "deviation_pct": deviation_pct,
+            "comment": comment
+        }
+
     def find_similar_vehicles(self, car_index: int, top_n: int = 5) -> pd.DataFrame:
         """Seçilen bir araca en yakın alternatifleri Cosine Similarity ile bulur."""
         features = ['yil', 'kilometre', 'motor_gucu', 'ortalama_yakit_tuketimi', TARGET_COLUMN]

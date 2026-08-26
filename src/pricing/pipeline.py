@@ -73,7 +73,7 @@ def train_and_save():
 
     os.makedirs(os.path.dirname(MODEL_SAVE_PATH), exist_ok=True)
     joblib.dump(pipeline, MODEL_SAVE_PATH)
-    print(f"[✓] Model başarıyla kaydedildi: {MODEL_SAVE_PATH}\n")
+    print(f"[OK] Model basariyla kaydedildi: {MODEL_SAVE_PATH}\n")
 
 if __name__ == "__main__":
     train_and_save()
