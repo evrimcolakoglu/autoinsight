@@ -4,3 +4,8 @@ __pycache__/
 *.py[cod]
 .DS_Store
 .streamlit/
+
+# Large model files (exceed GitHub's 100MB limit)
+# Train locally using the provided training script
+models/*.joblib
+models/*.pkl
