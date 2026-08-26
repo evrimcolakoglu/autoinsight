@@ -1,4 +1,4 @@
-# 🚗 AutoInsight: RAG Destekli Akıllı Araç Değerleme ve Tavsiye Sistemi
+﻿# 🚗 AutoInsight: RAG Destekli Akıllı Araç Değerleme ve Tavsiye Sistemi
 
 AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; dinamik fiyat tahmini, bütçe ve ihtiyaç odaklı araç eşleştirme ile çevrimdışı (offline) RAG mimarisini tek çatı altında toplayan uçtan uca bir makine öğrenmesi asistanıdır.
 
@@ -26,48 +26,102 @@ AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; dinamik fiyat tah
 
 ---
 
-## 🚀 Hızlı Başlangıç (Docker ile)
+## 👥 Geliştirici Kurulum Rehberi
 
-Projeyi bilgisayarınızda herhangi bir Python veya kütüphane bağımlılığı kurmadan doğrudan Docker üzerinden çalıştırabilirsiniz:
+> Bu bölüm, repoya erişimi olan geliştiriciler için hazırlanmıştır.
+
+### Ön Gereksinimler
+
+Başlamadan önce aşağıdakilerin bilgisayarınızda kurulu olduğundan emin olun:
+
+| Araç | Versiyon | İndirme |
+|------|----------|---------|
+| Python | 3.10 veya üzeri | [python.org](https://www.python.org/downloads/) |
+| Git | Herhangi | [git-scm.com](https://git-scm.com/) |
+
+### 1. Repoyu Klonlayın
 
 ```bash
-# 1. Depoyu klonlayın
-git clone [https://github.com/evrimcolakoglu/autoinsight.git](https://github.com/evrimcolakoglu/autoinsight.git)
+git clone https://github.com/evrimcolakoglu/autoinsight.git
 cd autoinsight
-
-# 2. Docker imajını derleyin
-docker build -t autoinsight .
-
-# 3. Konteyneri başlatın
-docker run -p 8501:8501 autoinsight
 ```
 
-Tarayıcınızdan **`http://localhost:8501`** adresine gidin.
+### 2. Sanal Ortam Oluşturun ve Aktif Edin
+
+```bash
+# Sanal ortam oluştur
+python -m venv venv
+
+# Aktif et — Windows:
+.\venv\Scripts\activate
+
+# Aktif et — macOS/Linux:
+source venv/bin/activate
+```
+
+> Aktivasyon sonrası terminal satırınızın başında (venv) görünmesi gerekir.
+
+### 3. Bağımlılıkları Yükleyin
+
+```bash
+pip install -r requirements.txt
+```
+
+> ⚠️ sentence-transformers paketi ilk yüklemede ~500 MB boyutunda model indirebilir. Bu normaldir.
+
+### 4. Eğitilmiş Modeli İndirin (Google Drive)
+
+Fiyatlandırma modeli (pricing_pipeline.joblib) boyutu nedeniyle (~350 MB) GitHub'da bulunmamaktadır.
+
+**a)** Aşağıdaki bağlantıdan model dosyasını indirin:
+
+> 📦 **[pricing_pipeline.joblib — Google Drive'dan İndir](#)**
+>
+> *(Bağlantıyı proje sahibinden talep edin)*
+
+**b)** İndirilen dosyayı projenin models/ klasörüne taşıyın:
+
+```
+autoinsight/
+└── models/
+    └── pricing_pipeline.joblib   ✅ buraya koyun
+```
+
+**c)** Alternatif: Modeli sıfırdan eğitmek için (~2-3 dakika):
+
+```bash
+python src/pricing/pipeline.py
+```
+
+### 5. RAG Vektör Veritabanını Oluşturun
+
+```bash
+python src/rag/ingest.py
+```
+
+> Bu adım data/processed/ klasöründe knowledge_base.db dosyasını oluşturur.
+
+### 6. Uygulamayı Başlatın
+
+```bash
+streamlit run app.py
+```
+
+Tarayıcınızda otomatik olarak **http://localhost:8501** adresi açılacaktır.
 
 ---
 
-## 💻 Manuel Kurulum (Lokal Geliştirme)
-
-Sanal ortam (venv) ile yerel geliştirme yapmak için:
+## 🐳 Docker ile Hızlı Başlangıç (Opsiyonel)
 
 ```bash
-# Sanal ortam oluşturma ve aktif etme
-python -m venv venv
-# Windows:
-.\venv\Scripts\activate
-# macOS/Linux:
-# source venv/bin/activate
+# Docker imajını derle
+docker build -t autoinsight .
 
-# Bağımlılıkları yükleme
-pip install -r requirements.txt
-
-# Modeli eğitme ve RAG veritabanını oluşturma
-python src/pricing/pipeline.py
-python src/rag/ingest.py
-
-# Arayüzü başlatma
-streamlit run app.py
+# Konteyneri başlat
+docker run -p 8501:8501 autoinsight
 ```
+
+> ⚠️ Docker yöntemiyle models/pricing_pipeline.joblib dosyasının mevcut olması gerekir.
 
 ---
 
@@ -89,10 +143,9 @@ streamlit run app.py
 ```text
 autoinsight/
 ├── data/
-│   ├── raw/                  # Ham araç CSV verileri ve kılavuz dokümanları (.txt/.pdf)
 │   └── processed/            # SQLite yerel vektör veri tabanı (knowledge_base.db)
 ├── docs/                     # RAG için teknik bülten ve bakım kılavuzları
-├── models/                   # Eğitilen scikit-learn pipeline dosyaları (.joblib)
+├── models/                   # Eğitilen model dosyası — git'te YOK, Drive'dan indirin (bkz. Adım 4)
 ├── src/
 │   ├── config.py             # Dinamik şema ve merkezi dizin yapılandırması
 │   ├── pricing/              # Fiyat tahmin modeli ve eğitim hattı
@@ -101,4 +154,28 @@ autoinsight/
 ├── app.py                    # Streamlit dashboard arayüzü
 ├── Dockerfile                # Konteynerizasyon konfigürasyonu
 └── requirements.txt          # Proje bağımlılıkları
+```
+
+---
+
+## 🔧 Sık Karşılaşılan Sorunlar
+
+| Sorun | Çözüm |
+|-------|-------|
+| ModuleNotFoundError | env'i aktive ettiğinizden ve pip install -r requirements.txt çalıştırdığınızdan emin olun |
+| FileNotFoundError: pricing_pipeline.joblib | Model dosyasını Google Drive'dan indirip models/ klasörüne koyun (bkz. Adım 4) |
+| FileNotFoundError: knowledge_base.db | python src/rag/ingest.py komutunu çalıştırın (bkz. Adım 5) |
+| Streamlit açılmıyor | streamlit run app.py komutunu env aktifken çalıştırın |
+
+---
+
+## 🤝 Katkıda Bulunma
+
+Bu repo özel (private) olup davetli geliştiricilere açıktır. Değişiklik yapmadan önce bir branch oluşturun:
+
+```bash
+git checkout -b feature/ozellik-adi
+git add .
+git commit -m "feat: kısa açıklama"
+git push origin feature/ozellik-adi
 ```
