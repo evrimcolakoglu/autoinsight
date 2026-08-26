@@ -75,7 +75,7 @@ Fiyatlandırma modeli (pricing_pipeline.joblib) boyutu nedeniyle (~350 MB) GitHu
 
 **a)** Aşağıdaki bağlantıdan model dosyasını indirin:
 
-> 📦 **[pricing_pipeline.joblib — Google Drive'dan İndir](#)**
+> 📦 **[pricing_pipeline.joblib — Google Drive'dan İndir](https://drive.google.com/drive/folders/1ifLAcUbWEbOvHWeJnqaV68JAtO4aQPdb?usp=sharing)**
 >
 > *(Bağlantıyı proje sahibinden talep edin)*
 
