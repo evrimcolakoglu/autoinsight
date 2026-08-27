@@ -1,4 +1,4 @@
-﻿# 🚗 AutoInsight: RAG Destekli Akıllı Araç Değerleme ve Tavsiye Sistemi
+# 🚗 AutoInsight: RAG Destekli Akıllı Araç Değerleme ve Tavsiye Sistemi
 
 AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; dinamik fiyat tahmini, bütçe ve ihtiyaç odaklı araç eşleştirme ile çevrimdışı (offline) RAG mimarisini tek çatı altında toplayan uçtan uca bir makine öğrenmesi asistanıdır.
 
@@ -127,14 +127,14 @@ docker run -p 8501:8501 autoinsight
 
 ## 📊 Model Başarım Metrikleri
 
-152 araçlık heterojen veri seti üzerinde yapılan test sonuçları:
+53,514 araçlık kapsamlı veri seti (`cars1.csv`) üzerinde yapılan test (%20 test ayrımı - 10,703 araç) sonuçları:
 
 | Metrik | Skor | Açıklama |
 | :--- | :--- | :--- |
-| **R² (Belirleme Katsayısı)** | **0.7868** | Fiyat varyansını açıklama başarımı (~%79) |
-| **MAE (Ortalama Mutlak Hata)** | **129,763 TL** | Gerçek fiyattan ortalama sapma tutarı |
-| **RMSE (Kareli Ortalama Hata)**| **170,673 TL** | Büyük sapmaları cezalandıran hata metriği |
-| **MAPE (Yüzdesel Hata)** | **%20.40** | Ortalama yüzdesel sapma oranı |
+| **R² (Belirleme Katsayısı)** | **0.9511** | Fiyat varyansını açıklama başarımı (~%95.1) |
+| **MAE (Ortalama Mutlak Hata)** | **64,802 TL** | Gerçek fiyattan ortalama mutlak sapma tutarı |
+| **RMSE (Kareli Ortalama Hata)**| **103,597 TL** | Büyük sapmaları cezalandıran hata metriği |
+| **MAPE (Yüzdesel Hata)** | **%10.17** | Ortalama yüzdesel sapma oranı |
 
 ---
 
@@ -143,6 +143,8 @@ docker run -p 8501:8501 autoinsight
 ```text
 autoinsight/
 ├── data/
+│   ├── raw/
+│   │   └── cars1.csv         # 53K+ araçlık ham eğitim veri seti (~7 MB)
 │   └── processed/            # SQLite yerel vektör veri tabanı (knowledge_base.db)
 ├── docs/                     # RAG için teknik bülten ve bakım kılavuzları
 ├── models/                   # Eğitilen model dosyası — git'te YOK, Drive'dan indirin (bkz. Adım 4)
@@ -162,10 +164,10 @@ autoinsight/
 
 | Sorun | Çözüm |
 |-------|-------|
-| ModuleNotFoundError | env'i aktive ettiğinizden ve pip install -r requirements.txt çalıştırdığınızdan emin olun |
-| FileNotFoundError: pricing_pipeline.joblib | Model dosyasını Google Drive'dan indirip models/ klasörüne koyun (bkz. Adım 4) |
-| FileNotFoundError: knowledge_base.db | python src/rag/ingest.py komutunu çalıştırın (bkz. Adım 5) |
-| Streamlit açılmıyor | streamlit run app.py komutunu env aktifken çalıştırın |
+| `ModuleNotFoundError` | `venv`'i aktive ettiğinizden ve `pip install -r requirements.txt` çalıştırdığınızdan emin olun |
+| `FileNotFoundError: pricing_pipeline.joblib` | Model dosyasını Google Drive'dan indirip `models/` klasörüne koyun (bkz. Adım 4) veya `python src/pricing/pipeline.py` ile eğitin |
+| `FileNotFoundError: knowledge_base.db` | `python src/rag/ingest.py` komutunu çalıştırın (bkz. Adım 5) |
+| Streamlit açılmıyor | `streamlit run app.py` komutunu `venv` aktifken çalıştırın |
 
 ---
 
