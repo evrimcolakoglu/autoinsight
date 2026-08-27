@@ -53,17 +53,13 @@ class VehicleRecommender:
                 return (max_val - series) / (max_val - min_val)
             return (series - min_val) / (max_val - min_val)
 
-        # Genç yıl (+), Düşük KM (+), Düşük Tüketim (+), Düşük Tramer (+)
+        # Genç yıl (+), Düşük KM (+)
         year_score = normalize_series(filtered['yil'], invert=False)
         km_score = normalize_series(filtered['kilometre'], invert=True)
-        fuel_score = normalize_series(filtered['ortalama_yakit_tuketimi'], invert=True)
-        tramer_score = normalize_series(filtered['tramer'], invert=True)
 
         filtered['match_score'] = (
-            year_score * 0.35 +
-            km_score * 0.30 +
-            fuel_score * 0.20 +
-            tramer_score * 0.15
+            year_score * 0.55 +
+            km_score * 0.45
         ) * 100
 
         result_cols = ['marka', 'seri', 'model', 'yil', 'kilometre', 'yakit_tipi', 'vites_tipi', TARGET_COLUMN, 'match_score']
@@ -75,8 +71,7 @@ class VehicleRecommender:
         model: str,
         yil: int,
         km: float,
-        predicted_price: float,
-        degisen: int = 0
+        predicted_price: float
     ) -> dict:
         """
         Benzer ilanları filtreler ve piyasa karşılaştırması verisi döner.
@@ -109,14 +104,11 @@ class VehicleRecommender:
             comment = "Benzer ilanların ortalamasına yakın."
         elif deviation_pct > 5:
             if km < np.mean(filtered['kilometre']):
-                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} üzerinde. Kilometresi düşük olduğu için normal."
+                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} üzerinde. Kilometresi düşük olduğu için makul seviyede."
             else:
                 comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} üzerinde."
         else:
-            if degisen > 0:
-                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} altında. Değişen parça sayısı fiyatı düşürüyor."
-            else:
-                comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} altında."
+            comment = f"Benzer ilanlar içinde ortalamanın %{abs(deviation_pct):.0f} altında."
 
         return {
             "sufficient": True,
@@ -130,7 +122,7 @@ class VehicleRecommender:
 
     def find_similar_vehicles(self, car_index: int, top_n: int = 5) -> pd.DataFrame:
         """Seçilen bir araca en yakın alternatifleri Cosine Similarity ile bulur."""
-        features = ['yil', 'kilometre', 'motor_gucu', 'ortalama_yakit_tuketimi', TARGET_COLUMN]
+        features = ['yil', 'kilometre', TARGET_COLUMN]
         
         scaler = MinMaxScaler()
         scaled_matrix = scaler.fit_transform(self.df[features])

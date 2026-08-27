@@ -131,10 +131,11 @@ docker run -p 8501:8501 autoinsight
 
 | Metrik | Skor | Açıklama |
 | :--- | :--- | :--- |
-| **R² (Belirleme Katsayısı)** | **0.9511** | Fiyat varyansını açıklama başarımı (~%95.1) |
-| **MAE (Ortalama Mutlak Hata)** | **64,802 TL** | Gerçek fiyattan ortalama mutlak sapma tutarı |
-| **RMSE (Kareli Ortalama Hata)**| **103,597 TL** | Büyük sapmaları cezalandıran hata metriği |
-| **MAPE (Yüzdesel Hata)** | **%10.17** | Ortalama yüzdesel sapma oranı |
+| **R² (Belirleme Katsayısı)** | **0.9398** | Fiyat varyansını açıklama başarımı (~%94.0) |
+| **MAE (Ortalama Mutlak Hata)** | **72,524 TL** | Gerçek fiyattan ortalama mutlak sapma tutarı |
+| **RMSE (Kareli Ortalama Hata)**| **114,963 TL** | Büyük sapmaları cezalandıran hata metriği |
+| **MAPE (Yüzdesel Hata)** | **%11.09** | Ortalama yüzdesel sapma oranı |
+
 
 ---
 

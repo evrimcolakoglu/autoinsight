@@ -11,14 +11,7 @@ TARGET_COLUMN = "fiyat"
 
 NUMERIC_FEATURES = [
     "yil",
-    "kilometre",
-    "motor_hacmi",
-    "motor_gucu",
-    "ortalama_yakit_tuketimi",
-    "yakit_deposu",
-    "tramer",
-    "degisen",
-    "boyali"
+    "kilometre"
 ]
 
 CATEGORICAL_FEATURES = [
@@ -28,10 +21,9 @@ CATEGORICAL_FEATURES = [
     "vites_tipi",
     "yakit_tipi",
     "kasa_tipi",
-    "cekis",
     "konum"
 ]
 
 # Model performans metriği — fiyat aralığı hesaplamasında kullanılır
 # tahmin × (1 - MAPE) ... tahmin × (1 + MAPE)
-MODEL_MAPE = 0.101
+MODEL_MAPE = 0.111

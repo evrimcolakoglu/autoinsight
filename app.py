@@ -22,16 +22,36 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
-# Vektörel SVG İkonlar
+# Vektörel SVG İkonlar & Logolar
 # ─────────────────────────────────────────────
-ICON_CAR_PULSE = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C77D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 1 14v2c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>'
-ICON_VALUATION = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C77D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>'
-ICON_SEARCH = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C77D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>'
-ICON_CHART = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C77D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>'
-ICON_CHECK = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+LOGO_FULL_SVG = """
+<div style="display: flex; align-items: center; gap: 14px;">
+  <svg width="44" height="44" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="120" rx="28" fill="#131B2E" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+    <rect x="26" y="65" width="14" height="27" rx="7" fill="#7A8CA5"/>
+    <rect x="50" y="47" width="14" height="45" rx="7" fill="#8D9CB0"/>
+    <rect x="74" y="26" width="16" height="66" rx="8" fill="#00C48C"/>
+  </svg>
+  <div style="display: flex; flex-direction: column; justify-content: center;">
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.55rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.03em; line-height: 1.1;">
+      Auto<span style="color: #00C48C;">Insight</span>
+    </div>
+    <div style="font-family: 'Space Grotesk', sans-serif; font-size: 0.62rem; font-weight: 700; color: #7A8CA5; letter-spacing: 0.28em; text-transform: uppercase; margin-top: 3px;">
+      Araç Değerleme
+    </div>
+  </div>
+</div>
+"""
+
+ICON_CAR = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 1 14v2c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>'
+ICON_VALUATION = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>'
+ICON_SEARCH = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>'
+ICON_CHART = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>'
+ICON_CHECK = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+ICON_SHIELD = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C48C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
 
 # ─────────────────────────────────────────────
-# Yardımcı Fonksiyonlar
+# Yardımcı Formatlama Fonksiyonları
 # ─────────────────────────────────────────────
 def format_price(value: float) -> str:
     return f"{int(round(value)):,}".replace(",", ".") + " TL"
@@ -40,661 +60,193 @@ def format_km(value: float) -> str:
     return f"{int(round(value)):,}".replace(",", ".") + " km"
 
 # ─────────────────────────────────────────────
-# Apple / Modern Tasarım Tipografi ve Stil CSS'i
+# Üst Düzey Obsidian & Emerald Tasarım Sistemi
 # ─────────────────────────────────────────────
-def inject_premium_apple_css():
+def inject_premium_autoinsight_css():
     st.html("""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+:root{
+  --ink:#050A14;--ink2:#0B1220;--ink3:#101828;--ink4:#192238;
+  --glass:rgba(11,18,32,.76);
+  --em:#00C48C;--emb:#00FFB3;--emd:rgba(0,196,140,.10);--emg:rgba(0,196,140,.28);
+  --blu:rgba(59,130,246,.10);
+  --bor:rgba(255,255,255,.065);--bore:rgba(0,196,140,.38);
+  --t1:#F1F5F9;--t2:#8B9AB5;--t3:#56647A;
+  --f:'Inter',-apple-system,sans-serif;
+  --fd:'Plus Jakarta Sans','Inter',sans-serif;
+  --fm:'Space Grotesk',monospace;
+  --r1:10px;--r2:16px;--r3:22px;--r4:30px;
+}
+#MainMenu,footer,header{visibility:hidden!important;}
+[data-testid="stSidebar"]{display:none!important;}
+html,body,[class*="css"]{font-family:var(--f)!important;}
+.stApp{background:var(--ink)!important;color:var(--t1)!important;min-height:100vh;overflow-x:hidden;}
+.block-container{padding-top:0!important;padding-bottom:7rem!important;max-width:1180px!important;position:relative;z-index:2;}
+
+/* ── ANIMATED BACKGROUND ── */
+#ai-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);animation:orbf 22s ease-in-out infinite;}
+.o1{width:650px;height:650px;background:radial-gradient(circle,#00C48C,transparent 68%);top:-180px;left:-180px;opacity:.15;animation-duration:24s;}
+.o2{width:550px;height:550px;background:radial-gradient(circle,#3B82F6,transparent 68%);top:-80px;right:-130px;opacity:.10;animation-delay:-8s;animation-duration:19s;}
+.o3{width:480px;height:480px;background:radial-gradient(circle,#8B5CF6,transparent 68%);bottom:0;right:80px;opacity:.09;animation-delay:-15s;animation-duration:27s;}
+.o4{width:380px;height:380px;background:radial-gradient(circle,#00C48C,transparent 68%);bottom:180px;left:60px;opacity:.09;animation-delay:-5s;animation-duration:21s;}
+@keyframes orbf{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(35px,-28px) scale(1.07);}66%{transform:translate(-22px,18px) scale(.94);}}
+.gbg{position:absolute;inset:0;background-image:linear-gradient(rgba(148,163,184,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.035) 1px,transparent 1px);background-size:52px 52px;}
+
+/* ── NAVBAR ── */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;background:rgba(5,10,20,.62);backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);border:1px solid var(--bor);border-radius:var(--r4);margin:1.4rem 0 2rem;position:sticky;top:14px;z-index:100;box-shadow:0 8px 30px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);}
+.nlo{display:flex;align-items:center;gap:12px;}
+.nic{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#091A13,#091628);border:1px solid rgba(0,196,140,.22);display:flex;align-items:flex-end;justify-content:center;gap:4px;padding:7px 8px;box-shadow:0 0 18px rgba(0,196,140,.13);}
+.lb{width:5px;border-radius:3px;background:var(--em);}
+.lb1{height:9px;opacity:.45;}.lb2{height:15px;opacity:.70;}.lb3{height:21px;}
+.nn{font-family:var(--fd);font-size:1.28rem;font-weight:800;letter-spacing:-.025em;color:var(--t1);line-height:1;}
+.nn em{font-style:normal;color:var(--em);}
+.ns{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--t3);margin-top:3px;}
+.lbg{display:inline-flex;align-items:center;gap:7px;padding:.35rem .85rem;background:var(--emd);border:1px solid var(--bore);border-radius:100px;font-size:.73rem;font-weight:700;color:var(--em);letter-spacing:.03em;}
+.ld{width:5px;height:5px;border-radius:50%;background:var(--emb);box-shadow:0 0 7px var(--emb);animation:ldp 2s infinite;}
+@keyframes ldp{0%,100%{opacity:.5;transform:scale(.8);}50%{opacity:1;transform:scale(1.4);box-shadow:0 0 13px var(--emb);}}
+
+/* ── HERO ── */
+.hero{text-align:center;padding:2.8rem 1rem 1.8rem;max-width:920px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.hh{font-family:var(--fd);font-size:clamp(2.4rem,4.8vw,4.2rem);font-weight:800;letter-spacing:-.035em;line-height:1.14;color:var(--t1);text-align:center;margin:0 auto 1.3rem;animation:fiu .6s ease both;}
+.hh .g{background:linear-gradient(110deg,#00FFB3 0%,#00C48C 42%,#38BDF8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hp{font-size:1.05rem;line-height:1.72;color:var(--t2);max-width:640px;text-align:center;margin:0 auto 2.6rem;animation:fiu .6s .15s ease both;}
+@keyframes fiu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── FEATURE CARDS ── */
+.fc{background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--bor);border-radius:var(--r3);padding:2.4rem 2.2rem;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;cursor:pointer;}
+.fc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,196,140,.06) 0%,transparent 55%);opacity:0;transition:opacity .4s ease;border-radius:inherit;}
+.fc:hover{transform:translateY(-6px);border-color:var(--bore);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 40px rgba(0,196,140,.1),inset 0 1px 0 rgba(0,196,140,.15);}
+.fc:hover::before{opacity:1;}
+.fcl{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--em),transparent);opacity:0;transition:opacity .4s ease;}
+.fc:hover .fcl{opacity:1;}
+.fci svg{width:28px;height:28px;stroke:#00FFB3!important;display:block;}.fci{width:56px;height:56px;border-radius:15px;background:linear-gradient(135deg,rgba(0,196,140,.18),rgba(9,26,19,.7));border:1.5px solid rgba(0,196,140,.4);display:flex;align-items:center;justify-content:center;color:#00FFB3;flex-shrink:0;box-shadow:0 0 22px rgba(0,196,140,.18);transition:all .35s ease;margin-bottom:1.1rem;}
+.fc:hover .fci{background:linear-gradient(135deg,rgba(0,255,179,.28),rgba(0,196,140,.18));border-color:rgba(0,255,179,.65);box-shadow:0 0 30px rgba(0,196,140,.35);transform:scale(1.05);}
+.fct{font-family:var(--fd);font-size:1.4rem;font-weight:700;letter-spacing:-.02em;color:var(--t1);margin-bottom:.55rem;}
+.fcd{font-size:.94rem;line-height:1.68;color:var(--t2);flex:1;margin-bottom:1.1rem;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;}
+.chip{padding:.32rem .78rem;border-radius:8px;font-size:.76rem;font-weight:600;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:var(--t2);}
+
+/* ── STATS BAR ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bor);border:1px solid var(--bor);border-radius:var(--r3);overflow:hidden;margin:3.2rem 0;}
+.sc{background:var(--ink2);padding:1.8rem 1.2rem;text-align:center;transition:background .3s ease;position:relative;}
+.sc:hover{background:var(--ink4);}
+.sc::after{content:'';position:absolute;bottom:0;left:18%;right:18%;height:2px;background:linear-gradient(90deg,transparent,var(--em),transparent);opacity:0;transition:opacity .3s ease;}
+.sc:hover::after{opacity:1;}
+.sn{font-family:var(--fm);font-size:2.15rem;font-weight:800;letter-spacing:-.04em;color:var(--t1);line-height:1;margin-bottom:.45rem;}
+.sn.em{color:var(--em);text-shadow:0 0 22px rgba(0,196,140,.38);}
+.sl{font-size:.74rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--t3);}
+
+/* ── SECTION HEADING ── */
+.slbl{font-size:.7rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--em);margin-bottom:.45rem;}
+.stitle{font-family:var(--fd);font-size:1.75rem;font-weight:800;letter-spacing:-.03em;color:var(--t1);}
+
+/* ── HOW IT WORKS ── */
+.hiw{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:1.4rem;}
+.hc{background:var(--ink2);border:1px solid var(--bor);border-radius:var(--r2);padding:1.7rem 1.4rem;transition:all .3s ease;position:relative;overflow:hidden;}
+.hc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,196,140,.45),transparent);opacity:0;transition:opacity .3s ease;}
+.hc:hover{border-color:var(--bore);transform:translateY(-3px);}
+.hc:hover::before{opacity:1;}
+.hn{font-family:var(--fm);font-size:.7rem;font-weight:800;letter-spacing:.15em;color:var(--em);margin-bottom:.9rem;text-transform:uppercase;}
+.hi{font-size:1.75rem;margin-bottom:.7rem;display:block;}
+.ht{font-weight:700;font-size:.97rem;color:var(--t1);margin-bottom:.4rem;}
+.hd{font-size:.85rem;line-height:1.62;color:var(--t2);}
+
+/* ── TRUST STRIP ── */
+.trust{display:flex;align-items:center;justify-content:center;gap:1.8rem;padding:1.1rem 1.8rem;background:var(--ink2);border:1px solid var(--bor);border-radius:var(--r2);margin-top:2.3rem;flex-wrap:wrap;}
+.ti{display:flex;align-items:center;gap:7px;font-size:.8rem;font-weight:600;color:var(--t2);}
+.tic{width:19px;height:19px;border-radius:50%;background:var(--emd);border:1px solid var(--bore);display:flex;align-items:center;justify-content:center;font-size:.62rem;}
+
+/* ── PAGE HEADER ── */
+.ph{padding:1.4rem 0 1.8rem;}
+.ph h2{font-family:var(--fd);font-size:2rem;font-weight:800;letter-spacing:-.04em;color:var(--t1);margin:0 0 .35rem;}
+.ph p{color:var(--t2);font-size:.93rem;margin:0;line-height:1.62;}
+
+/* ── FORM PANEL (glass) ── */
+.fp{background:var(--glass);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--bor);border-radius:var(--r4);padding:1.8rem 2rem 2rem;margin-bottom:1rem;box-shadow:0 22px 65px rgba(0,0,0,.42);}
+.fph{display:flex;align-items:center;gap:9px;padding-bottom:1.1rem;margin-bottom:1.3rem;border-bottom:1px solid var(--bor);}
+.fphi{width:30px;height:30px;border-radius:8px;background:var(--emd);border:1px solid var(--bore);display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.fpht{font-weight:700;font-size:.92rem;color:var(--t1);}
+
+/* ── STREAMLIT OVERRIDES ── */
+div[data-testid="stVerticalBlock"] > div[data-testid="stContainer"]{background:transparent!important;border:none!important;border-radius:0!important;padding:0!important;box-shadow:none!important;}
+label[data-testid="stWidgetLabel"] p{font-weight:600!important;font-size:.79rem!important;color:#7A8EA8!important;margin-bottom:.28rem!important;text-transform:uppercase!important;letter-spacing:.065em!important;}
+
+.stSelectbox div[data-baseweb="select"] > div,.stNumberInput div[data-baseweb="input"] > div{background:#080F1C!important;border:1.5px solid rgba(255,255,255,.085)!important;border-radius:10px!important;color:#DDE6F0!important;font-weight:500!important;font-family:var(--f)!important;transition:all .22s ease!important;}
+.stSelectbox div[data-baseweb="select"] > div:hover,.stNumberInput div[data-baseweb="input"] > div:hover{border-color:rgba(0,196,140,.32)!important;background:#0A1524!important;}
+.stSelectbox div[data-baseweb="select"] > div:focus-within,.stNumberInput div[data-baseweb="input"] > div:focus-within{border-color:var(--em)!important;box-shadow:0 0 0 3px rgba(0,196,140,.14)!important;}
+
+@keyframes sglow{0%,100%{border-color:rgba(0,196,140,.32);box-shadow:0 0 0 1px rgba(0,196,140,.07);}50%{border-color:rgba(0,229,163,.72);box-shadow:0 0 0 3px rgba(0,196,140,.16),0 4px 18px rgba(0,196,140,.13);}}
+div[data-baseweb="select"]:has(div[title*="Seçiniz"]) > div,div[data-baseweb="select"]:has(span[title*="Seçiniz"]) > div{border-color:rgba(0,196,140,.48)!important;animation:sglow 2.6s infinite ease-in-out!important;background:rgba(0,196,140,.015)!important;}
+
+div[data-baseweb="popover"],ul[data-baseweb="menu"]{background:#0E1928!important;border-radius:13px!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:0 22px 65px rgba(0,0,0,.72)!important;overflow:hidden!important;}
+li[role="option"]{color:#C4D2E4!important;font-family:var(--f)!important;font-weight:500!important;font-size:.88rem!important;padding:.62rem 1.05rem!important;transition:background .14s ease!important;}
+li[role="option"]:hover,li[role="option"][aria-selected="true"]{background:rgba(0,196,140,.11)!important;color:var(--em)!important;font-weight:700!important;}
+.stNumberInput button{background:#182236!important;border-color:transparent!important;color:#FFF!important;border-radius:7px!important;}
+.stNumberInput button:hover{background:rgba(0,196,140,.18)!important;color:var(--em)!important;}
+
+/* ── BUTTONS ── */
+.stButton > button[kind="primary"]{background:linear-gradient(135deg,#00C48C 0%,#009F76 100%)!important;color:#030C14!important;font-family:var(--f)!important;font-weight:800!important;font-size:.93rem!important;border-radius:11px!important;border:none!important;padding:.78rem 2rem!important;letter-spacing:-.01em!important;box-shadow:0 8px 26px rgba(0,196,140,.34),0 2px 7px rgba(0,0,0,.28)!important;transition:all .3s cubic-bezier(.16,1,.3,1)!important;}
+.stButton > button[kind="primary"]:hover{background:linear-gradient(135deg,#00FFB3 0%,#00C48C 100%)!important;transform:translateY(-2px)!important;box-shadow:0 14px 38px rgba(0,196,140,.48),0 2px 7px rgba(0,0,0,.28)!important;}
+.stButton > button[kind="secondary"]{background:rgba(20,32,55,.6)!important;color:var(--t2)!important;font-family:var(--f)!important;font-weight:600!important;font-size:.88rem!important;border-radius:11px!important;border:1px solid var(--bor)!important;padding:.78rem 2rem!important;transition:all .22s ease!important;}
+.stButton > button[kind="secondary"]:hover{border-color:var(--bore)!important;color:var(--em)!important;background:rgba(0,196,140,.065)!important;transform:translateY(-1px)!important;}
+
+/* ── RESULT HEADER ── */
+.rh{margin-bottom:1.8rem;}
+.rpill{display:inline-flex;align-items:center;gap:5px;padding:.32rem .85rem;background:var(--emd);border:1px solid var(--bore);border-radius:100px;font-size:.7rem;font-weight:800;letter-spacing:.10em;text-transform:uppercase;color:var(--em);margin-bottom:.65rem;}
+.rtitle{font-family:var(--fd);font-size:1.9rem;font-weight:800;letter-spacing:-.035em;color:var(--t1);margin:0;}
+
+/* ── PRICE HUD ── */
+.phud{background:linear-gradient(148deg,#0C1830 0%,#060F1C 100%);border:1px solid rgba(0,196,140,.2);border-radius:var(--r4);padding:3rem 2.5rem;text-align:center;position:relative;overflow:hidden;margin:1.4rem 0;box-shadow:0 44px 88px rgba(0,0,0,.62),0 0 64px rgba(0,196,140,.07),inset 0 1px 0 rgba(255,255,255,.04);}
+.phud::before{content:'';position:absolute;top:-55%;left:50%;transform:translateX(-50%);width:720px;height:420px;background:radial-gradient(ellipse,rgba(0,196,140,.17) 0%,transparent 62%);pointer-events:none;}
+.phud::after{content:'';position:absolute;top:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,196,140,.58),transparent);}
+.phey{font-size:.68rem;font-weight:800;letter-spacing:.23em;text-transform:uppercase;color:var(--em);margin-bottom:1.3rem;position:relative;z-index:1;}
+.prange{display:flex;justify-content:center;align-items:center;gap:1.1rem;flex-wrap:wrap;position:relative;z-index:1;}
+.pval{font-family:var(--fm);font-size:clamp(1.9rem,4.3vw,3.1rem);font-weight:800;letter-spacing:-.03em;color:var(--t1);text-shadow:0 0 36px rgba(255,255,255,.13);}
+.pdash{color:rgba(0,196,140,.55);font-size:1.9rem;font-weight:200;}
+.pmeta{margin-top:1.4rem;font-size:.85rem;color:var(--t2);position:relative;z-index:1;}
+.pmeta .pt{color:var(--em);font-weight:700;}
+
+/* ── MARKET PANEL ── */
+.mkt{background:var(--glass);border:1px solid var(--bor);border-radius:var(--r3);overflow:hidden;margin-top:1.3rem;box-shadow:0 20px 50px rgba(0,0,0,.32);}
+.mkth{display:flex;align-items:center;gap:9px;padding:1.2rem 1.7rem;border-bottom:1px solid var(--bor);font-weight:700;font-size:.96rem;color:var(--t1);background:rgba(255,255,255,.018);}
+.mktr{display:flex;justify-content:space-between;align-items:center;padding:.95rem 1.7rem;border-bottom:1px solid rgba(255,255,255,.035);transition:background .18s ease;}
+.mktr:last-of-type{border-bottom:none;}
+.mktr:hover{background:rgba(255,255,255,.018);}
+.mktk{font-size:.85rem;color:var(--t2);font-weight:500;}
+.mktv{font-size:.95rem;font-weight:700;color:var(--t1);}
+.mkti{margin:.1rem 1.7rem 1.4rem;padding:.95rem 1.1rem;background:var(--emd);border-left:3px solid var(--em);border-radius:0 var(--r1) var(--r1) 0;font-size:.88rem;line-height:1.62;color:#C4E2D8;}
+.mkti strong{color:var(--em);}
+
+/* ── VEHICLE CARDS ── */
+.vc{background:var(--glass);border:1px solid var(--bor);border-radius:var(--r3);overflow:hidden;margin-bottom:.9rem;transition:all .32s cubic-bezier(.16,1,.3,1);box-shadow:0 8px 28px rgba(0,0,0,.28);}
+.vc:hover{transform:translateY(-4px);border-color:var(--bore);box-shadow:0 20px 52px rgba(0,0,0,.48),0 0 28px rgba(0,196,140,.07);}
+.vct{display:flex;justify-content:space-between;align-items:flex-start;padding:1.35rem 1.5rem .75rem;gap:.9rem;}
+.vcti{font-family:var(--fd);font-size:1.12rem;font-weight:800;letter-spacing:-.022em;color:var(--t1);}
+.mbdg{display:inline-flex;align-items:center;gap:4px;padding:.28rem .72rem;background:var(--emd);border:1px solid var(--bore);border-radius:100px;font-size:.72rem;font-weight:700;color:var(--em);white-space:nowrap;flex-shrink:0;}
+.vcs{display:flex;flex-wrap:wrap;gap:4px;padding:0 1.5rem 1.1rem;}
+.stg{padding:.25rem .62rem;background:rgba(255,255,255,.038);border:1px solid rgba(255,255,255,.065);border-radius:6px;font-size:.76rem;font-weight:600;color:var(--t2);}
+.vcpr{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.045);}
+.vcpb{padding:1.1rem 1.5rem;}
+.vcpb:first-child{border-right:1px solid rgba(255,255,255,.045);}
+.vcpl{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:.35rem;}
+.vcpv{font-family:var(--fm);font-size:1.1rem;font-weight:800;letter-spacing:-.02em;color:var(--t1);}
+.vcpv.em{color:var(--em);}
+.dtag{display:inline-block;margin-top:3px;font-size:.7rem;font-weight:700;padding:.18rem .52rem;border-radius:5px;}
+.dtag.hot{background:rgba(0,196,140,.1);color:var(--em);border:1px solid rgba(0,196,140,.22);}
+.dtag.fair{background:rgba(59,130,246,.09);color:#62A8F8;border:1px solid rgba(59,130,246,.18);}
+
+/* ── MISC ── */
+.hdiv{height:1px;background:linear-gradient(90deg,transparent,var(--bor) 28%,var(--bor) 72%,transparent);margin:2.4rem 0;}
+.stSpinner > div{border-top-color:var(--em)!important;}
+.stInfo{background:var(--blu)!important;border:1px solid rgba(59,130,246,.22)!important;border-radius:var(--r2)!important;color:#92C4FF!important;}
+.stWarning{background:rgba(234,179,8,.07)!important;border:1px solid rgba(234,179,8,.22)!important;border-radius:var(--r2)!important;color:#FBCF44!important;}
+</style>
+""")
 
-    :root {
-        --c-ana: #1A1F26;
-        --c-ikincil: #4B5563;
-        --c-muted: #6B7280;
-        --c-vurgu: #C77D1F;
-        --c-vurgu-hover: #AA6512;
-        --c-vurgu-soft: rgba(199, 125, 31, 0.10);
-        --c-vurgu-border: rgba(199, 125, 31, 0.32);
-        --c-zemin: #F5F2EC;
-        --c-kart: #FFFFFF;
-        --c-kart-trans: rgba(255, 255, 255, 0.90);
-        --c-border: #E2DDD5;
-        --c-border-subtle: rgba(226, 221, 213, 0.85);
-        --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-        --font-display: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
-        --shadow-soft: 0 4px 20px rgba(26, 31, 38, 0.04);
-        --shadow-hover: 0 12px 32px rgba(26, 31, 38, 0.08);
-        --shadow-glow: 0 0 24px rgba(199, 125, 31, 0.16);
-    }
 
-    #MainMenu, footer, header { visibility: hidden !important; }
-    [data-testid="stSidebar"] { display: none !important; }
-    
-    html, body, [class*="css"] {
-        font-family: var(--font-main) !important;
-    }
 
-    .stApp {
-        background-color: var(--c-zemin) !important;
-        font-family: var(--font-main) !important;
-        color: var(--c-ana) !important;
-    }
-
-    .block-container {
-        padding-top: 2rem !important;
-        padding-bottom: 5rem !important;
-        max-width: 1120px !important;
-        position: relative;
-        z-index: 2;
-    }
-
-    /* Ambient Arka Plan */
-    .apple-ambient-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 0;
-        pointer-events: none;
-        background: 
-            radial-gradient(circle at 8% 12%, rgba(199, 125, 31, 0.11) 0%, transparent 40%),
-            radial-gradient(circle at 92% 18%, rgba(75, 85, 99, 0.07) 0%, transparent 45%),
-            radial-gradient(circle at 50% 50%, rgba(199, 125, 31, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 12% 88%, rgba(26, 31, 38, 0.04) 0%, transparent 45%),
-            radial-gradient(circle at 88% 92%, rgba(199, 125, 31, 0.09) 0%, transparent 40%);
-        background-attachment: fixed;
-    }
-
-    .apple-grid-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1;
-        pointer-events: none;
-        background-image: radial-gradient(rgba(75, 85, 99, 0.11) 1px, transparent 1px);
-        background-size: 28px 28px;
-        opacity: 0.55;
-    }
-
-    /* Rozetler */
-    .brand-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.6rem;
-        background: var(--c-kart-trans);
-        backdrop-filter: blur(16px);
-        border: 1px solid var(--c-border);
-        border-radius: 100px;
-        padding: 0.45rem 1.1rem;
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--c-ikincil);
-        box-shadow: var(--shadow-soft);
-    }
-
-    .screen-tag-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.35rem 0.9rem;
-        background: var(--c-vurgu-soft);
-        border: 1px solid var(--c-vurgu-border);
-        border-radius: 100px;
-        color: var(--c-vurgu);
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
-
-    /* Hero */
-    .hero-wrap {
-        text-align: center;
-        padding: 2.2rem 1rem 2.5rem;
-    }
-
-    .hero-title-text {
-        font-family: var(--font-main);
-        font-size: clamp(2.4rem, 5vw, 3.6rem);
-        font-weight: 800;
-        letter-spacing: -0.035em;
-        line-height: 1.15;
-        color: var(--c-ana);
-        margin-bottom: 1.1rem;
-    }
-
-    .hero-title-text .accent-gold {
-        color: var(--c-vurgu);
-        background: linear-gradient(135deg, #C77D1F 0%, #E69D35 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .hero-lead-desc {
-        font-size: 1.12rem;
-        line-height: 1.65;
-        color: var(--c-ikincil);
-        max-width: 620px;
-        margin: 0 auto 1.5rem;
-    }
-
-    /* Bento Kartları */
-    .bento-action-card {
-        background: var(--c-kart-trans);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--c-border);
-        border-radius: 24px;
-        padding: 2.2rem 2rem 1.6rem;
-        box-shadow: var(--shadow-soft);
-        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative;
-        min-height: 250px;
-        margin-bottom: 0.8rem;
-    }
-
-    .bento-action-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-hover), var(--shadow-glow);
-        border-color: var(--c-vurgu-border);
-    }
-
-    .card-icon-box {
-        width: 56px;
-        height: 56px;
-        border-radius: 16px;
-        background: var(--c-vurgu-soft);
-        border: 1px solid var(--c-vurgu-border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.2rem;
-    }
-
-    .card-heading {
-        font-size: 1.35rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.5rem;
-        color: var(--c-ana);
-    }
-
-    .card-body-text {
-        font-size: 0.92rem;
-        line-height: 1.55;
-        color: var(--c-ikincil);
-    }
-
-    /* Bento Stats */
-    .bento-stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-        margin: 2.6rem 0 3rem;
-    }
-
-    @media (max-width: 768px) {
-        .bento-stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .stat-tile {
-        background: var(--c-kart-trans);
-        backdrop-filter: blur(16px);
-        border: 1px solid var(--c-border-subtle);
-        border-radius: 18px;
-        padding: 1.4rem 1.2rem;
-        text-align: center;
-        box-shadow: var(--shadow-soft);
-        transition: transform 0.3s ease;
-    }
-
-    .stat-tile:hover {
-        transform: translateY(-2px);
-    }
-
-    .stat-big-num {
-        font-family: var(--font-display);
-        font-size: 2.1rem;
-        font-weight: 700;
-        color: var(--c-vurgu);
-        line-height: 1.1;
-        margin-bottom: 0.3rem;
-    }
-
-    .stat-label-text {
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: var(--c-ikincil);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    /* 3 Adım Akış Kartları */
-    .section-tag {
-        font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--c-vurgu);
-        margin-bottom: 0.4rem;
-        display: block;
-    }
-
-    .section-headline {
-        font-size: 1.75rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        margin-bottom: 1.4rem;
-        color: var(--c-ana);
-    }
-
-    .feature-step-card {
-        background: var(--c-kart-trans);
-        backdrop-filter: blur(16px);
-        border: 1px solid var(--c-border-subtle);
-        border-radius: 20px;
-        padding: 1.6rem 1.4rem;
-        box-shadow: var(--shadow-soft);
-        height: 100%;
-        transition: transform 0.3s ease;
-    }
-
-    .feature-step-card:hover {
-        transform: translateY(-3px);
-        border-color: var(--c-vurgu-border);
-    }
-
-    .feature-step-num {
-        font-family: var(--font-display);
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: var(--c-vurgu);
-        margin-bottom: 0.6rem;
-    }
-
-    .feature-step-title {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 0.4rem;
-        color: var(--c-ana);
-    }
-
-    .feature-step-desc {
-        font-size: 0.88rem;
-        line-height: 1.5;
-        color: var(--c-ikincil);
-    }
-
-    /* Native Container Border Styling */
-    div[data-testid="stVerticalBlockBorderWrapper"] > div {
-        background: var(--c-kart-trans) !important;
-        backdrop-filter: blur(16px) !important;
-        border: 1px solid var(--c-border) !important;
-        border-radius: 20px !important;
-        padding: 1.4rem 1.6rem !important;
-        box-shadow: var(--shadow-soft) !important;
-        margin-bottom: 1rem !important;
-    }
-
-    .form-group-title {
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--c-ana);
-        margin-bottom: 0.8rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    /* Streamlit Butonlar */
-    .stButton > button {
-        border-radius: 14px !important;
-        font-family: var(--font-main) !important;
-        font-weight: 700 !important;
-        padding: 0.65rem 1.8rem !important;
-        font-size: 0.95rem !important;
-        transition: all 0.25s ease !important;
-    }
-
-    .stButton > button[kind="primary"],
-    .stButton > button[data-testid="baseButton-primary"] {
-        background: #1A1F26 !important;
-        color: #FFFFFF !important;
-        border: 1px solid #1A1F26 !important;
-        box-shadow: 0 4px 14px rgba(26, 31, 38, 0.16) !important;
-    }
-
-    .stButton > button[kind="primary"]:hover,
-    .stButton > button[data-testid="baseButton-primary"]:hover {
-        background: #2D333B !important;
-        border-color: var(--c-vurgu) !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 8px 20px rgba(26, 31, 38, 0.22), 0 0 12px rgba(199, 125, 31, 0.2) !important;
-    }
-
-    .stButton > button[kind="primary"]:disabled,
-    .stButton > button[data-testid="baseButton-primary"]:disabled {
-        background: #D1D5DB !important;
-        color: #9CA3AF !important;
-        border-color: #D1D5DB !important;
-        cursor: not-allowed !important;
-        transform: none !important;
-        box-shadow: none !important;
-    }
-
-    .stButton > button[kind="secondary"],
-    .stButton > button[data-testid="baseButton-secondary"] {
-        background: #FFFFFF !important;
-        color: var(--c-ana) !important;
-        border: 1px solid var(--c-border) !important;
-        box-shadow: var(--shadow-soft) !important;
-    }
-
-    .stButton > button[kind="secondary"]:hover,
-    .stButton > button[data-testid="baseButton-secondary"]:hover {
-        background: #FAF9F6 !important;
-        border-color: var(--c-vurgu) !important;
-        color: var(--c-vurgu) !important;
-        transform: translateY(-1px) !important;
-    }
-
-    /* Form Etiketleri & Inputları */
-    label[data-testid="stWidgetLabel"] p {
-        font-weight: 600 !important;
-        font-size: 0.88rem !important;
-        color: var(--c-ana) !important;
-        margin-bottom: 0.35rem !important;
-    }
-
-    .stSelectbox div[data-baseweb="select"] > div,
-    .stNumberInput div[data-baseweb="input"] > div,
-    .stTextInput div[data-baseweb="input"] > div {
-        background-color: #FFFFFF !important;
-        border: 1.5px solid var(--c-border) !important;
-        border-radius: 12px !important;
-        color: var(--c-ana) !important;
-        font-weight: 500 !important;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
-    }
-
-    .stSelectbox div[data-baseweb="select"] > div:hover,
-    .stNumberInput div[data-baseweb="input"] > div:hover {
-        border-color: #B5AFA6 !important;
-    }
-
-    .stSelectbox div[data-baseweb="select"] > div:focus-within,
-    .stNumberInput div[data-baseweb="input"] > div:focus-within {
-        border-color: var(--c-vurgu) !important;
-        box-shadow: 0 0 0 3px var(--c-vurgu-soft) !important;
-    }
-
-    /* Dropdown Menü Popover */
-    div[data-baseweb="popover"],
-    ul[data-baseweb="menu"] {
-        background-color: #FFFFFF !important;
-        border-radius: 14px !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0,0,0,0.1) !important;
-        border: 1px solid var(--c-border) !important;
-        overflow: hidden !important;
-    }
-
-    li[role="option"] {
-        color: var(--c-ana) !important;
-        font-family: var(--font-main) !important;
-        font-weight: 500 !important;
-        padding: 0.6rem 1rem !important;
-        transition: background-color 0.15s ease !important;
-    }
-
-    li[role="option"]:hover,
-    li[role="option"][aria-selected="true"] {
-        background-color: var(--c-vurgu-soft) !important;
-        color: var(--c-vurgu-hover) !important;
-        font-weight: 700 !important;
-    }
-
-    .stNumberInput button {
-        background-color: #F5F2EC !important;
-        border-color: transparent !important;
-        color: var(--c-ana) !important;
-    }
-
-    .stNumberInput button:hover {
-        background-color: var(--c-vurgu-soft) !important;
-        color: var(--c-vurgu) !important;
-    }
-
-    /* Expander */
-    .streamlit-expanderHeader {
-        background: #FFFFFF !important;
-        border: 1px solid var(--c-border) !important;
-        border-radius: 14px !important;
-        font-weight: 700 !important;
-        color: var(--c-ana) !important;
-        padding: 0.9rem 1.2rem !important;
-    }
-
-    div[data-testid="stExpander"] {
-        border: none !important;
-        margin-top: 0.5rem;
-    }
-
-    div[data-testid="stExpander"] > div[role="region"] {
-        background: rgba(255, 255, 255, 0.6) !important;
-        border: 1px solid var(--c-border-subtle) !important;
-        border-top: none !important;
-        border-radius: 0 0 14px 14px !important;
-        padding: 1.2rem 1.2rem 0.5rem !important;
-    }
-
-    /* Titanium Değerleme Kartı */
-    .titanium-price-box {
-        background: linear-gradient(145deg, #1A1F26 0%, #111418 100%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        padding: 2.8rem 2rem;
-        text-align: center;
-        margin: 1.5rem 0 1.8rem;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(26, 31, 38, 0.25);
-    }
-
-    .titanium-price-box::before {
-        content: '';
-        position: absolute;
-        top: -40%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 500px;
-        height: 280px;
-        background: radial-gradient(ellipse, rgba(199, 125, 31, 0.25) 0%, transparent 70%);
-        pointer-events: none;
-    }
-
-    .titanium-label {
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: #E69D35 !important;
-        margin-bottom: 1rem;
-    }
-
-    .titanium-price-range {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .titanium-price-val {
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 4.2vw, 3rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-        color: #FFFFFF !important;
-    }
-
-    .titanium-dash {
-        color: #E69D35 !important;
-        font-size: 1.8rem;
-        font-weight: 300;
-    }
-
-    .titanium-sub {
-        font-size: 0.84rem;
-        color: rgba(255, 255, 255, 0.65) !important;
-        margin-top: 1.2rem;
-        font-weight: 500;
-    }
-
-    /* Emsal Paneli */
-    .market-comp-panel {
-        background: var(--c-kart);
-        border: 1px solid var(--c-border);
-        border-radius: 20px;
-        padding: 1.6rem 1.8rem;
-        box-shadow: var(--shadow-soft);
-        margin-top: 1.5rem;
-    }
-
-    .comp-header {
-        font-size: 1.15rem;
-        font-weight: 800;
-        color: var(--c-ana);
-        margin-bottom: 1.1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-    }
-
-    .comp-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.8rem 0;
-        border-bottom: 1px solid var(--c-border-subtle);
-    }
-
-    .comp-row:last-of-type { border-bottom: none; }
-
-    .comp-kpi { font-size: 0.92rem; font-weight: 500; color: var(--c-ikincil); }
-    .comp-val { font-size: 0.98rem; font-weight: 700; color: var(--c-ana); }
-
-    .comp-narrative {
-        background: var(--c-vurgu-soft);
-        border-left: 4px solid var(--c-vurgu);
-        border-radius: 0 12px 12px 0;
-        padding: 1rem 1.2rem;
-        font-size: 0.92rem;
-        color: var(--c-ana);
-        line-height: 1.55;
-        margin-top: 1.2rem;
-        font-weight: 500;
-    }
-
-    /* Araç İlan Kartı (Buyer) */
-    .vehicle-listing-card {
-        background: var(--c-kart);
-        border: 1px solid var(--c-border);
-        border-radius: 20px;
-        padding: 1.6rem 1.8rem;
-        margin-bottom: 1.2rem;
-        box-shadow: var(--shadow-soft);
-        transition: all 0.3s ease;
-    }
-
-    .vehicle-listing-card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-hover);
-        border-color: var(--c-vurgu-border);
-    }
-
-    .vlc-top-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 0.6rem;
-    }
-
-    .vlc-title {
-        font-size: 1.22rem;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        color: var(--c-ana);
-    }
-
-    .vlc-badge-match {
-        background: #ECFDF5;
-        border: 1px solid #A7F3D0;
-        color: #065F46;
-        padding: 0.3rem 0.75rem;
-        border-radius: 100px;
-        font-size: 0.78rem;
-        font-weight: 700;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        white-space: nowrap;
-    }
-
-    .vlc-specs-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.1rem;
-    }
-
-    .spec-pill {
-        background: #F3F0E8;
-        border-radius: 8px;
-        padding: 0.25rem 0.65rem;
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: var(--c-ikincil);
-    }
-
-    .vlc-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.2rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--c-border-subtle);
-    }
-
-    @media (max-width: 600px) {
-        .vlc-grid { grid-template-columns: 1fr; }
-    }
-
-    .vlc-box .label {
-        font-size: 0.72rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.07em;
-        color: var(--c-muted);
-        margin-bottom: 0.25rem;
-    }
-
-    .vlc-box .value {
-        font-family: var(--font-display);
-        font-size: 1.22rem;
-        font-weight: 700;
-        color: var(--c-ana);
-    }
-
-    .vlc-box .value.gold {
-        color: var(--c-vurgu);
-    }
-    </style>
-    """)
 
 # ─────────────────────────────────────────────
 # Veri ve Model Yükleme
@@ -726,229 +278,245 @@ def go_home():
 # ─────────────────────────────────────────────
 # CSS ve Arka Plan Enjeksiyonu
 # ─────────────────────────────────────────────
-inject_premium_apple_css()
-st.html('<div class="apple-ambient-canvas"></div><div class="apple-grid-overlay"></div>')
+inject_premium_autoinsight_css()
+st.html('<div id="ai-bg"><div class="gbg"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div></div>')
 
 # ═════════════════════════════════════════════
-# EKRAN 1 — APPLE TARZI VİTRİN VE HİKAYE AKIŞI
+# EKRAN 1 — ANA SAYFA (VİTRİN & HERO AKIŞI)
 # ═════════════════════════════════════════════
 def render_welcome():
-    # 1. Hero Alanı
-    st.html(f"""
-    <div class="hero-wrap">
-        <div class="brand-pill" style="margin-bottom: 1.5rem;">
-            <span>{ICON_CAR_PULSE}</span>
-            <span>AutoInsight Intelligence</span>
+    # Premium navbar
+    st.html("""
+    <div class="nav">
+        <div class="nlo">
+            <div class="nic">
+                <div class="lb lb1"></div>
+                <div class="lb lb2"></div>
+                <div class="lb lb3"></div>
+            </div>
+            <div>
+                <div class="nn">Auto<em>Insight</em></div>
+                <div class="ns">Araç Değerleme</div>
+            </div>
         </div>
-        <h1 class="hero-title-text">
-            Aracını <span class="accent-gold">değerle</span>.<br>
-            Doğru araca ulaş.
-        </h1>
-        <p class="hero-lead-desc">
-            Makine öğrenmesi destekli dinamik değerleme ve hibrit benzerlik algoritmalarıyla ikinci el pazarında güvenli ve şeffaf kararlar alın.
-        </p>
+        <div class="lbg">
+            <div class="ld"></div>
+            <span>Canlı · 53K+ İlan</span>
+        </div>
     </div>
     """)
 
-    # 2. İki Ana Modül Bento Kartları
-    col1, col2 = st.columns(2, gap="medium")
+    # Hero
+    st.html("""
+    <div class="hero">
+        <h1 class="hh">Aracınızın Gerçek<br><span class="g">Piyasa Değerini</span> Bilin.</h1>
+        <p class="hp">53.000'den fazla güncel piyasa verisini analiz ederek saniyeler içinde hassas değer tahmini ve emsal piyasa raporu sunar.</p>
+    </div>
+    """)
+
+    # Feature cards
+    col1, col2 = st.columns(2, gap="large")
 
     with col1:
         st.html(f"""
-        <div class="bento-action-card">
+        <div class="fc">
+            <div class="fcl"></div>
             <div>
-                <div class="card-icon-box">{ICON_VALUATION}</div>
-                <div class="card-heading">Piyasa Değerleme</div>
-                <div class="card-body-text">
-                    Aracınızın marka, model, km ve hasar geçmişini Random Forest modeliyle analiz edin; güncel piyasa güven aralığını anında öğrenin.
+                <div class="fci">
+                    <span style="font-size: 1.65rem; line-height: 1; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 8px rgba(0,196,140,0.6));">📊</span>
                 </div>
+                <div class="fct">Piyasa Değerleme</div>
+                <div class="fcd">Marka, model, yıl, kilometre ve donanım verilerini girin; modelimiz aracınızın güncel piyasa değer aralığını ve emsal konumunu anında hesaplasın.</div>
             </div>
-        </div>
-        """)
-        st.button("Değerleme Başlat  →", key="btn_start_valuation", type="primary",
+            <div class="chips">
+                <span class="chip">Anlık Değerleme</span>
+                <span class="chip">Yüksek Hassasiyet</span>
+                <span class="chip">Fiyat Aralığı</span>
+                <span class="chip">Piyasa Analizi</span>
+            </div>
+        </div>""")
+        st.button("Değerleme Başlat →", key="btn_start_valuation", type="primary",
                   use_container_width=True, on_click=go_to, args=("seller",))
 
     with col2:
         st.html(f"""
-        <div class="bento-action-card">
+        <div class="fc">
+            <div class="fcl"></div>
             <div>
-                <div class="card-icon-box">{ICON_SEARCH}</div>
-                <div class="card-heading">Akıllı Araç Arama</div>
-                <div class="card-body-text">
-                    Bütçenize ve kullanım tercihlerinize en uygun ilanları akıllı puanlama ile bulun; gerçek ilan fiyatlarını yapay zeka piyasa değeriyle karşılaştırın.
+                <div class="fci">
+                    <span style="font-size: 1.65rem; line-height: 1; display: flex; align-items: center; justify-content: center; filter: drop-shadow(0 0 8px rgba(0,196,140,0.6));">🔍</span>
                 </div>
+                <div class="fct">Akıllı Araç Keşfi</div>
+                <div class="fcd">Bütçenizi ve tercihlerinizi belirleyin; hibrit benzerlik algoritmamız gerçek ilanlar arasından en avantajlı araçları uyum puanıyla listelesin.</div>
             </div>
-        </div>
-        """)
-        st.button("Araçları Keşfet  →", key="btn_start_search", type="primary",
+            <div class="chips">
+                <span class="chip">Akıllı Eşleşme</span>
+                <span class="chip">Uyum Puanı</span>
+                <span class="chip">Fiyat Analizi</span>
+                <span class="chip">Fırsat İlanlar</span>
+            </div>
+        </div>""")
+        st.button("Araçları Keşfet →", key="btn_start_search", type="primary",
                   use_container_width=True, on_click=go_to, args=("buyer",))
 
-    # 3. Canlı Metrik ve İstatistik Barı
+    # Stats + How it works + Trust strip
     st.html("""
-    <div class="bento-stats-grid">
-        <div class="stat-tile">
-            <div class="stat-big-num">%95</div>
-            <div class="stat-label-text">Model Doğruluğu (R²)</div>
-        </div>
-        <div class="stat-tile">
-            <div class="stat-big-num">&lt; 50ms</div>
-            <div class="stat-label-text">Vektör Tabanlı Arama</div>
-        </div>
-        <div class="stat-tile">
-            <div class="stat-big-num">53.000+</div>
-            <div class="stat-label-text">Gerçek İlan Havuzu</div>
-        </div>
-        <div class="stat-tile">
-            <div class="stat-big-num">%100</div>
-            <div class="stat-label-text">Güvenli Lokal Hesaplama</div>
-        </div>
+    <div class="stats">
+        <div class="sc"><div class="sn em">%94.0</div><div class="sl">Piyasa Doğruluğu</div></div>
+        <div class="sc"><div class="sn">53.514</div><div class="sl">İncelenen İlan</div></div>
+        <div class="sc"><div class="sn em">Anlık</div><div class="sl">Hesaplama Süresi</div></div>
+        <div class="sc"><div class="sn">1.100+</div><div class="sl">Araç Modeli</div></div>
+    </div>
+    <div class="hdiv"></div>
+    <div class="slbl">MİMARİ &amp; SÜREÇ</div>
+    <div class="stitle">Üç adımda rasyonel karar</div>
+    <div class="hiw">
+        <div class="hc"><div class="hn">Adım 01</div><span class="hi">🎯</span><div class="ht">Parametreleri Girin</div><div class="hd">Marka, seri, model, yıl, kilometre, yakıt, vites ve kasa bilgilerini dinamik form aracılığıyla aktarın.</div></div>
+        <div class="hc"><div class="hn">Adım 02</div><span class="hi">🧠</span><div class="ht">Yapay Zeka Analizi</div><div class="hd">Gelişmiş veri analitiği motorumuz aracın piyasa değerini ve fiyat aralığını anında hesaplar.</div></div>
+        <div class="hc"><div class="hn">Adım 03</div><span class="hi">📊</span><div class="ht">Piyasa Raporu</div><div class="hd">Güven aralığı, emsal karşılaştırması ve piyasa yüzdelik konum analiziyle objektif değerleme alın.</div></div>
+    </div>
+    <div class="trust">
+        <div class="ti"><div class="tic">✓</div><span>Gerçek Piyasa Verisi</span></div>
+        <div class="ti"><div class="tic">⚡</div><span>Anlık Hesaplama</span></div>
+        <div class="ti"><div class="tic">🔒</div><span>Veri Gizliliği</span></div>
+        <div class="ti"><div class="tic">🎯</div><span>Yüksek Doğruluk Oranı</span></div>
+        <div class="ti"><div class="tic">📈</div><span>Sürekli Güncellenen Model</span></div>
     </div>
     """)
-
-    # 4. 3 Adımda Rasyonel Otomotiv Kararı
-    st.html("""
-    <div>
-        <span class="section-tag">Nasıl Çalışır</span>
-        <div class="section-headline">Üç adımda rasyonel otomotiv kararı</div>
-    </div>
-    """)
-
-    s_col1, s_col2, s_col3 = st.columns(3, gap="medium")
-
-    with s_col1:
-        st.html("""
-        <div class="feature-step-card">
-            <div class="feature-step-num">01</div>
-            <div class="feature-step-title">Teknik Veri Girişi</div>
-            <div class="feature-step-desc">
-                Marka, model, yıl, km ve ekspertiz/hasar durumu gibi kritik değişkenleri sisteme aktarın.
-            </div>
-        </div>
-        """)
-
-    with s_col2:
-        st.html("""
-        <div class="feature-step-card">
-            <div class="feature-step-num">02</div>
-            <div class="feature-step-title">Yapay Zeka Analizi</div>
-            <div class="feature-step-desc">
-                Target Encoder ve Random Forest regresyon hattı aracın değer varyansını belirler.
-            </div>
-        </div>
-        """)
-
-    with s_col3:
-        st.html("""
-        <div class="feature-step-card">
-            <div class="feature-step-num">03</div>
-            <div class="feature-step-title">Piyasa & Emsal Raporu</div>
-            <div class="feature-step-desc">
-                Model güven aralığı ve pazar emsal verileriyle şeffaf değerleme çıktısı elde edin.
-            </div>
-        </div>
-        """)
-
 # ═════════════════════════════════════════════
 # EKRAN 2 — SATICI AKIŞI (ARAÇ DEĞERLEME)
 # ═════════════════════════════════════════════
 def render_seller():
-    # Üst Navigasyon Barı
-    nav_col1, nav_col2 = st.columns([1, 4])
-    with nav_col1:
-        st.button("← Ana Sayfa", key="seller_back", on_click=go_home, type="secondary")
-    with nav_col2:
-        st.html(f"""
-        <div style="text-align: right; padding-top: 0.3rem;">
-            <span class="screen-tag-badge">{ICON_VALUATION} &nbsp;Piyasa Değerleme Stüdyosu</span>
+    st.html("""
+    <div class="nav">
+        <div class="nlo">
+            <div class="nic"><div class="lb lb1"></div><div class="lb lb2"></div><div class="lb lb3"></div></div>
+            <div><div class="nn">Auto<em>Insight</em></div><div class="ns">Piyasa Değerleme</div></div>
         </div>
-        """)
+        <div class="lbg"><div class="ld"></div><span>Değerleme Modülü</span></div>
+    </div>
+    """)
+    nav_col1, nav_col2 = st.columns([1, 5])
+    with nav_col1:
+        st.button("← Geri", key="seller_back", on_click=go_home, type="secondary")
+    with nav_col2:
+        st.html('<div style="text-align:right;padding-top:.3rem"><span class="lbg">Piyasa Değerleme</span></div>')
 
     if "seller_result" in st.session_state:
         _render_seller_result(st.session_state.seller_result)
         return
 
-    st.html("""
-    <div style="margin: 1.2rem 0 1.6rem;">
-        <h2 style="font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 0.4rem; color: var(--c-ana);">
-            Aracınızın Piyasa Değerini Hesaplayın
-        </h2>
-        <p style="color: var(--c-ikincil); font-size: 0.96rem; margin: 0;">
-            Zorunlu ve opsiyonel teknik değişkenleri girerek Random Forest modeliyle anlık piyasa değer aralığını analiz edin.
-        </p>
-    </div>
-    """)
+    st.html('<div class="ph"><h2>Aracınızın Piyasa Değerini Hesaplayın</h2><p>Ara&#231; bilgilerini girin — Random Forest modelimiz anlık piyasa değer aralığını saniyeler içinde hesaplasın.</p></div>')
 
-    # 1. Temel Araç Bilgileri
+    # Araç Bilgileri Formu (8 Zorunlu Parametre + 1 Opsiyonel Konum)
     with st.container(border=True):
-        st.html('<div class="form-group-title">🚗 Temel Araç Bilgileri</div>')
+        st.html('<div class="form-group-title">🚗 Araç Parametreleri</div>')
+
+        # 1. Satır: Marka ➔ Seri ➔ Model
         col1, col2, col3 = st.columns(3)
         with col1:
-            brand = st.selectbox("Marka *", options=sorted(df['marka'].dropna().unique()), key="s_brand")
-            model_options = sorted(df[df['marka'] == brand]['model'].dropna().unique())
-            model_name = st.selectbox("Model *", options=model_options, key="s_model")
+            brand_list = sorted(df['marka'].dropna().unique().tolist())
+            brand = st.selectbox(
+                "Marka",
+                options=["Seçiniz..."] + brand_list,
+                index=0,
+                key="s_brand"
+            )
+            selected_brand = brand if brand != "Seçiniz..." else None
 
         with col2:
-            year_options = sorted(df['yil'].dropna().unique().astype(int), reverse=True)
-            year = st.selectbox("Model Yılı *", options=year_options, key="s_year")
-            km = st.number_input("Kilometre *", min_value=0, max_value=1_000_000, value=85000,
-                                 step=5000, key="s_km")
+            if selected_brand:
+                series_list = sorted(df[df['marka'] == selected_brand]['seri'].dropna().unique().tolist())
+                series = st.selectbox(
+                    "Seri",
+                    options=["Seçiniz..."] + series_list,
+                    index=0,
+                    key=f"s_series_{selected_brand}"
+                )
+                selected_series = series if series != "Seçiniz..." else None
+            else:
+                st.selectbox("Seri", options=["Önce marka seçiniz"], disabled=True, key="s_series_disabled")
+                selected_series = None
 
         with col3:
-            fuel = st.selectbox("Yakıt Tipi *", options=sorted(df['yakit_tipi'].dropna().unique()), key="s_fuel")
-            transmission = st.selectbox("Vites Tipi *", options=sorted(df['vites_tipi'].dropna().unique()), key="s_trans")
+            if selected_brand and selected_series:
+                model_list = sorted(df[(df['marka'] == selected_brand) & (df['seri'] == selected_series)]['model'].dropna().unique().tolist())
+                model_name = st.selectbox(
+                    "Model",
+                    options=["Seçiniz..."] + model_list,
+                    index=0,
+                    key=f"s_model_{selected_brand}_{selected_series}"
+                )
+                selected_model = model_name if model_name != "Seçiniz..." else None
+            else:
+                st.selectbox("Model", options=["Önce marka ve seri seçiniz"], disabled=True, key="s_model_disabled")
+                selected_model = None
 
-    # 2. Ekspertiz ve Hasar Durumu
-    with st.container(border=True):
-        st.html('<div class="form-group-title">🛡️ Ekspertiz ve Hasar Kayıtları</div>')
-        e_col1, e_col2, e_col3 = st.columns(3)
-        with e_col1:
-            tramer = st.number_input("Tramer Hasar Kaydı (TL)", min_value=0.0, value=0.0, step=1000.0, key="s_tramer")
-        with e_col2:
-            changed = st.number_input("Değişen Parça Sayısı", min_value=0, max_value=15, value=0, key="s_changed")
-        with e_col3:
-            painted = st.number_input("Boyalı Parça Sayısı", min_value=0, max_value=15, value=0, key="s_painted")
+        # Seçilen araca göre filtrelenmiş alt veri havuzu
+        sub_df = df.copy()
+        if selected_brand:
+            sub_df = sub_df[sub_df['marka'] == selected_brand]
+        if selected_series:
+            sub_df = sub_df[sub_df['seri'] == selected_series]
+        if selected_model:
+            sub_df = sub_df[sub_df['model'] == selected_model]
 
-    # 3. Gelişmiş Opsiyonel Parametreler
-    with st.expander("⚙️ Gelişmiş Değişkenler (Model Hassasiyetini Artırır)"):
-        o_col1, o_col2, o_col3 = st.columns(3)
-        with o_col1:
-            series_options = sorted(df[df['marka'] == brand]['seri'].dropna().unique())
-            series = st.selectbox("Seri", options=[""] + series_options, key="s_series")
-            city_options = sorted(df['konum'].dropna().unique())
-            city = st.selectbox("Konum (İl)", options=[""] + city_options, key="s_city")
+        # 2. Satır: Model Yılı, Kilometre, Kasa Tipi
+        r2_col1, r2_col2, r2_col3 = st.columns(3)
+        with r2_col1:
+            available_years = sorted(sub_df['yil'].dropna().unique().astype(int).tolist(), reverse=True)
+            if not available_years:
+                available_years = sorted(df['yil'].dropna().unique().astype(int).tolist(), reverse=True)
+            year = st.selectbox("Model Yılı", options=available_years, key="s_year")
 
-        with o_col2:
-            body_options = sorted(df['kasa_tipi'].dropna().unique())
-            body = st.selectbox("Kasa Tipi", options=[""] + body_options, key="s_body")
-            drive_options = sorted(df['cekis'].dropna().unique())
-            drive = st.selectbox("Çekiş Tipi", options=[""] + drive_options, key="s_drive")
+        with r2_col2:
+            km = st.number_input("Kilometre", min_value=0, max_value=1_000_000, value=85000,
+                                 step=5000, key="s_km")
 
-        with o_col3:
-            engine_cc = st.number_input("Motor Hacmi (cc)", min_value=0.0, max_value=6000.0,
-                                        value=None, step=100.0, key="s_engine", placeholder="Örn: 1598")
-            hp = st.number_input("Motor Gücü (HP)", min_value=0.0, max_value=600.0,
-                                 value=None, step=10.0, key="s_hp", placeholder="Örn: 120")
+        with r2_col3:
+            available_bodies = sorted(sub_df['kasa_tipi'].dropna().unique().tolist())
+            if not available_bodies:
+                available_bodies = sorted(df['kasa_tipi'].dropna().unique().tolist())
+            body_options = ["Seçiniz..."] + available_bodies
+            body = st.selectbox("Kasa Tipi", options=body_options, key="s_body")
+            selected_body = body if body != "Seçiniz..." else None
 
-        o2_col1, o2_col2 = st.columns(2)
-        with o2_col1:
-            consumption = st.number_input("Ortalama Yakıt Tüketimi (L/100km)", min_value=0.0,
-                                          max_value=25.0, value=None, step=0.1, key="s_consumption", placeholder="Örn: 5.4")
-        with o2_col2:
-            tank = st.number_input("Yakıt Deposu (Litre)", min_value=0.0, max_value=100.0,
-                                   value=None, step=1.0, key="s_tank", placeholder="Örn: 50")
+        # 3. Satır: Yakıt Tipi, Vites Tipi, Konum (İl)
+        r3_col1, r3_col2, r3_col3 = st.columns(3)
+        with r3_col1:
+            available_fuels = sorted(sub_df['yakit_tipi'].dropna().unique().tolist())
+            if not available_fuels:
+                available_fuels = sorted(df['yakit_tipi'].dropna().unique().tolist())
+            fuel_options = ["Seçiniz..."] + available_fuels
+            fuel = st.selectbox("Yakıt Tipi", options=fuel_options, key="s_fuel")
+            selected_fuel = fuel if fuel != "Seçiniz..." else None
 
-    required_ok = all([brand, model_name, year, km is not None and km >= 0, fuel, transmission])
+        with r3_col2:
+            available_trans = sorted(sub_df['vites_tipi'].dropna().unique().tolist())
+            if not available_trans:
+                available_trans = sorted(df['vites_tipi'].dropna().unique().tolist())
+            trans_options = ["Seçiniz..."] + available_trans
+            transmission = st.selectbox("Vites Tipi", options=trans_options, key="s_trans")
+            selected_trans = transmission if transmission != "Seçiniz..." else None
 
-    st.html("<div style='height: 12px;'></div>")
+        with r3_col3:
+            city_options = ["Tüm Türkiye (Genel)"] + sorted(df['konum'].dropna().unique().tolist())
+            city = st.selectbox("Konum (İl)", options=city_options, key="s_city")
+
+    required_ok = all([
+        selected_brand is not None,
+        selected_series is not None,
+        selected_model is not None,
+        year is not None,
+        km is not None and km >= 0,
+        selected_fuel is not None,
+        selected_trans is not None,
+        selected_body is not None
+    ])
+
+    st.html("<div style='height: 14px;'></div>")
     clicked = st.button("Piyasa Değerini Hesapla  →", key="s_submit", type="primary",
                         use_container_width=True, disabled=not required_ok)
-
-    if not required_ok:
-        st.html(
-            '<div style="text-align:center; color:var(--c-vurgu); font-size:0.88rem; font-weight:600; margin-top:0.6rem;">'
-            'Lütfen zorunlu alanları doldurun: Marka, Model, Yıl, Kilometre, Yakıt ve Vites.'
-            '</div>'
-        )
 
     if clicked:
         if pipeline is None:
@@ -956,32 +524,21 @@ def render_seller():
             return
 
         with st.spinner("Piyasa varyansı ve emsal veriler hesaplanıyor..."):
-            brand_data = df[df['marka'] == brand]
-            defaults = {
-                'motor_hacmi': brand_data['motor_hacmi'].median(),
-                'motor_gucu': brand_data['motor_gucu'].median(),
-                'ortalama_yakit_tuketimi': brand_data['ortalama_yakit_tuketimi'].median(),
-                'yakit_deposu': brand_data['yakit_deposu'].median(),
-            }
+            if city and city != "Tüm Türkiye (Genel)":
+                chosen_city = city
+            else:
+                chosen_city = df['konum'].mode().iloc[0] if not df['konum'].mode().empty else "missing"
 
             input_data = pd.DataFrame([{
-                "marka": brand,
-                "seri": series if series else (brand_data['seri'].mode().iloc[0] if not brand_data['seri'].mode().empty else "missing"),
-                "model": model_name,
-                "konum": city if city else (brand_data['konum'].mode().iloc[0] if not brand_data['konum'].mode().empty else "missing"),
+                "marka": selected_brand,
+                "seri": selected_series,
+                "model": selected_model,
+                "konum": chosen_city,
                 "yil": int(year),
                 "kilometre": float(km),
-                "yakit_tipi": fuel,
-                "vites_tipi": transmission,
-                "kasa_tipi": body if body else (brand_data['kasa_tipi'].mode().iloc[0] if not brand_data['kasa_tipi'].mode().empty else "missing"),
-                "motor_hacmi": engine_cc if engine_cc and engine_cc > 0 else defaults['motor_hacmi'],
-                "motor_gucu": hp if hp and hp > 0 else defaults['motor_gucu'],
-                "cekis": drive if drive else (brand_data['cekis'].mode().iloc[0] if not brand_data['cekis'].mode().empty else "missing"),
-                "ortalama_yakit_tuketimi": consumption if consumption and consumption > 0 else defaults['ortalama_yakit_tuketimi'],
-                "yakit_deposu": tank if tank and tank > 0 else defaults['yakit_deposu'],
-                "tramer": float(tramer),
-                "degisen": int(changed),
-                "boyali": int(painted)
+                "yakit_tipi": selected_fuel,
+                "vites_tipi": selected_trans,
+                "kasa_tipi": selected_body
             }])
 
             predicted = float(pipeline.predict(input_data)[0])
@@ -989,12 +546,11 @@ def render_seller():
             price_high = predicted * (1 + MODEL_MAPE)
 
             comparison = recommender.find_comparable_listings(
-                marka=brand,
-                model=model_name,
+                marka=selected_brand,
+                model=selected_model,
                 yil=int(year),
                 km=float(km),
-                predicted_price=predicted,
-                degisen=int(changed)
+                predicted_price=predicted
             )
 
             st.session_state.seller_result = {
@@ -1002,8 +558,8 @@ def render_seller():
                 "price_low": price_low,
                 "price_high": price_high,
                 "comparison": comparison,
-                "brand": brand,
-                "model": model_name,
+                "brand": selected_brand,
+                "model": selected_model,
                 "year": year
             }
             st.rerun()
@@ -1011,54 +567,54 @@ def render_seller():
 def _render_seller_result(result):
     st.html(f"""
     <div style="margin-top: 0.5rem;">
-        <span class="section-tag">Değerleme Raporu</span>
-        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--c-ana); margin: 0 0 0.5rem;">
+        <span class="status-badge-pill">Değerleme Raporu</span>
+        <h2 style="font-size: 2rem; font-weight: 800; color: #FFFFFF; margin: 0.6rem 0 0.5rem;">
             {result["brand"]} {result["model"]} ({result["year"]})
         </h2>
     </div>
     """)
 
     st.html(f"""
-    <div class="titanium-price-box">
-        <div class="titanium-label">Tahmini Piyasa Değer Aralığı</div>
-        <div class="titanium-price-range">
-            <div class="titanium-price-val">{format_price(result["price_low"])}</div>
-            <div class="titanium-dash">&mdash;</div>
-            <div class="titanium-price-val">{format_price(result["price_high"])}</div>
+    <div class="phud">
+        <div class="phey">Tahmini Piyasa Değer Aralığı</div>
+        <div class="prange">
+            <div class="pval">{format_price(result["price_low"])}</div>
+            <div class="pdash">&mdash;</div>
+            <div class="pval">{format_price(result["price_high"])}</div>
         </div>
-        <div class="titanium-sub">Model Güven Aralığı (MAPE: %{MODEL_MAPE*100:.1f} &nbsp;&middot;&nbsp; Makine Öğrenmesi Tahmini: {format_price(result["predicted"])})</div>
+        <div class="pmeta">Tahmini Piyasa Fiyat Aralığı &nbsp;&middot;&nbsp; Ortanca Değer: <span class="pt">{format_price(result["predicted"])}</span></div>
     </div>
     """)
 
     comp = result["comparison"]
     if comp["sufficient"]:
         st.html(f"""
-        <div class="market-comp-panel">
-            <div class="comp-header">
+        <div class="market-comp-panel-pro">
+            <div class="comp-header-pro">
                 <span>{ICON_CHART}</span>
                 <span>Piyasa Emsal İlan Karşılaştırması</span>
             </div>
-            <div class="comp-row">
-                <span class="comp-kpi">Eşleşen Emsal İlan Sayısı</span>
-                <span class="comp-val">{comp["count"]} Adet</span>
+            <div class="comp-row-pro">
+                <span class="comp-kpi-pro">Eşleşen Emsal İlan Sayısı</span>
+                <span class="comp-val-pro">{comp["count"]} Adet</span>
             </div>
-            <div class="comp-row">
-                <span class="comp-kpi">Pazardaki Benzer Araçların Ortalama Fiyatı</span>
-                <span class="comp-val">{format_price(comp["avg_price"])}</span>
+            <div class="comp-row-pro">
+                <span class="comp-kpi-pro">Pazardaki Benzer Araçların Ortalama Fiyatı</span>
+                <span class="comp-val-pro">{format_price(comp["avg_price"])}</span>
             </div>
-            <div class="comp-row">
-                <span class="comp-kpi">Piyasa Yüzdelik Konumu</span>
-                <span class="comp-val">İlanların %{comp["percentile"]:.0f} diliminden yüksek</span>
+            <div class="comp-row-pro">
+                <span class="comp-kpi-pro">Piyasa Yüzdelik Konumu</span>
+                <span class="comp-val-pro">İlanların %{comp["percentile"]:.0f} diliminden yüksek</span>
             </div>
-            <div class="comp-narrative">
-                <strong>Piyasa Özeti:</strong> {comp["comment"]}
+            <div class="comp-narrative-pro">
+                <strong style="color:#00E5A3;">Piyasa Özeti:</strong> {comp["comment"]}
             </div>
         </div>
         """)
     else:
         st.info(f"Emsal karşılaştırması için yeterli hacim bulunamadı (Bulunan: {comp['count']} ilan, minimum 10 gereklidir).")
 
-    st.html("<div style='height: 16px;'></div>")
+    st.html("<div style='height: 18px;'></div>")
     res_col1, res_col2 = st.columns([1, 1])
     with res_col1:
         st.button("Yeni Bir Araç Değerle", key="sr_reset", on_click=_clear_seller_result, type="primary", use_container_width=True)
@@ -1073,31 +629,26 @@ def _clear_seller_result():
 # EKRAN 3 — ALICI AKIŞI (AKILLI ARAÇ ARAMA)
 # ═════════════════════════════════════════════
 def render_buyer():
-    # Üst Navigasyon Barı
-    nav_col1, nav_col2 = st.columns([1, 4])
-    with nav_col1:
-        st.button("← Ana Sayfa", key="buyer_back", on_click=go_home, type="secondary")
-    with nav_col2:
-        st.html(f"""
-        <div style="text-align: right; padding-top: 0.3rem;">
-            <span class="screen-tag-badge">{ICON_SEARCH} &nbsp;Akıllı Araç Keşif Stüdyosu</span>
+    st.html("""
+    <div class="nav">
+        <div class="nlo">
+            <div class="nic"><div class="lb lb1"></div><div class="lb lb2"></div><div class="lb lb3"></div></div>
+            <div><div class="nn">Auto<em>Insight</em></div><div class="ns">Araç Keşfi</div></div>
         </div>
-        """)
+        <div class="lbg"><div class="ld"></div><span>53K+ İlan</span></div>
+    </div>
+    """)
+    nav_col1, nav_col2 = st.columns([1, 5])
+    with nav_col1:
+        st.button("← Geri", key="buyer_back", on_click=go_home, type="secondary")
+    with nav_col2:
+        st.html('<div style="text-align:right;padding-top:.3rem"><span class="lbg">Akıllı Araç Ke&#351;fi</span></div>')
 
     if "buyer_result" in st.session_state:
         _render_buyer_result(st.session_state.buyer_result)
         return
 
-    st.html("""
-    <div style="margin: 1.2rem 0 1.6rem;">
-        <h2 style="font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 0.4rem; color: var(--c-ana);">
-            Bütçenize En Uygun Araçları Bulun
-        </h2>
-        <p style="color: var(--c-ikincil); font-size: 0.96rem; margin: 0;">
-            Bütçe ve donanım kriterlerinizi belirleyin; hibrit benzerlik algoritmasıyla fiyat/performans açısından en avantajlı seçenekleri listeleyin.
-        </p>
-    </div>
-    """)
+    st.html('<div class="ph"><h2>Bütçenize En Uygun Araçları Bulun</h2><p>Kriterleri belirleyin; yapınızı ve tercihlerinizi belirleyin — hibrit benzerlik algoritmamız fiyat/performans açısından en avantajlı ilanı listelesin.</p></div>')
 
     # 1. Bütçe ve Arama Modu
     with st.container(border=True):
@@ -1151,12 +702,12 @@ def render_buyer():
         can_search = has_budget
         hint = "" if can_search else "Arama yapmak için lütfen bir maksimum bütçe tutarı girin."
 
-    st.html("<div style='height: 12px;'></div>")
+    st.html("<div style='height: 14px;'></div>")
     clicked = st.button("Avantajlı Araçları Keşfet  →", key="b_submit", type="primary",
                         use_container_width=True, disabled=not can_search)
 
     if hint:
-        st.html(f'<div style="text-align:center; color:var(--c-vurgu); font-size:0.88rem; font-weight:600; margin-top:0.6rem;">{hint}</div>')
+        st.html(f'<div style="text-align:center; color:#00E5A3; font-size:0.88rem; font-weight:600; margin-top:0.6rem;">{hint}</div>')
 
     if clicked:
         with st.spinner("Piyasa taranıyor ve en avantajlı araçlar puanlanıyor..."):
@@ -1234,8 +785,8 @@ def _render_buyer_result(results):
     with res_header_col1:
         st.html(f"""
         <div style="margin: 0.5rem 0 1.5rem;">
-            <span class="section-tag">Arama Sonuçları</span>
-            <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--c-ana); margin: 0;">
+            <span class="status-badge-pill">Arama Sonuçları</span>
+            <h2 style="font-size: 1.95rem; font-weight: 800; color: #FFFFFF; margin: 0.6rem 0 0;">
                 {len(results)} Avantajlı Araç Eşleşti
             </h2>
         </div>
@@ -1248,7 +799,7 @@ def _render_buyer_result(results):
         
         match_badge = ""
         if car.get('match_score', 0) > 0:
-            match_badge = f'<div class="vlc-badge-match">{ICON_CHECK} <span>Uyum: %{car["match_score"]:.0f}</span></div>'
+            match_badge = f'<div class="vlc-badge-match-pro">{ICON_CHECK} <span>Uyum: %{car["match_score"]:.0f}</span></div>'
 
         market_html = ""
         if car['market_value'] is not None:
@@ -1257,30 +808,30 @@ def _render_buyer_result(results):
             
             deal_note = ""
             if car["ilan_fiyat"] < mv_low:
-                deal_note = '<span style="color:#16a34a; font-size:0.8rem; font-weight:700; display:block; margin-top:3px;">✦ Piyasa Altı Fırsat</span>'
+                deal_note = '<span style="color:#00E5A3; font-size:0.82rem; font-weight:700; display:block; margin-top:4px;">✦ Piyasa Altı Fırsat</span>'
             elif car["ilan_fiyat"] <= mv_high:
-                deal_note = '<span style="color:var(--c-vurgu); font-size:0.8rem; font-weight:600; display:block; margin-top:3px;">✓ Piyasa Değerinde</span>'
+                deal_note = '<span style="color:#38BDF8; font-size:0.82rem; font-weight:600; display:block; margin-top:4px;">✓ Piyasa Değerinde</span>'
 
-            market_html = f'<div class="vlc-box"><div class="label">Yapay Zeka Tahmini Piyasa Değeri</div><div class="value gold">{format_price(mv_low)} &mdash; {format_price(mv_high)}</div>{deal_note}</div>'
+            market_html = f'<div class="vlc-box-pro"><div class="label">Yapay Zeka Tahmini Değer</div><div class="value emerald">{format_price(mv_low)} &mdash; {format_price(mv_high)}</div>{deal_note}</div>'
 
-        kasa_pill = f'<span class="spec-pill">{car["kasa"]}</span>' if car.get("kasa") else ""
-        seri_pill = f'<span class="spec-pill">{car["seri"]}</span>' if car.get("seri") else ""
+        kasa_pill = f'<span class="spec-pill-pro">{car["kasa"]}</span>' if car.get("kasa") else ""
+        seri_pill = f'<span class="spec-pill-pro">{car["seri"]}</span>' if car.get("seri") else ""
 
         card_html = f"""
-        <div class="vehicle-listing-card">
-            <div class="vlc-top-row">
-                <div class="vlc-title">{title}</div>
+        <div class="vehicle-listing-card-pro">
+            <div class="vlc-top-row-pro">
+                <div class="vlc-title-pro">{title}</div>
                 {match_badge}
             </div>
-            <div class="vlc-specs-row">
-                <span class="spec-pill">{format_km(car['km'])}</span>
-                <span class="spec-pill">{car['vites']}</span>
-                <span class="spec-pill">{car['yakit']}</span>
+            <div class="vlc-specs-row-pro">
+                <span class="spec-pill-pro">{format_km(car['km'])}</span>
+                <span class="spec-pill-pro">{car['vites']}</span>
+                <span class="spec-pill-pro">{car['yakit']}</span>
                 {kasa_pill}
                 {seri_pill}
             </div>
-            <div class="vlc-grid">
-                <div class="vlc-box">
+            <div class="vlc-grid-pro">
+                <div class="vlc-box-pro">
                     <div class="label">İlan Satış Fiyatı</div>
                     <div class="value">{format_price(car["ilan_fiyat"])}</div>
                 </div>
@@ -1291,7 +842,7 @@ def _render_buyer_result(results):
 
         st.html(card_html)
 
-    st.html("<div style='height: 16px;'></div>")
+    st.html("<div style='height: 18px;'></div>")
     st.button("Yeni Arama Yap", key="br_reset_bottom", on_click=_clear_buyer_result, type="primary", use_container_width=True)
 
 def _clear_buyer_result():
