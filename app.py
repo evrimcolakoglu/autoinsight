@@ -164,27 +164,212 @@ html,body,[class*="css"]{font-family:var(--f)!important;}
 .ph p{color:var(--t2);font-size:.93rem;margin:0;line-height:1.62;}
 
 /* ── FORM PANEL (glass) ── */
-.fp{background:var(--glass);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border:1px solid var(--bor);border-radius:var(--r4);padding:1.8rem 2rem 2rem;margin-bottom:1rem;box-shadow:0 22px 65px rgba(0,0,0,.42);}
-.fph{display:flex;align-items:center;gap:9px;padding-bottom:1.1rem;margin-bottom:1.3rem;border-bottom:1px solid var(--bor);}
-.fphi{width:30px;height:30px;border-radius:8px;background:var(--emd);border:1px solid var(--bore);display:flex;align-items:center;justify-content:center;font-size:.9rem;}
-.fpht{font-weight:700;font-size:.92rem;color:var(--t1);}
+.fp,
+div[data-testid="stVerticalBlock"] > div[data-testid="stContainer"]:has(.form-group-title),
+div[data-testid="stVerticalBlock"] > div[data-testid="stContainer"]:has(div.form-group-title),
+div[data-testid="stForm"],
+div[data-testid="stContainer"]:has(div[data-testid="stSelectbox"]) {
+    background: rgba(11, 18, 32, 0.78) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: var(--r4) !important;
+    padding: 2rem 2.2rem 2.2rem !important;
+    margin-bottom: 1.5rem !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5) !important;
+}
 
-/* ── STREAMLIT OVERRIDES ── */
-div[data-testid="stVerticalBlock"] > div[data-testid="stContainer"]{background:transparent!important;border:none!important;border-radius:0!important;padding:0!important;box-shadow:none!important;}
-label[data-testid="stWidgetLabel"] p{font-weight:600!important;font-size:.79rem!important;color:#7A8EA8!important;margin-bottom:.28rem!important;text-transform:uppercase!important;letter-spacing:.065em!important;}
+.form-group-title {
+    font-family: var(--fd) !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: #F1F5F9 !important;
+    margin-bottom: 1.3rem !important;
+    padding-bottom: 0.8rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    letter-spacing: -0.01em !important;
+}
 
-.stSelectbox div[data-baseweb="select"] > div,.stNumberInput div[data-baseweb="input"] > div{background:#080F1C!important;border:1.5px solid rgba(255,255,255,.085)!important;border-radius:10px!important;color:#DDE6F0!important;font-weight:500!important;font-family:var(--f)!important;transition:all .22s ease!important;}
-.stSelectbox div[data-baseweb="select"] > div:hover,.stNumberInput div[data-baseweb="input"] > div:hover{border-color:rgba(0,196,140,.32)!important;background:#0A1524!important;}
-.stSelectbox div[data-baseweb="select"] > div:focus-within,.stNumberInput div[data-baseweb="input"] > div:focus-within{border-color:var(--em)!important;box-shadow:0 0 0 3px rgba(0,196,140,.14)!important;}
+/* ── STREAMLIT FORM CONTROLS (DARK OBSIDIAN) ── */
+label[data-testid="stWidgetLabel"] p {
+    font-family: var(--f) !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    color: #8B9AB5 !important;
+    margin-bottom: 0.35rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.07em !important;
+}
 
-@keyframes sglow{0%,100%{border-color:rgba(0,196,140,.32);box-shadow:0 0 0 1px rgba(0,196,140,.07);}50%{border-color:rgba(0,229,163,.72);box-shadow:0 0 0 3px rgba(0,196,140,.16),0 4px 18px rgba(0,196,140,.13);}}
-div[data-baseweb="select"]:has(div[title*="Seçiniz"]) > div,div[data-baseweb="select"]:has(span[title*="Seçiniz"]) > div{border-color:rgba(0,196,140,.48)!important;animation:sglow 2.6s infinite ease-in-out!important;background:rgba(0,196,140,.015)!important;}
+/* Selectbox & NumberInput Base Styles */
+div[data-testid="stSelectbox"] > div,
+div[data-testid="stSelectbox"] div[data-baseweb="select"],
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+div[data-testid="stSelectbox"] div[data-baseweb="select"] * {
+    background-color: transparent;
+}
 
-div[data-baseweb="popover"],ul[data-baseweb="menu"]{background:#0E1928!important;border-radius:13px!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:0 22px 65px rgba(0,0,0,.72)!important;overflow:hidden!important;}
-li[role="option"]{color:#C4D2E4!important;font-family:var(--f)!important;font-weight:500!important;font-size:.88rem!important;padding:.62rem 1.05rem!important;transition:background .14s ease!important;}
-li[role="option"]:hover,li[role="option"][aria-selected="true"]{background:rgba(0,196,140,.11)!important;color:var(--em)!important;font-weight:700!important;}
-.stNumberInput button{background:#182236!important;border-color:transparent!important;color:#FFF!important;border-radius:7px!important;}
-.stNumberInput button:hover{background:rgba(0,196,140,.18)!important;color:var(--em)!important;}
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+div[data-testid="stNumberInput"] div[data-baseweb="input"],
+div[data-testid="stNumberInput"] div[data-baseweb="base-input"],
+div[data-testid="stNumberInputContainer"],
+div[data-baseweb="input"],
+div[data-baseweb="base-input"] {
+    background: #091220 !important;
+    background-color: #091220 !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.11) !important;
+    border-radius: 12px !important;
+    color: #F1F5F9 !important;
+    min-height: 46px !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    transition: all 0.25s ease !important;
+}
+
+div[data-testid="stSelectbox"] span,
+div[data-testid="stSelectbox"] div,
+div[data-testid="stSelectbox"] p {
+    color: #F1F5F9 !important;
+    font-family: var(--f) !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+}
+
+div[data-testid="stNumberInput"] input,
+input[type="number"],
+input[type="text"],
+div[data-baseweb="input"] input {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: #F1F5F9 !important;
+    font-family: var(--f) !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    padding-left: 0.85rem !important;
+}
+
+div[data-baseweb="select"] svg,
+div[data-testid="stSelectbox"] svg {
+    fill: #00C48C !important;
+    color: #00C48C !important;
+    stroke: #00C48C !important;
+}
+
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover,
+div[data-testid="stNumberInput"] div[data-baseweb="input"]:hover,
+div[data-testid="stNumberInputContainer"]:hover {
+    border-color: rgba(0, 196, 140, 0.5) !important;
+    background: #0E1A2C !important;
+    background-color: #0E1A2C !important;
+}
+
+div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within,
+div[data-testid="stNumberInput"] div[data-baseweb="input"]:focus-within,
+div[data-testid="stNumberInputContainer"]:focus-within {
+    border-color: #00FFB3 !important;
+    background: #0E1A2C !important;
+    background-color: #0E1A2C !important;
+    box-shadow: 0 0 0 3px rgba(0, 196, 140, 0.22), 0 0 20px rgba(0, 196, 140, 0.15) !important;
+}
+
+div[data-testid="stNumberInput"] button,
+button[data-testid="stNumberInputStepDownButton"],
+button[data-testid="stNumberInputStepUpButton"] {
+    background-color: #142238 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #00FFB3 !important;
+    border-radius: 8px !important;
+    margin: 3px !important;
+    transition: all 0.2s ease !important;
+}
+div[data-testid="stNumberInput"] button:hover,
+button[data-testid="stNumberInputStepDownButton"]:hover,
+button[data-testid="stNumberInputStepUpButton"]:hover {
+    background-color: rgba(0, 196, 140, 0.28) !important;
+    border-color: #00C48C !important;
+    color: #FFFFFF !important;
+}
+
+/* Disabled Selectbox */
+div[data-testid="stSelectbox"]:has(input:disabled) div[data-baseweb="select"] > div,
+div[data-testid="stSelectbox"] input:disabled ~ div,
+div[aria-disabled="true"] {
+    background-color: #070D18 !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    opacity: 0.65 !important;
+    cursor: not-allowed !important;
+}
+div[data-testid="stSelectbox"]:has(input:disabled) span,
+div[data-testid="stSelectbox"]:has(input:disabled) div {
+    color: #56647A !important;
+}
+
+/* ── UNFILLED MANDATORY FIELDS (GLOWING PULSE) ── */
+@keyframes mandatoryFieldPulse {
+    0%, 100% {
+        border-color: rgba(0, 196, 140, 0.45) !important;
+        box-shadow: 0 0 0 1.5px rgba(0, 196, 140, 0.18), 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+    }
+    50% {
+        border-color: rgba(0, 255, 179, 0.9) !important;
+        box-shadow: 0 0 0 3px rgba(0, 196, 140, 0.35), 0 0 20px rgba(0, 255, 179, 0.28) !important;
+    }
+}
+
+div[data-testid="stSelectbox"]:has(div[title*="Seçiniz"]) div[data-baseweb="select"] > div,
+div[data-testid="stSelectbox"]:has(span[title*="Seçiniz"]) div[data-baseweb="select"] > div,
+div[data-baseweb="select"]:has(div[title*="Seçiniz"]) > div {
+    border-color: rgba(0, 255, 179, 0.7) !important;
+    background: linear-gradient(135deg, rgba(0, 196, 140, 0.08), #091220) !important;
+    animation: mandatoryFieldPulse 2.6s infinite ease-in-out !important;
+}
+
+div[data-testid="stSelectbox"] div[title*="Seçiniz"],
+div[data-testid="stSelectbox"] span[title*="Seçiniz"] {
+    color: #6D8EAF !important;
+    font-style: italic !important;
+}
+
+/* Checkbox */
+div[data-testid="stCheckbox"] label span:first-child {
+    background-color: #091220 !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 6px !important;
+}
+div[data-testid="stCheckbox"] label p {
+    color: #C4D2E4 !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+}
+
+/* Dropdown Menu List / Popover */
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] > div,
+ul[data-baseweb="menu"] {
+    background: #091222 !important;
+    background-color: #091222 !important;
+    border: 1.5px solid rgba(0, 196, 140, 0.35) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 196, 140, 0.15) !important;
+    overflow: hidden !important;
+}
+
+li[role="option"] {
+    background-color: transparent !important;
+    color: #C4D2E4 !important;
+    font-family: var(--f) !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+    padding: 0.72rem 1.15rem !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+    transition: all 0.15s ease !important;
+}
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"] {
+    background-color: rgba(0, 196, 140, 0.2) !important;
+    color: #00FFB3 !important;
+    font-weight: 700 !important;
+    padding-left: 1.35rem !important;
+}
 
 /* ── BUTTONS ── */
 .stButton > button[kind="primary"]{background:linear-gradient(135deg,#00C48C 0%,#009F76 100%)!important;color:#030C14!important;font-family:var(--f)!important;font-weight:800!important;font-size:.93rem!important;border-radius:11px!important;border:none!important;padding:.78rem 2rem!important;letter-spacing:-.01em!important;box-shadow:0 8px 26px rgba(0,196,140,.34),0 2px 7px rgba(0,0,0,.28)!important;transition:all .3s cubic-bezier(.16,1,.3,1)!important;}
@@ -406,7 +591,7 @@ def render_seller():
         _render_seller_result(st.session_state.seller_result)
         return
 
-    st.html('<div class="ph"><h2>Aracınızın Piyasa Değerini Hesaplayın</h2><p>Ara&#231; bilgilerini girin — Random Forest modelimiz anlık piyasa değer aralığını saniyeler içinde hesaplasın.</p></div>')
+    st.html('<div class="ph"><h2>Aracınızın Piyasa Değerini Hesaplayın</h2><p>Araç bilgilerini girin — güncel piyasa verileriyle anlık piyasa değer aralığını saniyeler içinde hesaplasın.</p></div>')
 
     # Araç Bilgileri Formu (8 Zorunlu Parametre + 1 Opsiyonel Konum)
     with st.container(border=True):
@@ -648,7 +833,7 @@ def render_buyer():
         _render_buyer_result(st.session_state.buyer_result)
         return
 
-    st.html('<div class="ph"><h2>Bütçenize En Uygun Araçları Bulun</h2><p>Kriterleri belirleyin; yapınızı ve tercihlerinizi belirleyin — hibrit benzerlik algoritmamız fiyat/performans açısından en avantajlı ilanı listelesin.</p></div>')
+    st.html('<div class="ph"><h2>Bütçenize En Uygun Araçları Bulun</h2><p>Kriterleri ve tercihlerinizi belirleyin — akıllı benzerlik algoritmamız fiyat/performans açısından en avantajlı ilanları listelesin.</p></div>')
 
     # 1. Bütçe ve Arama Modu
     with st.container(border=True):
