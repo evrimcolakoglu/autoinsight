@@ -1209,48 +1209,50 @@ li[role="option"][aria-selected="true"] {
 .vcs {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  padding: 0 1.6rem 1.2rem;
+  gap: 6px;
+  padding: 0.4rem 1.6rem 1.2rem;
 }
 .stg {
-  padding: 0.28rem 0.68rem;
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.075);
-  border-radius: 7px;
-  font-size: 0.78rem;
+  padding: 0.3rem 0.72rem;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #CBD5E1;
 }
 
 .vcpr {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(135deg, rgba(0, 196, 140, 0.04), rgba(0, 0, 0, 0));
 }
 .vcpb {
-  padding: 1.15rem 1.6rem;
+  padding: 1.25rem 1.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 .vcpl {
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #8B9AB5;
+  letter-spacing: 0.1em;
+  color: #6B82A0;
   margin-bottom: 0;
 }
 .vcpv {
   font-family: var(--fm);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--t1);
 }
 .vcpv.em {
+  font-size: 1.55rem;
   color: #00FFB3;
-  text-shadow: 0 0 18px rgba(0, 255, 179, 0.35);
+  text-shadow: 0 0 28px rgba(0, 255, 179, 0.45);
+  letter-spacing: -0.03em;
 }
 
 .dtag {
@@ -1984,10 +1986,10 @@ def _render_buyer_result(results):
             mv_high = car['market_value'] * (1 + MODEL_MAPE)
             market_html = f'''
             <div class="vcpr">
-                <div class="vcpb">
-                    <div class="vcpl">Tahmini Piyasa Değeri</div>
-                    <div class="vcpv em">{format_price(mv_low)} &mdash; {format_price(mv_high)}</div>
-                </div>
+            <div class="vcpb">
+            <div class="vcpl">TAHMİNİ PİYASA DEĞERİ</div>
+            <div class="vcpv em">{format_price(mv_low)} &mdash; {format_price(mv_high)}</div>
+            </div>
             </div>
             '''
 
