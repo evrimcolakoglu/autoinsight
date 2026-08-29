@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Sparkles, ArrowRight, Gauge, Activity, ShieldCheck, Cpu } from "lucide-react";
+import { Sparkles, Gauge, Activity, ShieldCheck, Cpu } from "lucide-react";
 import Image from "next/image";
 
 export default function HeroSection() {
@@ -19,9 +19,6 @@ export default function HeroSection() {
 
   return (
     <section ref={containerRef} className="relative min-h-[170vh] w-full pt-32 pb-20">
-      {/* Background Radial Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-tr from-[#00c48c]/15 via-[#38bdf8]/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
-
       {/* Sticky Pinned Hero Content */}
       <div className="sticky top-20 flex flex-col items-center justify-center max-w-6xl mx-auto px-4">
         {/* Category Pill */}
@@ -32,7 +29,7 @@ export default function HeroSection() {
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00c48c]/10 border border-[#00ffb3]/30 text-[#00ffb3] text-xs font-extrabold uppercase tracking-widest mb-6 shadow-[0_0_20px_rgba(0,196,140,0.15)]"
         >
           <Sparkles className="w-3.5 h-3.5" />
-          <span>YAPAY ZEKA &amp; OTOMOTİV TELEMETRİSİ</span>
+          <span>YAPAY ZEKA DESTEKLİ ARAÇ DEĞERLEME PLATFORMU</span>
         </motion.div>
 
         {/* Super Headline */}
@@ -61,7 +58,7 @@ export default function HeroSection() {
           avantajlı fırsatları saniyeler içinde keşfedin.
         </motion.p>
 
-        {/* Pinned Scrollytelling Stage: Expanding Supercar Canvas */}
+        {/* Pinned Scrollytelling Stage: Expanding Valuation Lab Canvas */}
         <motion.div
           style={{ scale, borderRadius, opacity }}
           className="relative w-full aspect-[16/9] max-h-[520px] overflow-hidden border border-[#00ffb3]/30 shadow-[0_35px_100px_rgba(0,0,0,0.8),0_0_60px_rgba(0,196,140,0.15)] bg-[#040914] group"
@@ -69,10 +66,10 @@ export default function HeroSection() {
           {/* Laser Scanner Beam */}
           <div className="laser-scanner" />
 
-          {/* Supercar Visual */}
+          {/* Targeted Valuation Studio Visual */}
           <Image
-            src="/assets/cyber_car_hero.jpg"
-            alt="Cybernetic Supercar Telemetry"
+            src="/assets/valuation_lab_hero.jpg"
+            alt="AutoInsight Yapay Zeka Araç Değerleme Laboratuvarı"
             fill
             priority
             className="object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-95 contrast-105"
@@ -81,33 +78,33 @@ export default function HeroSection() {
           {/* Cinematic Overlay & Live Telemetry HUD */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#040914] via-[#040914]/40 to-transparent flex flex-col justify-end p-6 sm:p-10 pointer-events-none">
             <div className="text-xl sm:text-2xl font-black text-white tracking-tight">
-              Piyasa Dinamiklerini Anlık Çözümleyin
+              Yapay Zeka Destekli Hassas Değerleme Laboratuvarı
             </div>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl mt-1 mb-4">
-              Algoritmalarımız pazar verilerini, kilometre aşınmasını ve bölgesel
-              talep dalgalanmalarını mikrosaniyeler içinde işler.
+              Gelişmiş Random Forest algoritmamız; kilometre amortismanı, pazar talebi ve
+              emsal fiyat varyasyonlarını anlık olarak tarar.
             </p>
 
             {/* Live Telemetry Chips */}
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/80 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
-                <Gauge className="w-4 h-4 text-[#00ffb3]" />
-                <span className="text-[11px] font-bold text-slate-400 uppercase">Hız:</span>
-                <span className="font-mono text-sm font-extrabold text-[#00ffb3]">284 KM/H</span>
-              </div>
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/80 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/85 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
                 <Cpu className="w-4 h-4 text-[#00ffb3]" />
                 <span className="text-[11px] font-bold text-slate-400 uppercase">Hesaplama:</span>
                 <span className="font-mono text-sm font-extrabold text-[#00ffb3]">&lt;15ms</span>
               </div>
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/80 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/85 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
                 <ShieldCheck className="w-4 h-4 text-[#00ffb3]" />
-                <span className="text-[11px] font-bold text-slate-400 uppercase">Doğruluk:</span>
+                <span className="text-[11px] font-bold text-slate-400 uppercase">Model Doğruluğu:</span>
                 <span className="font-mono text-sm font-extrabold text-[#00ffb3]">%94.0 R²</span>
               </div>
-              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/80 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/85 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
+                <Gauge className="w-4 h-4 text-[#00ffb3]" />
+                <span className="text-[11px] font-bold text-slate-400 uppercase">Hata Payı:</span>
+                <span className="font-mono text-sm font-extrabold text-[#00ffb3]">%11.09 MAPE</span>
+              </div>
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#060f1c]/85 backdrop-blur-md border border-[#00ffb3]/40 shadow-lg">
                 <Activity className="w-4 h-4 text-[#00ffb3] animate-pulse" />
-                <span className="font-mono text-xs font-bold text-[#00ffb3]">CANLI RADAR AKTİF</span>
+                <span className="font-mono text-xs font-bold text-[#00ffb3]">AKTİF PİYASA RADARI</span>
               </div>
             </div>
           </div>

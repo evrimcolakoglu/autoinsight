@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Compass, MapPin, ShieldAlert, Cpu } from "lucide-react";
+import { Compass, Database, Cpu, TrendingUp } from "lucide-react";
 
 export default function CockpitShowcase() {
   return (
@@ -12,7 +12,7 @@ export default function CockpitShowcase() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#00ffb3]/10 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left: Cockpit Visual Stage */}
+          {/* Left: Market Intelligence Lab Visual Stage */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -21,8 +21,8 @@ export default function CockpitShowcase() {
             className="lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden border border-[#00ffb3]/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] group"
           >
             <Image
-              src="/assets/cyber_cockpit_hud.jpg"
-              alt="Digital Automotive Cockpit Telemetry"
+              src="/assets/market_intelligence_hub.jpg"
+              alt="AutoInsight Otomotiv Pazar İstihbarat Merkezi"
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
             />
@@ -39,16 +39,17 @@ export default function CockpitShowcase() {
           >
             <div className="inline-flex items-center gap-2 text-xs font-extrabold tracking-widest text-[#00ffb3] uppercase">
               <Compass className="w-4 h-4" />
-              <span>AKILLI SÜRÜŞ KOKPİTİ</span>
+              <span>PAZAR İSTİHBARAT MERKEZİ</span>
             </div>
 
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
-              Sürücü Odaklı Akıllı Pazar Navigasyonu
+              Canlı Pazar Hacmi &amp; İkinci El Fiyat Dağılımları
             </h3>
 
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-normal">
-              AutoInsight, aracınızın donanım varyasyonlarını, kilometre yıpranma
-              eğrilerini ve piyasa değer kayıplarını gerçek zamanlı olarak izler.
+              53.514 gerçek ilan verisiyle beslenen yapay zeka analiz merkezimiz,
+              81 ildeki bölgesel fiyat dalgalanmalarını ve segment fırsatlarını
+              anlık olarak haritalandırır.
             </p>
 
             {/* Live Regional & Engine Status Rows */}
@@ -56,7 +57,7 @@ export default function CockpitShowcase() {
               <div className="flex items-center justify-between p-4 rounded-xl bg-[#091526]/80 border border-white/5 shadow-inner">
                 <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-300">
                   <div className="w-2 h-2 rounded-full bg-[#00ffb3] animate-pulse" />
-                  <span>İstanbul Pazar Hacmi</span>
+                  <span>İstanbul İkinci El Pazar Hacmi</span>
                 </div>
                 <span className="font-mono text-xs sm:text-sm font-bold text-[#00ffb3]">
                   18.420 İlan
@@ -66,7 +67,7 @@ export default function CockpitShowcase() {
               <div className="flex items-center justify-between p-4 rounded-xl bg-[#091526]/80 border border-white/5 shadow-inner">
                 <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-300">
                   <div className="w-2 h-2 rounded-full bg-[#00ffb3] animate-pulse" />
-                  <span>Ankara &amp; İzmir Pazar Dengesi</span>
+                  <span>Ankara &amp; İzmir Pazar Dağılımı</span>
                 </div>
                 <span className="font-mono text-xs sm:text-sm font-bold text-[#00ffb3]">
                   14.150 İlan
@@ -76,7 +77,7 @@ export default function CockpitShowcase() {
               <div className="flex items-center justify-between p-4 rounded-xl bg-[#091526]/80 border border-white/5 shadow-inner">
                 <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-300">
                   <Cpu className="w-4 h-4 text-[#00ffb3]" />
-                  <span>Yapay Zeka Çıkarım Modu</span>
+                  <span>Çıkarım Modeli &amp; RAG</span>
                 </div>
                 <span className="font-mono text-xs sm:text-sm font-bold text-[#00ffb3]">
                   Lokal / Çevrimdışı

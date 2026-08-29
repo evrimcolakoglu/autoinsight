@@ -12,8 +12,8 @@ from src.ui.components import raw_html, go_to, get_image_base64
 def render_welcome() -> None:
     """Apple Pro sinematik, hareketli ve dinamik ana sayfa ekranını render eder."""
 
-    hero_img_src = get_image_base64("assets/cyber_car_hero.jpg")
-    cockpit_img_src = get_image_base64("assets/cyber_cockpit_hud.jpg")
+    hero_img_src = get_image_base64("assets/valuation_lab_hero.jpg")
+    cockpit_img_src = get_image_base64("assets/market_intelligence_hub.jpg")
 
     # ─────────────────────────────────────────────
     # 1. Live Radar & Navbar
@@ -63,19 +63,15 @@ def render_welcome() -> None:
         <div class="ap-cinema-stage ap-reveal">
             <div class="ap-laser-scanner"></div>
             <div class="ap-cinema-img-wrap">
-                <img src="{hero_img_src}" alt="Cybernetic Supercar Telemetry" class="ap-cinema-img" />
+                <img src="{hero_img_src}" alt="AutoInsight Yapay Zeka Araç Değerleme Laboratuvarı" class="ap-cinema-img" />
                 <div class="ap-cinema-overlay">
                     <div style="font-family: var(--fd); font-size: 1.6rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;">
-                        Piyasa Dinamiklerini Anlık Çözümleyin
+                        Yapay Zeka Destekli Hassas Değerleme Laboratuvarı
                     </div>
                     <div style="font-size: 0.94rem; color: #CBD5E1; margin-top: 0.35rem; max-width: 680px;">
-                        Algoritmalarımız pazar verilerini, kilometre aşınmasını ve bölgesel talep dalgalanmalarını mikrosaniyeler içinde işler.
+                        Gelişmiş Random Forest algoritmamız; kilometre amortismanı, pazar talebi ve emsal fiyat varyasyonlarını anlık olarak tarar.
                     </div>
                     <div class="ap-telemetry-hud-float">
-                        <div class="ap-hud-stat-chip">
-                            <span class="lbl">Hız Telemetrisi:</span>
-                            <span class="val">284 KM/H</span>
-                        </div>
                         <div class="ap-hud-stat-chip">
                             <span class="lbl">Hesaplama Motoru:</span>
                             <span class="val">&lt;15ms</span>
@@ -85,8 +81,12 @@ def render_welcome() -> None:
                             <span class="val">%94.0 R²</span>
                         </div>
                         <div class="ap-hud-stat-chip">
+                            <span class="lbl">Hata Payı:</span>
+                            <span class="val">%11.09 MAPE</span>
+                        </div>
+                        <div class="ap-hud-stat-chip">
                             <span class="lbl">Durum:</span>
-                            <span class="val">AKTİF ANALİZ</span>
+                            <span class="val">AKTİF PİYASA RADARI</span>
                         </div>
                     </div>
                 </div>
@@ -184,30 +184,30 @@ def render_welcome() -> None:
         raw_html(f'''
         <div class="ap-cockpit-grid ap-reveal">
             <div class="ap-cockpit-frame">
-                <img src="{cockpit_img_src}" alt="Digital Automotive Cockpit" />
+                <img src="{cockpit_img_src}" alt="AutoInsight Otomotiv Pazar İstihbarat Merkezi" />
             </div>
             <div class="ap-cockpit-details">
                 <div class="ap-eyebrow" style="margin-bottom:0.2rem;">
-                    {IC["spark_diamond"]} CANLI TELEMETRİ MERKEZİ
+                    {IC["spark_diamond"]} PAZAR İSTİHBARAT MERKEZİ
                 </div>
                 <div style="font-family: var(--fd); font-size: 1.8rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.03em;">
-                    Sürücü Odaklı Akıllı Pazar Navigasyonu
+                    Canlı Pazar Hacmi &amp; İkinci El Fiyat Dağılımları
                 </div>
                 <div style="font-size: 0.94rem; line-height: 1.65; color: #94A3B8;">
-                    AutoInsight, aracınızın donanım varyasyonlarını ve piyasa değer kayıplarını gerçek zamanlı olarak izler.
+                    53.514 gerçek ilan verisiyle beslenen yapay zeka analiz merkezimiz, 81 ildeki bölgesel fiyat dalgalanmalarını ve segment fırsatlarını anlık olarak haritalandırır.
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.4rem;">
                     <div class="ap-live-telemetry-row">
-                        <div class="k"><div class="radar-dot"></div><span>İstanbul Pazar Hacmi</span></div>
+                        <div class="k"><div class="radar-dot"></div><span>İstanbul İkinci El Pazar Hacmi</span></div>
                         <div class="v">18.420 İlan</div>
                     </div>
                     <div class="ap-live-telemetry-row">
-                        <div class="k"><div class="radar-dot"></div><span>Ankara &amp; İzmir Pazar Dengesi</span></div>
+                        <div class="k"><div class="radar-dot"></div><span>Ankara &amp; İzmir Pazar Dağılımı</span></div>
                         <div class="v">14.150 İlan</div>
                     </div>
                     <div class="ap-live-telemetry-row">
-                        <div class="k"><div class="radar-dot"></div><span>Yapay Zeka Çıkarım Modu</span></div>
-                        <div class="v">Offline / Lokal Model</div>
+                        <div class="k"><div class="radar-dot"></div><span>Çıkarım Modeli &amp; RAG</span></div>
+                        <div class="v">Lokal / Çevrimdışı</div>
                     </div>
                 </div>
             </div>
