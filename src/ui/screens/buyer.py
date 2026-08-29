@@ -114,6 +114,7 @@ def render_buyer(df: pd.DataFrame, pipeline, recommender) -> None:
     if clicked:
         with st.spinner("Piyasa taranıyor ve en avantajlı araçlar puanlanıyor..."):
             recs = recommender.recommend_by_preferences(
+                preferred_brand=b_brand if b_brand != "Tümü" else None,
                 max_budget=budget if (has_budget and not flexible) else None,
                 preferred_fuel=b_fuel if b_fuel != "Tümü" else None,
                 preferred_transmission=b_trans if b_trans != "Tümü" else None,
@@ -122,9 +123,6 @@ def render_buyer(df: pd.DataFrame, pipeline, recommender) -> None:
                 min_year=b_min_year if b_min_year else None,
                 top_n=20,
             )
-
-            if b_brand != "Tümü" and not recs.empty:
-                recs = recs[recs['marka'] == b_brand]
 
             if recs.empty:
                 st.warning("Kriterlerinize uygun araç bulunamadı. Lütfen filtrelerinizi genişletmeyi deneyin.")

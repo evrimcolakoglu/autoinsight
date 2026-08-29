@@ -15,13 +15,14 @@ class VehicleRecommender:
 
     def recommend_by_preferences(
         self,
+        preferred_brand: str = None,
         max_budget: float = None,
         preferred_fuel: str = None,
         preferred_transmission: str = None,
         preferred_kasa: str = None,
         max_km: float = None,
         min_year: int = None,
-        top_n: int = 5
+        top_n: int = 20
     ) -> pd.DataFrame:
         """Kullanıcı tercihlerine göre filtreleme yapar ve en avantajlı araçları puanlar."""
         filtered = self.df.copy()
@@ -29,14 +30,17 @@ class VehicleRecommender:
         # Sert Filtreler (Hard Filtering)
         # Kilometre anomalilerini elen (1M+ km'li araclar veri seti hatasi)
         filtered = filtered[filtered['kilometre'] <= 999_999]
+
+        if preferred_brand and preferred_brand != "Tümü":
+            filtered = filtered[filtered['marka'].str.strip().str.lower() == preferred_brand.strip().lower()]
         if max_budget is not None and max_budget > 0:
             filtered = filtered[filtered[TARGET_COLUMN] <= max_budget]
         if preferred_fuel and preferred_fuel != "Tümü":
-            filtered = filtered[filtered['yakit_tipi'].str.contains(preferred_fuel, case=False, na=False)]
+            filtered = filtered[filtered['yakit_tipi'].str.contains(preferred_fuel, case=False, na=False, regex=False)]
         if preferred_transmission and preferred_transmission != "Tümü":
-            filtered = filtered[filtered['vites_tipi'].str.contains(preferred_transmission, case=False, na=False)]
+            filtered = filtered[filtered['vites_tipi'].str.contains(preferred_transmission, case=False, na=False, regex=False)]
         if preferred_kasa and preferred_kasa != "Tümü":
-            filtered = filtered[filtered['kasa_tipi'].str.contains(preferred_kasa, case=False, na=False)]
+            filtered = filtered[filtered['kasa_tipi'].str.contains(preferred_kasa, case=False, na=False, regex=False)]
         if max_km is not None and max_km > 0:
             filtered = filtered[filtered['kilometre'] <= max_km]
         if min_year is not None and min_year > 0:
@@ -77,7 +81,7 @@ class VehicleRecommender:
                 budget_norm * 0.20
             ) * 100
 
-        result_cols = ['marka', 'seri', 'model', 'yil', 'kilometre', 'yakit_tipi', 'vites_tipi', TARGET_COLUMN, 'match_score']
+        result_cols = ['marka', 'seri', 'model', 'yil', 'kilometre', 'yakit_tipi', 'vites_tipi', 'kasa_tipi', TARGET_COLUMN, 'match_score']
         return filtered[result_cols].sort_values(by='match_score', ascending=False).head(top_n)
 
     def find_comparable_listings(
