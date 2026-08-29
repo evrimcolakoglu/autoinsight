@@ -44,7 +44,7 @@ class VehicleRecommender:
         if filtered.empty:
             return pd.DataFrame()
 
-        # Fiyat/Performans & Uyum Puanlama Fonksiyonu
+        # Fiyat/Bütçe, Model Yılı ve Kilometre Ağırlıklı Puanlama Fonksiyonu
         def normalize_series(series, invert=False):
             min_val, max_val = series.min(), series.max()
             if max_val == min_val:
@@ -53,14 +53,28 @@ class VehicleRecommender:
                 return (max_val - series) / (max_val - min_val)
             return (series - min_val) / (max_val - min_val)
 
-        # Genç yıl (+), Düşük KM (+)
         year_score = normalize_series(filtered['yil'], invert=False)
         km_score = normalize_series(filtered['kilometre'], invert=True)
 
-        filtered['match_score'] = (
-            year_score * 0.55 +
-            km_score * 0.45
-        ) * 100
+        if max_budget is not None and max_budget > 0:
+            # Bütçe odaklı arama: Kullanıcının bütçesini en verimli kullanan üst segment/değerli araçları önceliklendir
+            price_norm = normalize_series(filtered[TARGET_COLUMN], invert=False)
+            budget_ratio = (filtered[TARGET_COLUMN] / max_budget).clip(upper=1.0)
+            budget_score = budget_ratio * 0.35 + price_norm * 0.65
+
+            filtered['match_score'] = (
+                budget_score * 0.65 +
+                year_score * 0.22 +
+                km_score * 0.13
+            ) * 100
+        else:
+            # Esnek arama: Yıl ve kilometre ağırlıklı dengeli sıralama
+            budget_norm = normalize_series(filtered[TARGET_COLUMN], invert=False)
+            filtered['match_score'] = (
+                year_score * 0.45 +
+                km_score * 0.35 +
+                budget_norm * 0.20
+            ) * 100
 
         result_cols = ['marka', 'seri', 'model', 'yil', 'kilometre', 'yakit_tipi', 'vites_tipi', TARGET_COLUMN, 'match_score']
         return filtered[result_cols].sort_values(by='match_score', ascending=False).head(top_n)

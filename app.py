@@ -1298,14 +1298,17 @@ li[role="option"][aria-selected="true"] {
 # ─────────────────────────────────────────────
 # Veri ve Model Yükleme
 # ─────────────────────────────────────────────
-@st.cache_resource
-def load_app_resources():
-    df = pd.read_csv(DATA_RAW_PATH)
-    pipeline = joblib.load(MODEL_SAVE_PATH) if os.path.exists(MODEL_SAVE_PATH) else None
-    recommender = VehicleRecommender(DATA_RAW_PATH)
-    return df, pipeline, recommender
+@st.cache_data
+def load_app_data():
+    return pd.read_csv(DATA_RAW_PATH)
 
-df, pipeline, recommender = load_app_resources()
+@st.cache_resource
+def load_app_model():
+    return joblib.load(MODEL_SAVE_PATH) if os.path.exists(MODEL_SAVE_PATH) else None
+
+df = load_app_data()
+pipeline = load_app_model()
+recommender = VehicleRecommender(DATA_RAW_PATH)
 
 # ─────────────────────────────────────────────
 # Navigasyon Yönetimi
@@ -1861,8 +1864,8 @@ def render_buyer():
             b_body = st.selectbox("Kasa Tipi", options=body_options, key="b_body")
 
         with f_col3:
-            b_max_km = st.number_input("Maksimum Kilometre Sınırı", min_value=0, value=120000,
-                                        step=10000, key="b_max_km")
+            b_max_km = st.number_input("Maksimum Kilometre Sınırı (Opsiyonel)", min_value=0, value=0,
+                                        step=10000, key="b_max_km", help="0 bırakılırsa kilometre sınırı uygulanmaz.")
             year_min_options = sorted(df['yil'].dropna().unique().astype(int))
             b_min_year = st.selectbox("En Düşük Model Yılı", options=[None] + year_min_options,
                                        key="b_min_year", format_func=lambda x: "Fark etmez" if x is None else str(x))
