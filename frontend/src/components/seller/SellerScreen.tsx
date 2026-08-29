@@ -326,24 +326,23 @@ export default function SellerScreen({ onBack }: SellerScreenProps) {
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-extrabold uppercase tracking-wider text-[#00ffb3]">
-                    Tahmini Piyasa Değeri
+                    Tahmini Piyasa Değer Aralığı
                   </span>
                   <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#00ffb3]/15 text-[#00ffb3] border border-[#00ffb3]/30">
                     %94 GÜVEN ARALIĞI
                   </span>
                 </div>
 
-                <div className="font-mono text-4xl sm:text-5xl font-black text-white tracking-tight drop-shadow-[0_0_30px_rgba(0,255,179,0.3)]">
-                  {formatPrice(result.tahmin)}
-                </div>
-
-                {/* Corridor Box */}
-                <div className="p-4 rounded-2xl bg-[#060f1c] border border-white/10 flex flex-col gap-2">
-                  <div className="flex justify-between text-xs text-slate-400 font-semibold">
-                    <span>Piyasa Güven Koridoru (%11.09 MAPE):</span>
-                  </div>
-                  <div className="font-mono text-base font-extrabold text-slate-200">
+                {/* Primary Price Range Display */}
+                <div>
+                  <div className="font-mono text-3xl sm:text-4xl font-black text-[#00ffb3] tracking-tight drop-shadow-[0_0_30px_rgba(0,255,179,0.35)] leading-tight mb-2">
                     {formatPrice(result.alt_limit)} &mdash; {formatPrice(result.ust_limit)}
+                  </div>
+                  <div className="text-xs text-slate-400 font-medium flex items-center gap-2">
+                    <span>Model Medyan Değeri:</span>
+                    <span className="text-white font-bold font-mono">{formatPrice(result.tahmin)}</span>
+                    <span>&middot;</span>
+                    <span className="text-[#00ffb3] font-semibold">%11.09 MAPE Güven Koridoru</span>
                   </div>
                 </div>
 
@@ -361,11 +360,11 @@ export default function SellerScreen({ onBack }: SellerScreenProps) {
                   </div>
                 </div>
 
-                {/* Local AI Rationale */}
+                {/* Local Diverse AI Rationale */}
                 <div className="p-5 rounded-2xl bg-[#09182d] border border-[#00ffb3]/30 text-xs sm:text-sm text-slate-300 leading-relaxed shadow-inner">
                   <div className="flex items-center gap-2 font-bold text-[#00ffb3] uppercase tracking-wider mb-2 text-xs">
                     <Sparkles className="w-4 h-4" />
-                    <span>Yapay Zeka Pazar Gerekçesi</span>
+                    <span>Yapay Zeka Pazar Analizi &amp; Gerekçesi</span>
                   </div>
                   <p>{result.ai_insight}</p>
                 </div>

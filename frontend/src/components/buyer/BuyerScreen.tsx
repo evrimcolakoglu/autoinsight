@@ -335,19 +335,19 @@ export default function BuyerScreen({ onBack }: BuyerScreenProps) {
                       </div>
                     </div>
 
-                    <div className="flex justify-between items-center pt-2">
-                      <span className="text-xs font-semibold text-slate-400">İlan Fiyatı:</span>
-                      <span className="font-mono text-2xl font-black text-[#00ffb3]">
-                        {formatPrice(car.fiyat)}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pt-2">
+                      <span className="text-xs font-semibold text-slate-400">Tahmini Değer Aralığı:</span>
+                      <span className="font-mono text-lg sm:text-xl font-black text-[#00ffb3] drop-shadow-[0_0_20px_rgba(0,255,179,0.3)]">
+                        {formatPrice(car.alt_limit)} &mdash; {formatPrice(car.ust_limit)}
                       </span>
                     </div>
                   </div>
 
-                  {/* Individual AI Rationale Box */}
+                  {/* Individual Distinct AI Rationale Box */}
                   <div className="p-4 bg-[#040812] border-t border-white/5 text-xs text-slate-300 leading-relaxed">
                     <div className="flex items-center gap-1.5 font-bold text-[#00ffb3] uppercase tracking-wider mb-1.5 text-[11px]">
                       <Sparkles className="w-3.5 h-3.5" />
-                      <span>Yapay Zeka Pazar Analizi</span>
+                      <span>Yapay Zeka Pazar Analizi &amp; Gerekçesi</span>
                     </div>
                     <p>{car.ai_insight}</p>
                   </div>
