@@ -5,8 +5,7 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import DATA_RAW_PATH, TARGET_COLUMN
+from src.config import DATA_RAW_PATH, TARGET_COLUMN
 
 class VehicleRecommender:
     def __init__(self, data_path: str = DATA_RAW_PATH):

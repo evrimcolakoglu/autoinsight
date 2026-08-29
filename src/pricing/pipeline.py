@@ -10,9 +10,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, mean_absolute_percentage_error
 
-import sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import DATA_RAW_PATH, MODEL_SAVE_PATH, TARGET_COLUMN, NUMERIC_FEATURES, CATEGORICAL_FEATURES
+from src.config import DATA_RAW_PATH, MODEL_SAVE_PATH, TARGET_COLUMN, NUMERIC_FEATURES, CATEGORICAL_FEATURES
 
 def build_dynamic_pipeline(num_cols, cat_cols):
     """Veri setindeki eksik değerleri yöneten ve dinamik şemaya göre eğitilen boru hattı."""

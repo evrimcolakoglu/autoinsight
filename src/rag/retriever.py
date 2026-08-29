@@ -5,8 +5,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import DB_PATH
+from src.config import DB_PATH
 
 class LocalRAGRetriever:
     def __init__(self, db_path: str = DB_PATH):

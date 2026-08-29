@@ -4,8 +4,7 @@ import sqlite3
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import DB_PATH
+from src.config import DB_PATH
 
 def create_vector_database(docs_dir="docs", db_path=DB_PATH):
     """Metin dokümanlarını okur, parçalar, vektörleştirir ve SQLite'a kaydeder."""
