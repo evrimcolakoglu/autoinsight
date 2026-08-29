@@ -6,6 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from src.config import NUMERIC_FEATURES, CATEGORICAL_FEATURES, MODEL_MAPE
+from src.insights.explainer import MarketInsightExplainer
 from src.ui.icons import IC, LOGO_FULL_SVG
 from src.ui.components import raw_html, format_price, format_km, go_home
 
@@ -149,7 +150,7 @@ def render_buyer(df: pd.DataFrame, pipeline, recommender) -> None:
                         except Exception:
                             market_value = None
 
-                results.append({
+                car_dict = {
                     "marka": row['marka'],
                     "seri": row.get('seri', ''),
                     "model": row['model'],
@@ -159,7 +160,15 @@ def render_buyer(df: pd.DataFrame, pipeline, recommender) -> None:
                     "yakit": row.get('yakit_tipi', ''),
                     "kasa": row.get('kasa_tipi', ''),
                     "market_value": market_value,
-                })
+                }
+
+                car_dict["explanation"] = MarketInsightExplainer.generate_buyer_explanation(
+                    df=df,
+                    car_dict=car_dict,
+                    market_value=market_value
+                )
+
+                results.append(car_dict)
 
             st.session_state.buyer_result = results
             st.rerun()
@@ -201,6 +210,18 @@ def _render_buyer_result(results: list) -> None:
         kasa_spec = f'<div class="vc-spec"><div class="vc-spec-label">KASA TİPİ</div><div class="vc-spec-value">{car["kasa"]}</div></div>' if car.get("kasa") else ""
         seri_spec = f'<div class="vc-spec"><div class="vc-spec-label">SERİ</div><div class="vc-spec-value">{car["seri"]}</div></div>' if car.get("seri") else ""
 
+        ai_insight_html = ""
+        if car.get("explanation"):
+            ai_insight_html = f'''
+            <div class="ai-buyer-insight">
+                <div class="ai-buyer-badge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#00FFB3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                    AI Pazar Değerlendirmesi
+                </div>
+                <div class="ai-buyer-text">{car["explanation"]}</div>
+            </div>
+            '''
+
         card_html = f'''
         <div class="vc">
         <div class="vct">
@@ -215,6 +236,7 @@ def _render_buyer_result(results: list) -> None:
         {seri_spec}
         </div>
         {market_html}
+        {ai_insight_html}
         </div>
         '''
         raw_html(card_html)

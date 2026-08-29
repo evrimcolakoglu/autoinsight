@@ -1223,5 +1223,72 @@ li[role="option"][aria-selected="true"] {
   border-radius: var(--r2) !important;
   color: #FDE047 !important;
 }
+
+/* AI Pazar & Değerleme Açıklama Panelleri */
+.ai-seller-insight {
+  background: linear-gradient(135deg, rgba(0, 196, 140, 0.07) 0%, rgba(8, 20, 36, 0.85) 100%);
+  border: 1.5px solid rgba(0, 255, 179, 0.32);
+  border-radius: var(--r3);
+  padding: 1.4rem 1.7rem;
+  margin-top: 1.4rem;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45), 0 0 25px rgba(0, 196, 140, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.ai-seller-insight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00FFB3, transparent);
+}
+.ai-insight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0.3rem 0.85rem;
+  background: rgba(0, 196, 140, 0.14);
+  border: 1px solid rgba(0, 255, 179, 0.4);
+  border-radius: 100px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #00FFB3;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+.ai-insight-text {
+  font-size: 0.92rem;
+  line-height: 1.72;
+  color: #D1E0EF;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Alıcı Araç Kartı İçindeki AI Açıklaması */
+.ai-buyer-insight {
+  padding: 1.1rem 1.6rem 1.25rem;
+  background: rgba(4, 10, 20, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+.ai-buyer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #00FFB3;
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+.ai-buyer-text {
+  font-size: 0.87rem;
+  line-height: 1.68;
+  color: #94A3B8;
+  font-weight: 500;
+}
 </style>
 ''')

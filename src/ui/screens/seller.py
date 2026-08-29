@@ -6,6 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from src.config import MODEL_MAPE
+from src.insights.explainer import MarketInsightExplainer
 from src.ui.icons import IC, LOGO_FULL_SVG
 from src.ui.components import raw_html, format_price, go_to, go_home
 
@@ -169,17 +170,39 @@ def render_seller(df: pd.DataFrame, pipeline, recommender) -> None:
 
             predicted = float(pipeline.predict(input_data)[0])
 
+            comp_res = recommender.find_comparable_listings(
+                marka=selected_brand,
+                model=selected_model,
+                yil=int(year),
+                km=float(km),
+                predicted_price=predicted,
+            )
+
+            car_info = {
+                "marka": selected_brand,
+                "seri": selected_series,
+                "model": selected_model,
+                "yil": int(year),
+                "kilometre": float(km),
+                "yakit_tipi": selected_fuel,
+                "vites_tipi": selected_trans,
+                "kasa_tipi": selected_body,
+                "konum": chosen_city
+            }
+
+            ai_explanation = MarketInsightExplainer.generate_seller_explanation(
+                df=df,
+                car_data=car_info,
+                predicted_price=predicted,
+                comparison=comp_res
+            )
+
             st.session_state.seller_result = {
                 "predicted": predicted,
                 "price_low": predicted * (1 - MODEL_MAPE),
                 "price_high": predicted * (1 + MODEL_MAPE),
-                "comparison": recommender.find_comparable_listings(
-                    marka=selected_brand,
-                    model=selected_model,
-                    yil=int(year),
-                    km=float(km),
-                    predicted_price=predicted,
-                ),
+                "comparison": comp_res,
+                "explanation": ai_explanation,
                 "brand": selected_brand,
                 "model": selected_model,
                 "year": year,
@@ -249,6 +272,20 @@ def _render_seller_result(result: dict, recommender) -> None:
         ''')
     else:
         st.info(f"Emsal karşılaştırması için yeterli hacim bulunamadı (Bulunan: {comp['count']} ilan, minimum 10 gereklidir).")
+
+    # AI Pazar Analizi ve Değerleme Gerekçesi Kutusu
+    if result.get("explanation"):
+        raw_html(f'''
+        <div class="ai-seller-insight">
+            <div class="ai-insight-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FFB3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                AI Değerleme Gerekçesi &amp; Pazar Analizi
+            </div>
+            <div class="ai-insight-text">
+                {result["explanation"]}
+            </div>
+        </div>
+        ''')
 
     raw_html("<div style='height: 18px;'></div>")
     res_col1, res_col2 = st.columns([1, 1])
