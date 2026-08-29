@@ -1,15 +1,19 @@
 """
 AutoInsight — Ana Sayfa (Welcome) Ekranı
-Apple Pro Tasarım Dili & Dinamik Kaydırma (Scroll-Driven Animation) Mimarisi.
+Apple Pro Tasarım Dili & Dinamik Hareketli Otomotiv Kokpit Mimarisi.
 """
+import os
 import streamlit as st
 
 from src.ui.icons import IC, LOGO_FULL_SVG
-from src.ui.components import raw_html, go_to
+from src.ui.components import raw_html, go_to, get_image_base64
 
 
 def render_welcome() -> None:
-    """Apple Pro sinematik ve dinamik kaydırmalı ana sayfa ekranını render eder."""
+    """Apple Pro sinematik, hareketli ve dinamik ana sayfa ekranını render eder."""
+
+    hero_img_src = get_image_base64("assets/cyber_car_hero.jpg")
+    cockpit_img_src = get_image_base64("assets/cyber_cockpit_hud.jpg")
 
     # ─────────────────────────────────────────────
     # 1. Live Radar & Navbar
@@ -34,10 +38,10 @@ def render_welcome() -> None:
     ''')
 
     # ─────────────────────────────────────────────
-    # 2. Apple Pro Sinematik Hero Bölümü
+    # 2. Apple Pro Sinematik Hero Başlığı
     # ─────────────────────────────────────────────
     raw_html(f'''
-    <div class="hero ap-reveal" style="padding-top: 1.8rem; padding-bottom: 2rem;">
+    <div class="hero ap-reveal" style="padding-top: 1.8rem; padding-bottom: 1.2rem;">
         <div class="ap-eyebrow">
             {IC["spark_diamond"]} YAPAY ZEKA &amp; OTOMOTİV TELEMETRİSİ
         </div>
@@ -52,7 +56,46 @@ def render_welcome() -> None:
     ''')
 
     # ─────────────────────────────────────────────
-    # 3. Apple Pro Showcase Kartları (Vitrin)
+    # 3. Dinamik Sinematik Araç Sahnesi (Canlı HUD & Lazer)
+    # ─────────────────────────────────────────────
+    if hero_img_src:
+        raw_html(f'''
+        <div class="ap-cinema-stage ap-reveal">
+            <div class="ap-laser-scanner"></div>
+            <div class="ap-cinema-img-wrap">
+                <img src="{hero_img_src}" alt="Cybernetic Supercar Telemetry" class="ap-cinema-img" />
+                <div class="ap-cinema-overlay">
+                    <div style="font-family: var(--fd); font-size: 1.6rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.02em;">
+                        Piyasa Dinamiklerini Anlık Çözümleyin
+                    </div>
+                    <div style="font-size: 0.94rem; color: #CBD5E1; margin-top: 0.35rem; max-width: 680px;">
+                        Algoritmalarımız pazar verilerini, kilometre aşınmasını ve bölgesel talep dalgalanmalarını mikrosaniyeler içinde işler.
+                    </div>
+                    <div class="ap-telemetry-hud-float">
+                        <div class="ap-hud-stat-chip">
+                            <span class="lbl">Hız Telemetrisi:</span>
+                            <span class="val">284 KM/H</span>
+                        </div>
+                        <div class="ap-hud-stat-chip">
+                            <span class="lbl">Hesaplama Motoru:</span>
+                            <span class="val">&lt;15ms</span>
+                        </div>
+                        <div class="ap-hud-stat-chip">
+                            <span class="lbl">Pazar Doğruluğu:</span>
+                            <span class="val">%94.0 R²</span>
+                        </div>
+                        <div class="ap-hud-stat-chip">
+                            <span class="lbl">Durum:</span>
+                            <span class="val">AKTİF ANALİZ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ''')
+
+    # ─────────────────────────────────────────────
+    # 4. Apple Pro Showcase Kartları (Vitrin Modülleri)
     # ─────────────────────────────────────────────
     col1, col2 = st.columns(2, gap="large")
 
@@ -107,10 +150,10 @@ def render_welcome() -> None:
                   use_container_width=True, on_click=go_to, args=("buyer",))
 
     # ─────────────────────────────────────────────
-    # 4. Apple Pro Telemetri & İstatistik Barı
+    # 5. Apple Pro Telemetri & İstatistik Barı
     # ─────────────────────────────────────────────
     raw_html('''
-    <div class="ap-metrics-bar ap-reveal ap-scroll-anim">
+    <div class="ap-metrics-bar ap-reveal">
         <div class="ap-metric-box">
             <div class="ap-metric-val glow">%94.0</div>
             <div class="ap-metric-label">R² Pazar Doğruluğu</div>
@@ -135,37 +178,74 @@ def render_welcome() -> None:
     ''')
 
     # ─────────────────────────────────────────────
-    # 5. Apple Pro Deep-Dive Bento Grid
+    # 6. Canlı Kokpit & Akıllı Telemetri Merkezi
+    # ─────────────────────────────────────────────
+    if cockpit_img_src:
+        raw_html(f'''
+        <div class="ap-cockpit-grid ap-reveal">
+            <div class="ap-cockpit-frame">
+                <img src="{cockpit_img_src}" alt="Digital Automotive Cockpit" />
+            </div>
+            <div class="ap-cockpit-details">
+                <div class="ap-eyebrow" style="margin-bottom:0.2rem;">
+                    {IC["spark_diamond"]} CANLI TELEMETRİ MERKEZİ
+                </div>
+                <div style="font-family: var(--fd); font-size: 1.8rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.03em;">
+                    Sürücü Odaklı Akıllı Pazar Navigasyonu
+                </div>
+                <div style="font-size: 0.94rem; line-height: 1.65; color: #94A3B8;">
+                    AutoInsight, aracınızın donanım varyasyonlarını ve piyasa değer kayıplarını gerçek zamanlı olarak izler.
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 0.65rem; margin-top: 0.4rem;">
+                    <div class="ap-live-telemetry-row">
+                        <div class="k"><div class="radar-dot"></div><span>İstanbul Pazar Hacmi</span></div>
+                        <div class="v">18.420 İlan</div>
+                    </div>
+                    <div class="ap-live-telemetry-row">
+                        <div class="k"><div class="radar-dot"></div><span>Ankara &amp; İzmir Pazar Dengesi</span></div>
+                        <div class="v">14.150 İlan</div>
+                    </div>
+                    <div class="ap-live-telemetry-row">
+                        <div class="k"><div class="radar-dot"></div><span>Yapay Zeka Çıkarım Modu</span></div>
+                        <div class="v">Offline / Lokal Model</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ''')
+
+    # ─────────────────────────────────────────────
+    # 7. Apple Pro Deep-Dive Bento Grid
     # ─────────────────────────────────────────────
     raw_html(f'''
-    <div class="ap-bento-section ap-reveal ap-scroll-anim">
+    <div class="ap-bento-section ap-reveal">
         <div class="ap-section-header">
             <div class="ap-eyebrow">{IC["spark_diamond"]} MÜHENDİSLİK &amp; MİMARİ</div>
             <div class="ap-section-title">Veriye Dayalı Rasyonel Karar Avantajı</div>
         </div>
         <div class="ap-bento-grid-4">
-            <div class="ap-bento-cell ap-reveal ap-delay-1 ap-scroll-anim">
+            <div class="ap-bento-cell ap-reveal ap-delay-1">
                 <div class="ap-bento-icon">{IC["shield_bento"]}</div>
                 <div>
                     <div class="ap-bento-head">Random Forest Regresyon Modeli</div>
                     <div class="ap-bento-para">Spekülatif ve değişken fiyatlar yerine, binlerce gerçek ilan verisiyle eğitilmiş Target Encoding ve Random Forest boru hattı sayesinde objektif bir değer koridoru elde edin.</div>
                 </div>
             </div>
-            <div class="ap-bento-cell ap-reveal ap-delay-2 ap-scroll-anim">
+            <div class="ap-bento-cell ap-reveal ap-delay-2">
                 <div class="ap-bento-icon">{IC["bolt_bento"]}</div>
                 <div>
                     <div class="ap-bento-head">Bütçe-Ağırlıklı Akıllı Eşleştirme</div>
                     <div class="ap-bento-para">Bütçenizi atıl bırakmayan, bütçe sınırına en yakın ve en avantajlı araçları kilometre, yıl ve donanım skorlamasıyla öne çıkaran akıllı keşif motoru.</div>
                 </div>
             </div>
-            <div class="ap-bento-cell ap-reveal ap-delay-3 ap-scroll-anim">
+            <div class="ap-bento-cell ap-reveal ap-delay-3">
                 <div class="ap-bento-icon">{IC["map_bento"]}</div>
                 <div>
                     <div class="ap-bento-head">81 İl Bölgesel Pazar Dinamikleri</div>
                     <div class="ap-bento-para">İl bazlı pazar talebi, karoser formu, yakıt ve vites kombinasyonlarının yarattığı bölgesel fiyat değişimlerini hassas şekilde hesaba katan derinlikli mimari.</div>
                 </div>
             </div>
-            <div class="ap-bento-cell ap-reveal ap-delay-4 ap-scroll-anim">
+            <div class="ap-bento-cell ap-reveal ap-delay-4">
                 <div class="ap-bento-icon">{IC["chart_bento"]}</div>
                 <div>
                     <div class="ap-bento-head">Yerel Yapay Zeka Pazar İçgörüsü</div>
@@ -177,28 +257,28 @@ def render_welcome() -> None:
     ''')
 
     # ─────────────────────────────────────────────
-    # 6. Nasıl Çalışır? (3 Aşamalı Pro Timeline)
+    # 8. Nasıl Çalışır? (3 Aşamalı Pro Timeline)
     # ─────────────────────────────────────────────
     raw_html(f'''
-    <div class="ap-bento-section ap-reveal ap-scroll-anim">
+    <div class="ap-bento-section ap-reveal">
         <div class="ap-section-header">
             <div class="ap-eyebrow">{IC["spark_diamond"]} İŞLEM AKIŞI</div>
             <div class="ap-section-title">Üç Adımda Akıllı Değerleme</div>
         </div>
         <div class="ap-timeline-grid">
-            <div class="ap-step-card ap-reveal ap-delay-1 ap-scroll-anim">
+            <div class="ap-step-card ap-reveal ap-delay-1">
                 <span class="ap-step-num">Adım 01</span>
                 <div class="hi-box">{IC["step_params"]}</div>
                 <div class="ht">Parametreleri Belirleyin</div>
                 <div class="hd">Marka, seri, model, yıl, kilometre, yakıt, vites ve kasa bilgilerini dinamik akıllı form üzerinden aktarın.</div>
             </div>
-            <div class="ap-step-card ap-reveal ap-delay-2 ap-scroll-anim">
+            <div class="ap-step-card ap-reveal ap-delay-2">
                 <span class="ap-step-num">Adım 02</span>
                 <div class="hi-box">{IC["step_ai"]}</div>
                 <div class="ht">Yapay Zeka Telemetrisi</div>
                 <div class="hd">Gelişmiş analitik motorumuz aracın piyasa değerini, %11.09 MAPE güven aralığını ve emsal pazar konumunu anında hesaplar.</div>
             </div>
-            <div class="ap-step-card ap-reveal ap-delay-3 ap-scroll-anim">
+            <div class="ap-step-card ap-reveal ap-delay-3">
                 <span class="ap-step-num">Adım 03</span>
                 <div class="hi-box">{IC["step_report"]}</div>
                 <div class="ht">Gerekçeli Piyasa Raporu</div>
@@ -209,10 +289,10 @@ def render_welcome() -> None:
     ''')
 
     # ─────────────────────────────────────────────
-    # 7. Güven & Güvenlik Rozetleri + Footer
+    # 9. Güven & Güvenlik Rozetleri + Footer
     # ─────────────────────────────────────────────
     raw_html(f'''
-    <div class="trust ap-reveal ap-scroll-anim">
+    <div class="trust ap-reveal">
         <div class="ti">{IC["check_disc"]}<span>Gerçek Piyasa Verisi</span></div>
         <div class="ti">{IC["bolt_disc"]}<span>Yerel &amp; Ücretsiz Çıkarım</span></div>
         <div class="ti">{IC["lock_disc"]}<span>Sıfır Veri Sızıntısı</span></div>
@@ -220,7 +300,7 @@ def render_welcome() -> None:
         <div class="ti">{IC["trend_disc"]}<span>Sürekli Güncellenen Model</span></div>
     </div>
 
-    <div class="footer-wrap ap-reveal ap-scroll-anim">
+    <div class="footer-wrap ap-reveal">
         <div class="footer-links">
             <span>AutoInsight v2.5</span>
             <span>&bull;</span>

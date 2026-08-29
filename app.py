@@ -2,6 +2,16 @@
 AutoInsight — Akıllı Otomotiv Karar Platformu
 Ana Giriş ve Router Modülü (Streamlit Entrypoint)
 """
+import sys
+import asyncio
+
+# Windows Proactor Socket bağlantı uyarısını temizleme
+if sys.platform == "win32":
+    try:
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    except Exception:
+        pass
+
 import streamlit as st
 
 from src.config import DATA_RAW_PATH

@@ -1619,5 +1619,189 @@ li[role="option"][aria-selected="true"] {
   margin-bottom: 1.2rem;
   text-transform: uppercase;
 }
+/* ═══════════════════════════════════════════════════════
+   APPLE PRO DİNAMİK ARAÇ VİDEO & SİNEMATİK KOKPİT EFEKTLERİ
+   ═══════════════════════════════════════════════════════ */
+
+/* Hareketli Lazer & Hız Çizgileri Animasyonu */
+@keyframes cyberLaserScan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.75; }
+  100% { transform: translateY(1000%); opacity: 0; }
+}
+
+@keyframes cyberNeonPulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(0, 255, 179, 0.25), inset 0 0 15px rgba(0, 255, 179, 0.1); }
+  50% { box-shadow: 0 0 45px rgba(0, 255, 179, 0.55), inset 0 0 25px rgba(0, 255, 179, 0.25); }
+}
+
+@keyframes cyberSpeedStreak {
+  0% { transform: translateX(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes cyberTelemetryFlicker {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.75; }
+  75% { opacity: 1; }
+}
+
+/* Sinematik Araç Hero Sahnesi */
+.ap-cinema-stage {
+  position: relative;
+  border-radius: var(--r4);
+  overflow: hidden;
+  border: 1.5px solid rgba(0, 255, 179, 0.35);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 196, 140, 0.18);
+  margin: 1.8rem 0 3rem;
+  background: #040914;
+}
+
+.ap-cinema-img-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(340px, 46vw, 520px);
+  overflow: hidden;
+}
+
+.ap-cinema-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: brightness(0.92) contrast(1.08);
+}
+.ap-cinema-stage:hover .ap-cinema-img {
+  transform: scale(1.06);
+}
+
+.ap-cinema-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 9, 20, 0.2) 0%, rgba(4, 9, 20, 0.4) 40%, rgba(4, 9, 20, 0.92) 90%, #040914 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem 2.8rem;
+  pointer-events: none;
+}
+
+.ap-laser-scanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #00FFB3 50%, transparent 100%);
+  filter: drop-shadow(0 0 12px #00FFB3);
+  animation: cyberLaserScan 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ap-telemetry-hud-float {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.ap-hud-stat-chip {
+  background: rgba(6, 15, 28, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 179, 0.4);
+  border-radius: 12px;
+  padding: 0.55rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  animation: cyberTelemetryFlicker 3s infinite ease-in-out;
+}
+.ap-hud-stat-chip .val {
+  font-family: var(--fm);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #00FFB3;
+}
+.ap-hud-stat-chip .lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94A3B8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Canlı Kokpit Simülatör Alanı */
+.ap-cockpit-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  background: linear-gradient(145deg, rgba(8, 16, 30, 0.8) 0%, rgba(4, 9, 18, 0.9) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r4);
+  padding: 2.8rem 2.6rem;
+  margin: 3.5rem 0;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.ap-cockpit-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0, 255, 179, 0.12), transparent 70%);
+  pointer-events: none;
+}
+
+.ap-cockpit-frame {
+  position: relative;
+  border-radius: var(--r3);
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 179, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+.ap-cockpit-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ap-cockpit-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.ap-live-telemetry-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9rem 1.2rem;
+  background: rgba(14, 24, 42, 0.65);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.ap-live-telemetry-row .k {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ap-live-telemetry-row .v {
+  font-family: var(--fm);
+  font-size: 0.95rem;
+  color: #00FFB3;
+  font-weight: 800;
+}
 </style>
 ''')
