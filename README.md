@@ -1,43 +1,48 @@
-# 🚗 AutoInsight: RAG Destekli Akıllı Araç Değerleme ve Tavsiye Sistemi
+# 🚗 AutoInsight: Akıllı Otomotiv Karar ve Değerleme Platformu
 
-AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; dinamik fiyat tahmini, bütçe ve ihtiyaç odaklı araç eşleştirme ile çevrimdışı (offline) RAG mimarisini tek çatı altında toplayan uçtan uca bir makine öğrenmesi asistanıdır.
-
----
-
-## 📌 Temel Özellikler
-
-* **Dinamik Fiyatlandırma (ML Engine):** Araçların teknik özellikleri, hasar geçmişi ve kilometre verilerini analiz ederek piyasa değerini tahmin eden regresyon boru hattı (Random Forest + Target Encoding).
-* **Akıllı Araç Tavsiyesi (Recommender):** Kullanıcının bütçe, yakıt ve vites tercihlerine göre filtreleme yapan; fiyat/performans uyum puanı ve Kosinüs Benzerliği (Cosine Similarity) ile en uygun alternatifleri sıralayan hibrit algoritma.
-* **Çevrimdışı RAG ve Teknik Asistan:** Harici API veya internet bağımlılığı olmadan araç bakım bültenleri ve kullanım kılavuzlarından anlamsal bilgi çeken yerel vektör arama motoru (SQLite + Sentence Transformers).
+AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; yapay zeka tabanlı dinamik piyasa fiyat tahmini, bütçe ve donanım odaklı akıllı araç eşleştirme ile çevrimdışı (offline) RAG mimarisini modern ve profesyonel bir web arayüzünde buluşturan uçtan uca makine öğrenmesi platformudur.
 
 ---
 
-## 🏗️ Sistem Mimarisi
+## 📌 Temel Yetenekler & Modüller
+
+* **🎯 Dinamik Piyasa Değerleme (ML Engine):** 53.000+ gerçek pazar verisi üzerinden eğitilmiş Random Forest + Target Encoding regresyon boru hattı ile marka, model, yıl, kilometre ve donanım kombinasyonlarına göre anlık değerleme koridoru (%11 MAPE) ve emsal analizi sunar.
+* **🏎️ Akıllı Araç Keşfi (Recommender):** Kullanıcının bütçe sınırına, yakıt, vites, kasa ve model yılı tercihlerine göre piyasa fırsatlarını bütçe-ağırlıklı ve benzerlik tabanlı skorlama algoritmalarıyla listeleyen akıllı öneri motoru.
+* **🎨 Modern & Modüler UI (Streamlit Custom Engine):** Özel tasarlanmış Dark Glassmorphism tema, canlı radar ticker, simetrik donanım kartları ve duyarlı mikro animasyonlar.
+* **📚 Çevrimdışı RAG Teknik Asistanı:** Harici API veya internet bağımlılığı olmaksızın teknik kılavuzlardan ve bakım bültenlerinden anlamsal bilgi getiren yerel vektör arama motoru (SQLite + Sentence Transformers `all-MiniLM-L6-v2`).
+
+---
+
+## 🏗️ Sistem ve Proje Mimarisi
 
 ```text
-[ Streamlit Web Kullanıcı Arayüzü ]
-        │
-        ├──► [ Modül 1: Fiyatlandırma Pipeline ] ──► (Scikit-Learn / Random Forest Regressor)
-        │
-        ├──► [ Modül 2: Akıllı Öneri Motoru ]   ──► (Kural Tabanlı Filtreleme + Kosinüs Benzerliği)
-        │
-        └──► [ Modül 3: Yerel RAG Asistanı ]     ──► (SQLite Vektör Tabanı + all-MiniLM-L6-v2)
+AutoInsight Platform
+│
+├── [ UI & Sunum Katmanı ] ───► (Streamlit + Özel Glassmorphism CSS + Vektörel İkonlar)
+│        │
+│        ├── Welcome Ekranı   ──► (Hero, Canlı Radar, Bento Grid, İstatistikler)
+│        ├── Seller Ekranı    ──► (Dinamik Parametrik Form + Değerleme Raporu HUD)
+│        └── Buyer Ekranı     ──► (Bütçe & Donanım Filtreleri + Eşleşen Araç Kartları)
+│
+├── [ ML Fiyatlandırma ]   ───► (Scikit-Learn Pipeline: TargetEncoder + StandardScaler + RandomForest)
+│
+├── [ Öneri Motoru ]       ───► (Bütçe Optimizasyonu + Min-Max Normalizasyonu + Cosine Similarity)
+│
+└── [ Yerel RAG Modülü ]   ───► (SQLite Vektör Deposu + all-MiniLM-L6-v2 Embedding)
 ```
 
 ---
 
 ## 👥 Geliştirici Kurulum Rehberi
 
-> Bu bölüm, repoya erişimi olan geliştiriciler için hazırlanmıştır.
+> Farklı bir bilgisayara projeyi kurarken aşağıdaki adımları sırasıyla takip ediniz.
 
 ### Ön Gereksinimler
 
-Başlamadan önce aşağıdakilerin bilgisayarınızda kurulu olduğundan emin olun:
+* **Python:** 3.10 veya üzeri ([python.org](https://www.python.org/downloads/))
+* **Git:** Herhangi bir güncel sürüm ([git-scm.com](https://git-scm.com/))
 
-| Araç | Versiyon | İndirme |
-|------|----------|---------|
-| Python | 3.10 veya üzeri | [python.org](https://www.python.org/downloads/) |
-| Git | Herhangi | [git-scm.com](https://git-scm.com/) |
+---
 
 ### 1. Repoyu Klonlayın
 
@@ -46,139 +51,156 @@ git clone https://github.com/evrimcolakoglu/autoinsight.git
 cd autoinsight
 ```
 
-### 2. Sanal Ortam Oluşturun ve Aktif Edin
+---
 
-```bash
-# Sanal ortam oluştur
+### 2. Sanal Ortamı (venv) Oluşturun ve Aktif Edin
+
+**Windows (PowerShell / CMD):**
+```powershell
 python -m venv venv
-
-# Aktif et — Windows:
 .\venv\Scripts\activate
+```
 
-# Aktif et — macOS/Linux:
+**macOS / Linux:**
+```bash
+python3 -m venv venv
 source venv/bin/activate
 ```
 
-> Aktivasyon sonrası terminal satırınızın başında (venv) görünmesi gerekir.
+> 💡 Aktivasyon başarılı olduğunda terminal satırınızın başında `(venv)` ibaresi görünür.
+
+---
 
 ### 3. Bağımlılıkları Yükleyin
 
 ```bash
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-> ⚠️ sentence-transformers paketi ilk yüklemede ~500 MB boyutunda model indirebilir. Bu normaldir.
+---
 
-### 4. Eğitilmiş Modeli İndirin (Google Drive)
+### 4. Eğitilmiş Modeli Hazırlayın
 
-Fiyatlandırma modeli (pricing_pipeline.joblib) boyutu nedeniyle (~350 MB) GitHub'da bulunmamaktadır.
+Fiyatlandırma model dosyası (`pricing_pipeline.joblib`) dosya boyutu (~350 MB) nedeniyle Git takibinde değildir. İki yöntemden birini seçebilirsiniz:
 
-**a)** Aşağıdaki bağlantıdan model dosyasını indirin:
+#### Yöntem A: Hazır Modeli İndirin (Önerilen)
+1. Model dosyasını indirin:  
+   👉 **[pricing_pipeline.joblib — Google Drive İndirme Bağlantısı](https://drive.google.com/drive/folders/1ifLAcUbWEbOvHWeJnqaV68JAtO4aQPdb?usp=sharing)**
+2. İndirilen `pricing_pipeline.joblib` dosyasını projedeki `models/` klasörünün içine yerleştirin:
+   ```text
+   autoinsight/
+   └── models/
+       └── pricing_pipeline.joblib   ✅
+   ```
 
-> 📦 **[pricing_pipeline.joblib — Google Drive'dan İndir](https://drive.google.com/drive/folders/1ifLAcUbWEbOvHWeJnqaV68JAtO4aQPdb?usp=sharing)**
->
-> *(Bağlantıyı proje sahibinden talep edin)*
-
-**b)** İndirilen dosyayı projenin models/ klasörüne taşıyın:
-
-```
-autoinsight/
-└── models/
-    └── pricing_pipeline.joblib   ✅ buraya koyun
-```
-
-**c)** Alternatif: Modeli sıfırdan eğitmek için (~2-3 dakika):
-
+#### Yöntem B: Modeli Sıfırdan Eğitin
+Mevcut `cars1.csv` veri seti üzerinden modeli yerel olarak eğitmek için:
 ```bash
-python src/pricing/pipeline.py
+python -m src.pricing.pipeline
 ```
+*(Eğitim donanımınıza bağlı olarak ~1-2 dakika sürer ve modeli otomatik olarak `models/` dizinine kaydeder.)*
 
-### 5. RAG Vektör Veritabanını Oluşturun
+---
 
+### 5. RAG Vektör Bilgi Tabanını Oluşturun (Opsiyonel)
+
+Doküman tabanını vektörleştirip yerel SQLite veritabanına işlemek için:
 ```bash
-python src/rag/ingest.py
+python -m src.rag.ingest
 ```
+*(Bu komut `data/processed/knowledge_base.db` dosyasını oluşturur.)*
 
-> Bu adım data/processed/ klasöründe knowledge_base.db dosyasını oluşturur.
+---
 
-### 6. Uygulamayı Başlatın
+### 6. Uygulamayı Başlatın 🚀
 
 ```bash
 streamlit run app.py
 ```
+*(Veya: `python -m streamlit run app.py`)*
 
 Tarayıcınızda otomatik olarak **http://localhost:8501** adresi açılacaktır.
 
 ---
 
-## 🐳 Docker ile Hızlı Başlangıç (Opsiyonel)
-
-```bash
-# Docker imajını derle
-docker build -t autoinsight .
-
-# Konteyneri başlat
-docker run -p 8501:8501 autoinsight
-```
-
-> ⚠️ Docker yöntemiyle models/pricing_pipeline.joblib dosyasının mevcut olması gerekir.
-
----
-
-## 📊 Model Başarım Metrikleri
-
-53,514 araçlık kapsamlı veri seti (`cars1.csv`) üzerinde yapılan test (%20 test ayrımı - 10,703 araç) sonuçları:
-
-| Metrik | Skor | Açıklama |
-| :--- | :--- | :--- |
-| **R² (Belirleme Katsayısı)** | **0.9398** | Fiyat varyansını açıklama başarımı (~%94.0) |
-| **MAE (Ortalama Mutlak Hata)** | **72,524 TL** | Gerçek fiyattan ortalama mutlak sapma tutarı |
-| **RMSE (Kareli Ortalama Hata)**| **114,963 TL** | Büyük sapmaları cezalandıran hata metriği |
-| **MAPE (Yüzdesel Hata)** | **%11.09** | Ortalama yüzdesel sapma oranı |
-
-
----
-
-## 📁 Proje Dizin Yapısı
+## 📁 Modüler Kod & Dizin Hiyerarşisi
 
 ```text
 autoinsight/
+├── app.py                         # Ana giriş noktası & ekran yönlendirici (Router)
+├── Dockerfile                     # Docker konteyner konfigürasyonu
+├── requirements.txt               # Python kütüphane bağımlılıkları
+├── README.md                      # Proje dokümantasyonu
+│
 ├── data/
 │   ├── raw/
-│   │   └── cars1.csv         # 53K+ araçlık ham eğitim veri seti (~7 MB)
-│   └── processed/            # SQLite yerel vektör veri tabanı (knowledge_base.db)
-├── docs/                     # RAG için teknik bülten ve bakım kılavuzları
-├── models/                   # Eğitilen model dosyası — git'te YOK, Drive'dan indirin (bkz. Adım 4)
-├── src/
-│   ├── config.py             # Dinamik şema ve merkezi dizin yapılandırması
-│   ├── pricing/              # Fiyat tahmin modeli ve eğitim hattı
-│   ├── rag/                  # Vektörleme ve anlamsal arama modülü
-│   └── recommender/          # Filtreleme ve kosinüs benzerlik motoru
-├── app.py                    # Streamlit dashboard arayüzü
-├── Dockerfile                # Konteynerizasyon konfigürasyonu
-└── requirements.txt          # Proje bağımlılıkları
+│   │   └── cars1.csv              # 53.514 satırlık ham araç pazar veri seti (~7 MB)
+│   └── processed/
+│       └── knowledge_base.db      # RAG yerel SQLite vektör veritabanı
+│
+├── models/
+│   └── pricing_pipeline.joblib    # Eğitilmiş RandomForest fiyatlandırma pipeline'ı
+│
+├── docs/                          # RAG için teknik bülten ve kılavuz dokümanları
+│
+└── src/
+    ├── __init__.py
+    ├── config.py                  # Merkezi konfigürasyon, dinamik veri şeması ve yollar
+    │
+    ├── ui/                        # Kullanıcı Arayüzü & Sunum Katmanı
+    │   ├── __init__.py
+    │   ├── icons.py               # Vektörel SVG ikonlar ve Logo kütüphanesi
+    │   ├── components.py          # format_price, format_km, raw_html ve navigasyon
+    │   ├── styles.py              # Merkezi CSS motoru & Glassmorphism teması
+    │   ├── data_loader.py         # @st.cache destekli veri ve model yükleyici
+    │   └── screens/               # İzole Ekran Modülleri
+    │       ├── __init__.py
+    │       ├── welcome.py         # Vitrin, Hero ve Canlı Radar Ekranı
+    │       ├── seller.py          # Araç Değerleme & Emsal Analiz Ekranı
+    │       └── buyer.py           # Akıllı Araç Keşfi & Öneri Listesi Ekranı
+    │
+    ├── pricing/
+    │   ├── __init__.py
+    │   └── pipeline.py            # ML model eğitim ve kayıt hattı
+    │
+    ├── recommender/
+    │   ├── __init__.py
+    │   └── engine.py              # Bütçe-ağırlıklı öneri ve karşılaştırma algoritması
+    │
+    └── rag/
+        ├── __init__.py
+        ├── ingest.py              # Doküman parçalama (chunking) ve vektörleme
+        └── retriever.py           # Kosinüs benzerliğiyle yerel doküman arama
 ```
 
 ---
 
-## 🔧 Sık Karşılaşılan Sorunlar
+## 📊 Model Performans ve Doğrulama Metrikleri
 
-| Sorun | Çözüm |
-|-------|-------|
-| `ModuleNotFoundError` | `venv`'i aktive ettiğinizden ve `pip install -r requirements.txt` çalıştırdığınızdan emin olun |
-| `FileNotFoundError: pricing_pipeline.joblib` | Model dosyasını Google Drive'dan indirip `models/` klasörüne koyun (bkz. Adım 4) veya `python src/pricing/pipeline.py` ile eğitin |
-| `FileNotFoundError: knowledge_base.db` | `python src/rag/ingest.py` komutunu çalıştırın (bkz. Adım 5) |
-| Streamlit açılmıyor | `streamlit run app.py` komutunu `venv` aktifken çalıştırın |
+53.514 araçlık veri seti üzerinde %20 test ayrımı (10.703 test örneği) ile elde edilen başarım metrikleri:
+
+| Metrik | Değer | Açıklama |
+| :--- | :--- | :--- |
+| **R² (Belirleme Katsayısı)** | **0.9398** | Fiyat varyansını açıklama oranı (~%94.0) |
+| **MAE (Ortalama Mutlak Hata)** | **72.524 TL** | Gerçek ve tahmin edilen fiyat arası ortalama mutlak fark |
+| **RMSE (Kök Ortalama Kare Hata)**| **114.963 TL**| Uç sapmaları cezalandıran kareli hata |
+| **MAPE (Ortalama Yüzdesel Hata)**| **%11.09** | Tahmin güven koridoru aralığı |
 
 ---
 
-## 🤝 Katkıda Bulunma
+## 🔧 Sık Karşılaşılan Sorunlar ve Çözümleri
 
-Bu repo özel (private) olup davetli geliştiricilere açıktır. Değişiklik yapmadan önce bir branch oluşturun:
+| Hata / Durum | Olası Neden | Çözüm |
+| :--- | :--- | :--- |
+| `ModuleNotFoundError: No module named 'src'` | Çalışma dizini yanlış veya Python yolu tanımsız | Komutları projenin kök dizininde (`autoinsight/`) çalıştırın. |
+| `FileNotFoundError: pricing_pipeline.joblib` | Model dosyası eksik | Google Drive'dan indirip `models/` içine koyun veya `python -m src.pricing.pipeline` çalıştırın. |
+| `Streamlit command not found` | Sanal ortam aktif değil | Windows için `.\venv\Scripts\activate`, Linux/Mac için `source venv/bin/activate` yapın. |
+| Port çakışması (`Port 8501 is already in use`) | Başka bir Streamlit örneği çalışıyor | `streamlit run app.py --server.port 8502` ile farklı portta başlatın. |
 
-```bash
-git checkout -b feature/ozellik-adi
-git add .
-git commit -m "feat: kısa açıklama"
-git push origin feature/ozellik-adi
-```
+---
+
+## 📄 Lisans & Katkı
+
+Bu proje özel bir çalışma olup tüm hakları saklıdır.
+İletişim ve sorularınız için proje yöneticisi ile irtibata geçebilirsiniz.
