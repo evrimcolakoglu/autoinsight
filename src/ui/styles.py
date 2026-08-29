@@ -1290,5 +1290,310 @@ li[role="option"][aria-selected="true"] {
   color: #94A3B8;
   font-weight: 500;
 }
+
+/* ═══════════════════════════════════════════════════════
+   APPLE PRO DİNAMİK KAYDIRMA & SİNEMATİK TASARIM SİSTEMİ
+   ═══════════════════════════════════════════════════════ */
+
+/* Dinamik Kaydırma Efekti (Scroll-Driven Reveal Engine) */
+.ap-reveal {
+  opacity: 0;
+  transform: translateY(38px) scale(0.985);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.ap-reveal.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.ap-delay-1 { transition-delay: 0.12s; }
+.ap-delay-2 { transition-delay: 0.24s; }
+.ap-delay-3 { transition-delay: 0.36s; }
+.ap-delay-4 { transition-delay: 0.48s; }
+
+/* Apple Pro Tipografi & Işık Efektleri */
+.ap-super-headline {
+  font-family: var(--fd);
+  font-size: clamp(2.6rem, 5.8vw, 4.6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  color: #F8FAFC;
+  text-align: center;
+  margin: 1rem auto 1.4rem;
+}
+.ap-titanium-text {
+  background: linear-gradient(145deg, #FFFFFF 0%, #E2E8F0 40%, #94A3B8 80%, #64748B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.ap-emerald-text {
+  background: linear-gradient(135deg, #00FFB3 0%, #00C48C 45%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 35px rgba(0, 255, 179, 0.3);
+}
+
+.ap-hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.7;
+  color: #94A3B8;
+  max-width: 720px;
+  margin: 0 auto 2.8rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* Apple Pro Showcase Kartları */
+.ap-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  margin: 2.2rem 0;
+}
+.ap-showcase-card {
+  background: linear-gradient(145deg, rgba(14, 24, 44, 0.72) 0%, rgba(6, 12, 22, 0.85) 100%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r4);
+  padding: 2.6rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+}
+.ap-showcase-card::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(0, 255, 179, 0.18), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.ap-showcase-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 255, 179, 0.6);
+  box-shadow: 0 35px 85px rgba(0, 0, 0, 0.65), 0 0 45px rgba(0, 196, 140, 0.18), inset 0 1px 0 rgba(0, 255, 179, 0.3);
+}
+.ap-showcase-card:hover::before { opacity: 1; }
+
+.ap-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0.32rem 0.85rem;
+  background: rgba(0, 196, 140, 0.12);
+  border: 1px solid rgba(0, 255, 179, 0.35);
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #00FFB3;
+  text-transform: uppercase;
+}
+
+.ap-card-title {
+  font-family: var(--fd);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 1.1rem 0 0.6rem;
+  letter-spacing: -0.025em;
+}
+
+.ap-card-desc {
+  font-size: 0.96rem;
+  line-height: 1.68;
+  color: #94A3B8;
+  margin-bottom: 1.6rem;
+}
+
+/* Apple Pro İstatistik Barı */
+.ap-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r4);
+  overflow: hidden;
+  margin: 3.5rem 0 4.5rem;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.5);
+}
+.ap-metric-box {
+  background: linear-gradient(180deg, #091424 0%, #060D1A 100%);
+  padding: 2.2rem 1.6rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s ease;
+}
+.ap-metric-box:hover {
+  background: #0E1D33;
+}
+.ap-metric-val {
+  font-family: var(--fm);
+  font-size: clamp(2.2rem, 3.5vw, 3.1rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.ap-metric-val.glow {
+  color: #00FFB3;
+  text-shadow: 0 0 30px rgba(0, 255, 179, 0.45);
+}
+.ap-metric-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94A3B8;
+  margin-bottom: 0.2rem;
+}
+.ap-metric-sub {
+  font-size: 0.74rem;
+  color: #586982;
+  font-weight: 500;
+}
+
+/* Apple Pro Deep-Dive Bento Grid */
+.ap-bento-section {
+  margin: 4.5rem 0;
+}
+.ap-section-header {
+  text-align: center;
+  margin-bottom: 2.4rem;
+}
+.ap-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #00FFB3;
+  margin-bottom: 0.6rem;
+}
+.ap-section-title {
+  font-family: var(--fd);
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+}
+
+.ap-bento-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+}
+.ap-bento-cell {
+  background: linear-gradient(145deg, rgba(12, 22, 38, 0.65) 0%, rgba(6, 12, 20, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--r3);
+  padding: 2.2rem 2rem;
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.ap-bento-cell:hover {
+  border-color: rgba(0, 255, 179, 0.45);
+  background: linear-gradient(145deg, rgba(16, 28, 50, 0.8) 0%, rgba(8, 16, 28, 0.9) 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55), 0 0 30px rgba(0, 196, 140, 0.1);
+}
+.ap-bento-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: rgba(0, 196, 140, 0.12);
+  border: 1.5px solid rgba(0, 255, 179, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(0, 196, 140, 0.15);
+}
+.ap-bento-head {
+  font-family: var(--fd);
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.015em;
+}
+.ap-bento-para {
+  font-size: 0.91rem;
+  line-height: 1.66;
+  color: #94A3B8;
+}
+
+/* Apple Pro Süreç Timeline */
+.ap-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 2rem;
+}
+.ap-step-card {
+  background: linear-gradient(160deg, #0A1628 0%, #050B14 100%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--r3);
+  padding: 2.2rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+.ap-step-card:hover {
+  border-color: rgba(0, 255, 179, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0, 196, 140, 0.12);
+}
+.ap-step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00FFB3, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.ap-step-card:hover::before { opacity: 1; }
+
+.ap-step-num {
+  font-family: var(--fm);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #00FFB3;
+  background: rgba(0, 196, 140, 0.12);
+  border: 1px solid rgba(0, 255, 179, 0.3);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+}
 </style>
 ''')
