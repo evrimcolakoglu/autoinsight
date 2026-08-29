@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #040812;
+    --foreground: #f8fafc;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #040812;
+    color: #f8fafc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    background-color: #040812;
+    color: #f8fafc;
+    overflow-x: hidden;
+    selection-background-color: #00ffb3;
+    selection-color: #040812;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   APPLE PRO TITANIUM & EMERALD UTILITY CLASSES
+   ═══════════════════════════════════════════════════════ */
+
+.text-titanium {
+  background: linear-gradient(145deg, #ffffff 0%, #e2e8f0 40%, #94a3b8 80%, #64748b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-emerald-glow {
+  background: linear-gradient(135deg, #00ffb3 0%, #00c48c 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-glass {
+  background: rgba(10, 18, 34, 0.72);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bg-glass-card {
+  background: linear-gradient(145deg, rgba(14, 24, 44, 0.72) 0%, rgba(6, 12, 22, 0.85) 100%);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.border-glow-emerald {
+  border-color: rgba(0, 255, 179, 0.4);
+  box-shadow: 0 0 35px rgba(0, 196, 140, 0.2);
+}
+
+/* Lazer Tarayıcı Animasyonu */
+@keyframes laserScanAnim {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.laser-scanner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #00ffb3 50%, transparent 100%);
+  filter: drop-shadow(0 0 14px #00ffb3);
+  animation: laserScanAnim 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #040812;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00c48c;
+}
