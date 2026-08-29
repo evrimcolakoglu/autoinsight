@@ -28,6 +28,8 @@ class VehicleRecommender:
         filtered = self.df.copy()
 
         # Sert Filtreler (Hard Filtering)
+        # Kilometre anomalilerini elen (1M+ km'li araclar veri seti hatasi)
+        filtered = filtered[filtered['kilometre'] <= 999_999]
         if max_budget is not None and max_budget > 0:
             filtered = filtered[filtered[TARGET_COLUMN] <= max_budget]
         if preferred_fuel and preferred_fuel != "Tümü":
