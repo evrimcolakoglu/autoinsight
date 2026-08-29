@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.compose import ColumnTransformer
+from sklearn.compose import ColumnTransformer, TransformedTargetRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, TargetEncoder
 from sklearn.impute import SimpleImputer
@@ -21,7 +21,7 @@ def build_dynamic_pipeline(num_cols, cat_cols):
 
     cat_transformer = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
-        ('encoder', TargetEncoder(target_type='continuous', smooth="auto", cv=3))
+        ('encoder', TargetEncoder(target_type='continuous', smooth=5.0, cv=3))
     ])
 
     preprocessor = ColumnTransformer(
@@ -31,9 +31,10 @@ def build_dynamic_pipeline(num_cols, cat_cols):
         ]
     )
 
+    base_rf = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
     pipeline = Pipeline(steps=[
         ('preprocessor', preprocessor),
-        ('regressor', RandomForestRegressor(n_estimators=100, random_state=42))
+        ('regressor', TransformedTargetRegressor(regressor=base_rf, func=np.log1p, inverse_func=np.expm1))
     ])
     return pipeline
 

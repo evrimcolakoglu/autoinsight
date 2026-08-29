@@ -116,56 +116,62 @@ export function generateDiverseAIInsight(params: ValuationParams, alt_limit: num
 }
 
 export function calculateValuation(params: ValuationParams): ValuationResult {
-  const brandStats = (metadata.brand_stats as Record<string, { median_price: number; mean_year: number; mean_km: number }>)[params.marka] || {
-    median_price: 1100000,
-    mean_year: 2017,
-    mean_km: 120000,
-  };
+  const modelStats = (metadata as any).model_stats || {};
+  const seriesStats = (metadata as any).series_stats || {};
+  const brandStats = (metadata as any).brand_stats || {};
 
-  const basePrice = brandStats.median_price;
-  const currentYear = 2024;
-  const age = Math.max(0, currentYear - params.yil);
+  const modelKey = `${params.marka}|||${params.seri}|||${params.model}`;
+  const seriesKey = `${params.marka}|||${params.seri}`;
 
-  // Year depreciation curve
-  let yearFactor = 1.0;
-  if (age <= 3) {
-    yearFactor = 1.0 + (3 - age) * 0.12;
-  } else {
-    yearFactor = Math.max(0.25, 1.0 - (age - 3) * 0.052);
+  let basePrice = 1100000;
+  let baseYear = 2018;
+  let baseKm = 100000;
+
+  // 3-Tier Hierarchical Benchmark Resolution
+  if (params.model && modelStats[modelKey]) {
+    const s = modelStats[modelKey];
+    basePrice = s.median_price;
+    baseYear = s.median_year;
+    baseKm = s.median_km;
+  } else if (params.seri && seriesStats[seriesKey]) {
+    const s = seriesStats[seriesKey];
+    basePrice = s.median_price;
+    baseYear = s.median_year;
+    baseKm = s.median_km;
+  } else if (brandStats[params.marka]) {
+    const s = brandStats[params.marka];
+    basePrice = s.median_price;
+    baseYear = s.median_year;
+    baseKm = s.median_km;
   }
 
-  // Mileage factor
-  const expectedKm = age * 18000;
-  const kmDiff = params.kilometre - expectedKm;
-  const kmFactor = Math.max(0.55, Math.min(1.4, 1.0 - (kmDiff / 200000) * 0.18));
+  // Model-year compound depreciation factor relative to model anchor year
+  const yearDiff = params.yil - baseYear;
+  const yearMultiplier = Math.pow(1.078, yearDiff);
 
-  // Fuel factor
+  // Mileage adjustment factor relative to model anchor km
+  const kmDiff = baseKm - params.kilometre;
+  const kmMultiplier = Math.max(0.65, Math.min(1.4, 1.0 + (kmDiff / 160000) * 0.08));
+
+  // Fuel factor relative adjustment
   let fuelFactor = 1.0;
-  if (params.yakit_tipi === "Hibrit") fuelFactor = 1.14;
-  else if (params.yakit_tipi === "Elektrik") fuelFactor = 1.18;
-  else if (params.yakit_tipi === "Dizel") fuelFactor = 1.04;
-  else if (params.yakit_tipi === "LPG & Benzin") fuelFactor = 0.88;
+  if (params.yakit_tipi === "Hibrit") fuelFactor = 1.05;
+  else if (params.yakit_tipi === "Elektrik") fuelFactor = 1.08;
+  else if (params.yakit_tipi === "LPG & Benzin") fuelFactor = 0.94;
 
-  // Transmission factor
+  // Transmission factor relative adjustment
   let transFactor = 1.0;
-  if (params.vites_tipi === "Otomatik") transFactor = 1.10;
-  else if (params.vites_tipi === "Yarı Otomatik") transFactor = 1.04;
-  else if (params.vites_tipi === "Düz") transFactor = 0.93;
+  if (params.vites_tipi === "Otomatik") transFactor = 1.04;
+  else if (params.vites_tipi === "Düz") transFactor = 0.96;
 
-  // Body factor
-  let bodyFactor = 1.0;
-  if (params.kasa_tipi === "SUV") bodyFactor = 1.12;
-  else if (params.kasa_tipi === "Coupe" || params.kasa_tipi === "Cabrio") bodyFactor = 1.15;
-  else if (params.kasa_tipi === "Station wagon") bodyFactor = 0.96;
-
-  // City factor
+  // City liquidity factor
   let cityFactor = 1.0;
   if (["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya"].includes(params.konum)) {
     cityFactor = 1.02;
   }
 
-  const rawEstimate = basePrice * yearFactor * kmFactor * fuelFactor * transFactor * bodyFactor * cityFactor;
-  const tahmin = Math.max(120000, Math.round(rawEstimate / 5000) * 5000);
+  const rawEstimate = basePrice * yearMultiplier * kmMultiplier * fuelFactor * transFactor * cityFactor;
+  const tahmin = Math.max(100000, Math.round(rawEstimate / 5000) * 5000);
   const mape = 0.111;
   const alt_limit = Math.round((tahmin * (1 - mape)) / 5000) * 5000;
   const ust_limit = Math.round((tahmin * (1 + mape)) / 5000) * 5000;
@@ -174,7 +180,7 @@ export function calculateValuation(params: ValuationParams): ValuationResult {
   let percentile = 50;
   if (tahmin < 600000) percentile = Math.min(40, Math.max(10, Math.round((tahmin / 600000) * 35)));
   else if (tahmin < 1500000) percentile = Math.min(75, Math.max(40, 40 + Math.round(((tahmin - 600000) / 900000) * 35)));
-  else percentile = Math.min(98, Math.max(75, 75 + Math.round(((tahmin - 1500000) / 3000000) * 23)));
+  else percentile = Math.min(98, Math.max(75, 75 + Math.round(((tahmin - 1500000) / 4000000) * 23)));
 
   const ai_insight = generateDiverseAIInsight(params, alt_limit, ust_limit);
 
