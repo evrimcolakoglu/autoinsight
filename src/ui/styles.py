@@ -1295,23 +1295,47 @@ li[role="option"][aria-selected="true"] {
    APPLE PRO DİNAMİK KAYDIRMA & SİNEMATİK TASARIM SİSTEMİ
    ═══════════════════════════════════════════════════════ */
 
-/* Dinamik Kaydırma Efekti (Scroll-Driven Reveal Engine) */
-.ap-reveal {
-  opacity: 0;
-  transform: translateY(38px) scale(0.985);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-.ap-reveal.is-visible {
-  opacity: 1 !important;
-  transform: translateY(0) scale(1) !important;
+/* Garantili ve Akıcı Animasyon Motoru */
+@keyframes apFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-.ap-delay-1 { transition-delay: 0.12s; }
-.ap-delay-2 { transition-delay: 0.24s; }
-.ap-delay-3 { transition-delay: 0.36s; }
-.ap-delay-4 { transition-delay: 0.48s; }
+.ap-reveal {
+  opacity: 1;
+  animation: apFadeSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.ap-delay-1 { animation-delay: 0.1s; }
+.ap-delay-2 { animation-delay: 0.2s; }
+.ap-delay-3 { animation-delay: 0.3s; }
+.ap-delay-4 { animation-delay: 0.4s; }
+
+/* Modern Tarayıcılarda Doğal Scroll-Driven Animasyon Desteği */
+@supports (animation-timeline: view()) {
+  .ap-scroll-anim {
+    animation: apScrollReveal ease-out both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 28%;
+  }
+}
+
+@keyframes apScrollReveal {
+  from {
+    opacity: 0.25;
+    transform: translateY(35px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
 /* Apple Pro Tipografi & Işık Efektleri */
 .ap-super-headline {
