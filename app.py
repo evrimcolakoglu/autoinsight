@@ -1223,32 +1223,35 @@ li[role="option"][aria-selected="true"] {
 }
 
 .vcpr {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 .vcpb {
-  padding: 1.2rem 1.6rem;
-}
-.vcpb:first-child {
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.15rem 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 .vcpl {
-  font-size: 0.7rem;
+  font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--t3);
-  margin-bottom: 0.35rem;
+  color: #8B9AB5;
+  margin-bottom: 0;
 }
 .vcpv {
   font-family: var(--fm);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--t1);
 }
-.vcpv.em { color: #00FFB3; }
+.vcpv.em {
+  color: #00FFB3;
+  text-shadow: 0 0 18px rgba(0, 255, 179, 0.35);
+}
 
 .dtag {
   display: inline-flex;
@@ -1397,13 +1400,13 @@ def render_welcome():
                     <span class="fc-badge">Akıllı Filtre</span>
                 </div>
                 <div class="fct">Akıllı Araç Keşfi</div>
-                <div class="fcd">Bütçenizi ve tercihlerinizi belirleyin; hibrit benzerlik algoritmamız gerçek ilanlar arasından en avantajlı araçları uyum puanıyla listelesin.</div>
+                <div class="fcd">Bütçenizi ve tercihlerinizi belirleyin; akıllı filtreleme algoritmamız kriterlerinize ve bütçenize en uygun araçları piyasa değerleriyle listelesin.</div>
             </div>
             <div class="chips">
                 <span class="chip">{IC["sparkles"]} Akıllı Eşleşme</span>
-                <span class="chip">{IC["star"]} Uyum Puanı</span>
+                <span class="chip">{IC["star"]} Kriter Filtresi</span>
                 <span class="chip">{IC["wallet"]} Fiyat Analizi</span>
-                <span class="chip">{IC["flame"]} Fırsat İlanlar</span>
+                <span class="chip">{IC["flame"]} Avantajlı Araçlar</span>
             </div>
         </div>''')
         st.button("Araçları Keşfet →", key="btn_start_search", type="primary",
@@ -1936,9 +1939,7 @@ def render_buyer():
                         "vites": row.get('vites_tipi', ''),
                         "yakit": row.get('yakit_tipi', ''),
                         "kasa": row.get('kasa_tipi', ''),
-                        "ilan_fiyat": float(row['fiyat']),
-                        "market_value": market_value,
-                        "match_score": float(row.get('match_score', 0))
+                        "market_value": market_value
                     })
             else:
                 for _, row in recs.iterrows():
@@ -1951,9 +1952,7 @@ def render_buyer():
                         "vites": row.get('vites_tipi', ''),
                         "yakit": row.get('yakit_tipi', ''),
                         "kasa": row.get('kasa_tipi', ''),
-                        "ilan_fiyat": float(row['fiyat']),
-                        "market_value": None,
-                        "match_score": float(row.get('match_score', 0))
+                        "market_value": None
                     })
 
             st.session_state.buyer_result = results
@@ -1966,7 +1965,7 @@ def _render_buyer_result(results):
         <div style="margin: 0.5rem 0 1.5rem;">
             <span class="rpill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00FFB3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-1px;margin-right:4px;"><polyline points="20 6 9 17 4 12"/></svg> Arama Sonuçları</span>
             <h2 style="font-size: 2rem; font-weight: 800; color: #FFFFFF; margin: 0.6rem 0 0;">
-                {len(results)} Avantajlı Araç Eşleşti
+                {len(results)} Uygun Araç Eşleşti
             </h2>
         </div>
         ''')
@@ -1975,23 +1974,19 @@ def _render_buyer_result(results):
 
     for car in results:
         title = f"{car['marka']} {car['model']} ({car['yil']})"
-        
-        match_badge = ""
-        if car.get('match_score', 0) > 0:
-            match_badge = f'<div class="mbdg"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00FFB3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span>%{car["match_score"]:.0f} Uyum</span></div>'
 
         market_html = ""
         if car['market_value'] is not None:
             mv_low = car['market_value'] * (1 - MODEL_MAPE)
             mv_high = car['market_value'] * (1 + MODEL_MAPE)
-            
-            deal_note = ""
-            if car["ilan_fiyat"] < mv_low:
-                deal_note = '<span class="dtag hot"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#00FFB3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 22 12 12 22 2 12 12 2"/></svg> Piyasa Altı Fırsat</span>'
-            elif car["ilan_fiyat"] <= mv_high:
-                deal_note = '<span class="dtag fair"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Piyasa Değerinde</span>'
-
-            market_html = f'<div class="vcpb"><div class="vcpl">Tahmini Piyasa Değeri</div><div class="vcpv em">{format_price(mv_low)} &mdash; {format_price(mv_high)}</div>{deal_note}</div>'
+            market_html = f'''
+            <div class="vcpr">
+                <div class="vcpb">
+                    <div class="vcpl">Tahmini Piyasa Değeri</div>
+                    <div class="vcpv em">{format_price(mv_low)} &mdash; {format_price(mv_high)}</div>
+                </div>
+            </div>
+            '''
 
         kasa_pill = f'<span class="stg">{car["kasa"]}</span>' if car.get("kasa") else ""
         seri_pill = f'<span class="stg">{car["seri"]}</span>' if car.get("seri") else ""
@@ -2000,7 +1995,6 @@ def _render_buyer_result(results):
         <div class="vc">
             <div class="vct">
                 <div class="vcti">{title}</div>
-                {match_badge}
             </div>
             <div class="vcs">
                 <span class="stg">{format_km(car['km'])}</span>
@@ -2009,13 +2003,7 @@ def _render_buyer_result(results):
                 {kasa_pill}
                 {seri_pill}
             </div>
-            <div class="vcpr">
-                <div class="vcpb">
-                    <div class="vcpl">İlan Satış Fiyatı</div>
-                    <div class="vcpv">{format_price(car["ilan_fiyat"])}</div>
-                </div>
-                {market_html}
-            </div>
+            {market_html}
         </div>
         '''
 
