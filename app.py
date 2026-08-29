@@ -1180,9 +1180,10 @@ li[role="option"][aria-selected="true"] {
 .vct {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  padding: 1.4rem 1.6rem 0.8rem;
+  align-items: center;
+  padding: 1.3rem 1.6rem 1.1rem;
   gap: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 .vcti {
   font-family: var(--fd);
@@ -1190,6 +1191,32 @@ li[role="option"][aria-selected="true"] {
   font-weight: 800;
   letter-spacing: -0.025em;
   color: var(--t1);
+}
+
+/* Araç özellik grid */
+.vc-specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0;
+}
+.vc-spec {
+  padding: 0.9rem 1.35rem;
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+.vc-spec:last-child { border-right: none; }
+.vc-spec-label {
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #506070;
+  margin-bottom: 0.32rem;
+  text-transform: none;
+}
+.vc-spec-value {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #D1E0EF;
+  letter-spacing: -0.01em;
 }
 .mbdg {
   display: inline-flex;
@@ -1206,22 +1233,6 @@ li[role="option"][aria-selected="true"] {
   flex-shrink: 0;
   box-shadow: 0 0 12px rgba(0, 196, 140, 0.15);
 }
-.vcs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 0.4rem 1.6rem 1.2rem;
-}
-.stg {
-  padding: 0.3rem 0.72rem;
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #CBD5E1;
-}
-
 .vcpr {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   background: linear-gradient(135deg, rgba(0, 196, 140, 0.04), rgba(0, 0, 0, 0));
@@ -1993,22 +2004,24 @@ def _render_buyer_result(results):
             </div>
             '''
 
-        kasa_pill = f'<span class="stg">{car["kasa"]}</span>' if car.get("kasa") else ""
-        seri_pill = f'<span class="stg">{car["seri"]}</span>' if car.get("seri") else ""
+        # Build optional spec cells
+        kasa_spec = f'<div class="vc-spec"><div class="vc-spec-label">KASA T\u0130P\u0130</div><div class="vc-spec-value">{car["kasa"]}</div></div>' if car.get("kasa") else ""
+        seri_spec = f'<div class="vc-spec"><div class="vc-spec-label">SER\u0130</div><div class="vc-spec-value">{car["seri"]}</div></div>' if car.get("seri") else ""
 
         card_html = f'''
         <div class="vc">
-            <div class="vct">
-                <div class="vcti">{title}</div>
-            </div>
-            <div class="vcs">
-                <span class="stg">{format_km(car['km'])}</span>
-                <span class="stg">{car['vites']}</span>
-                <span class="stg">{car['yakit']}</span>
-                {kasa_pill}
-                {seri_pill}
-            </div>
-            {market_html}
+        <div class="vct">
+        <div class="vcti">{title}</div>
+        </div>
+        <div class="vc-specs">
+        <div class="vc-spec"><div class="vc-spec-label">K\u0130LOMETRE</div><div class="vc-spec-value">{format_km(car["km"])}</div></div>
+        <div class="vc-spec"><div class="vc-spec-label">MODEL YILI</div><div class="vc-spec-value">{car["yil"]}</div></div>
+        <div class="vc-spec"><div class="vc-spec-label">YAKIT</div><div class="vc-spec-value">{car["yakit"]}</div></div>
+        <div class="vc-spec"><div class="vc-spec-label">V\u0130TES</div><div class="vc-spec-value">{car["vites"]}</div></div>
+        {kasa_spec}
+        {seri_spec}
+        </div>
+        {market_html}
         </div>
         '''
 
