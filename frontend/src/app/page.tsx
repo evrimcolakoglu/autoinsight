@@ -3,7 +3,7 @@ import HeroSection from "@/components/hero/HeroSection";
 import HighlightsSection from "@/components/metrics/HighlightsSection";
 import CockpitShowcase from "@/components/cockpit/CockpitShowcase";
 import BentoGridSection from "@/components/bento/BentoGridSection";
-import DualSimulator from "@/components/simulator/DualSimulator";
+import ExperienceShowcase from "@/components/showcase/ExperienceShowcase";
 import ProcessTimeline from "@/components/timeline/ProcessTimeline";
 import FooterSection from "@/components/footer/FooterSection";
 import DynamicBackground from "@/components/background/DynamicBackground";
@@ -33,8 +33,8 @@ export default function Home() {
         {/* Bento Grid Architecture */}
         <BentoGridSection />
 
-        {/* Interactive Dual Valuation / Matching Simulator */}
-        <DualSimulator />
+        {/* Full Experience Showcase (Links to /degerleme and /kesif) */}
+        <ExperienceShowcase />
 
         {/* 3-Step Process Flow */}
         <ProcessTimeline />
