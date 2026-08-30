@@ -217,7 +217,7 @@ autoinsight/
 Bu proje **Evrim Çolakoğlu** ve **Ayşenur Çelik** tarafından geliştirilmiştir.
 
 * **Evrim Çolakoğlu** — [GitHub](https://github.com/evrimcolakoglu)
-* **Ayşenur Çelik** — [GitHub](https://github.com/aysenurcelik)
+* **Ayşenur Çelik** — [GitHub](https://github.com/aysenurcelik-swe)
 
 ---
 
