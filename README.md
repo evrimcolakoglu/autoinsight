@@ -1,6 +1,6 @@
 # 🚗 AutoInsight: Akıllı Otomotiv Karar ve Değerleme Platformu
 
-AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; yapay zeka tabanlı dinamik piyasa fiyat tahmini, bütçe ve donanım odaklı akıllı araç keşfi, veri tabanlı pazar analiz motoru ve çevrimdışı (offline) RAG mimarisini modern Apple Pro Scrollytelling web vitrini ve analitik platformunda buluşturan uçtan uca bir makine öğrenmesi sistemidir.
+AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; yapay zeka tabanlı dinamik piyasa fiyat tahmini, bütçe ve donanım odaklı akıllı araç keşfi, veri tabanlı pazar analiz motoru ve çevrimdışı (offline) RAG mimarisini modern ve dinamik Scrollytelling web vitrini ve analitik platformunda buluşturan uçtan uca bir makine öğrenmesi sistemidir.
 
 ---
 
@@ -8,7 +8,7 @@ AutoInsight, ikinci el otomotiv pazarı için geliştirilmiş; yapay zeka tabanl
 
 * **🎯 Dinamik Piyasa Değerleme (ML Engine):** 53.514 gerçek pazar verisi üzerinden eğitilmiş Random Forest + Target Encoding regresyon boru hattı ile 46 marka, model, yıl, kilometre ve donanım kombinasyonlarına göre anlık **Piyasa Değer Aralığı** (%11.09 MAPE güven koridoru), emsal yüzdelik konumu ve araca özel yapay zeka pazar gerekçesi sunar.
 * **🏎️ Akıllı Araç Keşfi (Recommender):** Kullanıcının bütçe sınırına veya esnek donanım tercihlerine göre piyasa fırsatlarını bütçe-ağırlıklı puanlama algoritmalarıyla listeleyen ve her araç için modelin tahmin ettiği değer aralığını ve özel analizini aktaran akıllı öneri motoru (İlk 20 Eşleşme).
-* **🍏 Apple Pro Scrollytelling Web Vitrini (Next.js 14 + Lenis):** Pürüzsüz ataletli kaydırma (Lenis Scroll), scroll-pinned genişleyen araç sahnesi, hareketli lazer tarayıcı, canlı telemetri göstergeleri, etkileşimli imleç ışığı (cursor spotlight) ve 4'lü mühendislik bento ızgarası.
+* **✨ Dinamik Scrollytelling Web Vitrini (Next.js 14 + Lenis):** Pürüzsüz ataletli kaydırma (Lenis Scroll), scroll-pinned genişleyen araç sahnesi, hareketli lazer tarayıcı, canlı telemetri göstergeleri, etkileşimli imleç ışığı (cursor spotlight) ve 4'lü mühendislik bento ızgarası.
 * **🎨 Modüler Streamlit Platformu (Python):** Özel tasarlanmış Dark Glassmorphism tema, canlı radar ticker, simetrik donanım kartları ve izole ekran mimarisi.
 * **📚 Çevrimdışı RAG Teknik Asistanı:** Harici API veya internet bağımlılığı olmaksızın teknik kılavuzlardan ve pazar bültenlerinden anlamsal bilgi getiren yerel vektör arama motoru (SQLite + Sentence Transformers `all-MiniLM-L6-v2`).
 * **🧠 Veri Tabanlı Yapay Zeka Pazar Açıklaması (NLG):** Her aracın marka mirası, yaşı, kilometresi, yakıt/vites kombinasyonu ve şehrine göre tamamen dinamik ve özelleştirilmiş 3-4 cümlelik pazar analizleri.
@@ -134,7 +134,7 @@ autoinsight/
 ├── requirements.txt               # Python kütüphane bağımlılıkları
 ├── README.md                      # Proje dokümantasyonu
 │
-├── frontend/                      # Next.js 14 Apple Pro Web Vitrini
+├── frontend/                      # Next.js 14 Dinamik Web Vitrini
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── layout.tsx         # Root Layout, fontlar & SmoothScrollProvider

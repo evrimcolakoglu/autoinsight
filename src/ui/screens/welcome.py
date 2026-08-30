@@ -306,7 +306,7 @@ def render_welcome() -> None:
             <span>&bull;</span>
             <span>53.514 Gerçek İlan Analitiği</span>
             <span>&bull;</span>
-            <span>Apple Pro Tasarım Mimarisi</span>
+            <span>Dinamik Scrollytelling Mimarisi</span>
         </div>
         <div>&copy; 2026 AutoInsight — Tüm Hakları Saklıdır.</div>
     </div>

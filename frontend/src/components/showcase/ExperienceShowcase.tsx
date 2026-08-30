@@ -21,7 +21,7 @@ export default function ExperienceShowcase() {
         </p>
       </div>
 
-      {/* 2 Massive Apple Pro Showcase Cards */}
+      {/* 2 Dynamic Showcase Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Card 1: Piyasa Değerleme */}
         <motion.div
