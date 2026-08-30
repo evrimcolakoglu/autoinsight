@@ -212,7 +212,29 @@ autoinsight/
 
 ---
 
-## 📄 Lisans & Katkı
+## 👥 Geliştiriciler & Telif Hakkı (Authors & Copyright)
 
-Bu proje özel bir çalışma olup tüm hakları saklıdır.  
-İletişim ve sorularınız için proje yöneticisi ile irtibata geçebilirsiniz.
+Bu proje **Evrim Çolakoğlu** ve **Ayşenur Çelik** tarafından geliştirilmiştir.
+
+* **Evrim Çolakoğlu** — [GitHub](https://github.com/evrimcolakoglu)
+* **Ayşenur Çelik** — [GitHub](https://github.com/aysenurcelik)
+
+---
+
+## 📜 Lisans & Atıf (License & Citation)
+
+Bu proje **GNU General Public License v3.0 (GPL-3.0)** altında lisanslanmıştır. Detaylı bilgi için [LICENSE](LICENSE) dosyasını inceleyebilirsiniz.
+
+Bu projeyi akademik çalışmalarda, araştırmalarda veya açık kaynak projelerinizde kullanırken veya referans gösterirken aşağıdaki şekilde atıfta bulunmanız rica olunur:
+
+```bibtex
+@misc{autoinsight2024,
+  author = {Çolakoğlu, Evrim and Çelik, Ayşenur},
+  title = {AutoInsight: Akıllı Otomotiv Karar ve Değerleme Platformu},
+  year = {2024},
+  publisher = {GitHub},
+  howpublished = {\url{https://github.com/evrimcolakoglu/autoinsight}}
+}
+```
+
+> ⚠️ **Telif ve Kullanım Koşulları:** GNU GPLv3 lisansı uyarınca bu projenin kaynak kodlarını kullanan, dağıtan veya türeten tüm çalışmalar açık kaynak kalmak ve orijinal geliştiricileri (**Evrim Çolakoğlu & Ayşenur Çelik**) açıkça belirtmek zorundadır. Projenin kaynak gösterilmeden veya kapalı kaynaklı ticari mülk olarak sahiplenilmesi yasal olarak yasaktır.

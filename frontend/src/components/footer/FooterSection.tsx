@@ -30,14 +30,14 @@ export default function FooterSection() {
 
         {/* Footer Info */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-10 text-xs text-slate-500 font-medium">
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="font-extrabold text-white">AutoInsight</span>
             <span>&bull;</span>
-            <span>v2.5 Next.js Scrollytelling Sürümü</span>
+            <span>Geliştiriciler: <strong className="text-slate-300">Evrim Çolakoğlu &amp; Ayşenur Çelik</strong></span>
             <span>&bull;</span>
-            <span>53.514 İlan Analitiği</span>
+            <span>GNU GPLv3 Lisansı</span>
           </div>
-          <div>&copy; 2026 AutoInsight — Tüm Hakları Saklıdır.</div>
+          <div>&copy; 2024-2026 AutoInsight &bull; Açık Kaynak Karar Platformu</div>
         </div>
       </div>
     </footer>

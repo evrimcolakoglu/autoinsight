@@ -3,9 +3,17 @@ venv/
 __pycache__/
 *.py[cod]
 .DS_Store
-# .streamlit/
+.env
+.env.*
+
+# Frontend build artifacts & dependencies
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
 
 # Large model files (exceed GitHub's 100MB limit)
-# Train locally using the provided training script
+# Train locally using the provided training script or download via link
 models/*.joblib
 models/*.pkl
+data/processed/*.db
